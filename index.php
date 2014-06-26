@@ -42,27 +42,10 @@ include("inc/header.php");
 	?>
 
 	<!-- MAIN CONTENT -->
-	<div id="content" style="padding: 50px;">	
+	<div id="content" style="padding: 30px;">	
 		<div class="row">
-			<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-					<ul id="myTab1" class="nav nav-tabs bordered">
-						<li class="active">
-							<a href="#s1" data-toggle="tab">Search Git ProJects</a>
-						</li>
-						<li>
-							<a href="#s2" data-toggle="tab">Instantly download and analyse a new project from a Git repository</a>
-						</li>
-						<li>
-							<a href="#s3" data-toggle="tab">TimeLine</a>
-						</li>
-						<li class="pull-right hidden-mobile">
-							<a href="#" onclick="storeResults(0,9);"> <span class="note"><span id="results">  </span>About <span id="execsqltime"/> </span> </a>
-						</li>
-					</ul>				
-				<div id="myTabContent1" class="tab-content bg-color-white padding-10">
-					<div class="tab-pane fade in active" id="s1">
-						<h1> Search <span class="semi-bold" id="filtertext">Everything</span></h1>
-						<br>
+		<h1> Search <span class="semi-bold" id="filtertext">Everything</span></h1>
+				
 						<div class="input-group input-group-lg hidden-mobile">
 							<div class="input-group-btn">
 								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -91,49 +74,27 @@ include("inc/header.php");
 								</button>
 							</div>
 						</div>
-		
+						<div class='col-xs-12 col-sm-12 col-md-9 col-lg-9'>	
+	
 							<div id="search-res"></div>		
-					</div>	
-
-
-				<div class="tab-pane fade" id="s2">
-					<form class="smart-form">
-						<h1>Enter Git Repository URL to <span class="semi-bold">Download and Analyze</span></h1>
-						<p>
-						<section style="margin-top: 20px;">
-								<label class="input"> <i class="icon-prepend fa fa-question-circle"></i>
-									<input type="text" id="gitpath" placeholder="eg. https://github.com/geomel/example-project.git">
-									<b class="tooltip tooltip-top-left">
-										<i class="fa fa-warning txt-color-teal"></i> 
-										Enter a Git Repository URL to download and analyze it</b> 
-								</label>
-								
-						</section>
-								<button id="analyzebtn" type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> DownLoading... please wait" class="btn btn-success btn-lg btn-block" onclick="runJava()">Download And Analyze
-									<i style="margin-left: 10px" class="fa fa-download"></i>
-								</button> 
-					</form>
-					
-						<div id="server_data" class="text-info"> </div>
-					
-				</div>
+						</div>	
 				
-				<div class="tab-pane fade" id="s3">
-							<div class='well well-sm'>
+				<div class='col-xs-12 col-sm-12 col-md-3 col-lg-3'>	
+							
 								<!-- Timeline Content -->
 								<div class='smart-timeline'>
 									<ul class='smart-timeline-list'>
 										<div id="ajax-timeline"> </div>
 										<li class='text-center'>
-											<a href='javascript:void(0)' class='btn btn-sm btn-default'><i class='fa fa-arrow-down text-muted'></i> LOAD MORE</a>
+											<a href='javascript:void(0)' class='btn btn-sm btn-default' id="showTimeline"><i class='fa fa-arrow-down text-muted'></i> TIMELINE OVERVIEW</a>
 										</li>
 									</ul>
 								</div>
 								<!-- END Timeline Content -->
-							</div>	
+							
 				</div>
 		
-				</div>
+		</div>
 		
 			</div>
 		
@@ -164,6 +125,11 @@ include("inc/header.php");
     }
 
 	$(document).ready(function() {
+			$('#ajax-timeline').hide();
+				$('#showTimeline').click(function() {
+					 $('#ajax-timeline').toggle("slow");
+				});
+			
 			$("#f0").click(function(e){
 				removeSelectedClass();
 				$( "#f0" ).addClass( "fa fa-check" );
