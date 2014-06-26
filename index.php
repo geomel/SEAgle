@@ -75,7 +75,7 @@ include("inc/header.php");
 							</div>
 						</div>
 						<div class='col-xs-12 col-sm-12 col-md-9 col-lg-9'>	
-	
+								<span class="note"><span id="results">  </span>About <span id="execsqltime" style="padding:10px;"/> </span>
 							<div id="search-res"></div>		
 						</div>	
 				
