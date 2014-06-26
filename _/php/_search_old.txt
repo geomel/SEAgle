@@ -1,0 +1,182 @@
+<?php
+session_start();
+include("_connections.php");
+/*
+
+*/		
+if(isset($_GET['search_value'])){
+	$search_value = $_REQUEST['search_value'];
+	$filter_flag = $_REQUEST['filter_flag'];
+	}
+/*
+filter flag values:
+0 -> Search All
+1 -> Nodes
+2 -> Edges
+3 -> Vrsions
+*/
+
+
+if(isset($search_value)){
+	switch ($filter_flag){
+		case 0:
+			$sql = "select * from project where(
+					name like '%$search_value%' OR versions like '%$search_value%' OR githubpath like '%$search_value%' OR description like '%$search_value%' OR author like '%$search_value%') ";
+			//$sql2 = "SELECT * FROM project,version INNER JOIN graph WHERE project.pid=version.pid AND version.vid = graph.vid";		
+			break;
+		case 1:
+			$sql = "";
+			break;
+		case 2:
+			$sql = "";
+			break;	
+		case 3:
+			$sql = "";
+			break;	
+				
+	}	
+}
+else{
+	$sql = "SELECT * FROM project";	
+}
+	$msc=microtime(true);
+$rs=$conn->query($sql);
+if($rs === false) {
+  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+} else {
+  $rows_returned = $rs->num_rows;
+}
+$rs->data_seek(0);
+echo  "<h1 class='font-md'> Search Results for <span class=''semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >( ". $rows_returned ." results) </span></small></h1><p>";
+while($row = $rs->fetch_assoc()){
+		// getJSONData($row['author']) ;	
+	echo "<h3><a href='_/php/_startProjectSession.php?pid=".$row['pid']."' onclick='storeResults(\"".$row['name']."\",\"".$row['pid']."\");'>". $row['name'] ."</a>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>";
+			echo "<div class='url text-success'>
+					<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='".$row['githubpath']."'>". $row['githubpath'] ."&nbsp;&nbsp;</a>
+					</div>		
+					<p style='margin-bottom: 20px'>";
+	echo "<img src='". $row['pimage'] ."' alt='' width='100' height='100' style='float:left; padding:10px;'>
+		<div>
+			<p class='note'>
+									<i class='fa fa-male'></i> <b>Author:&nbsp </b><a href='javascript:void(0);'>". $row['author']."&nbsp;&nbsp;</a>
+									<i class='fa fa-barcode'></i> <b>Versions:&nbsp </b> <a href='javascript:void(0);'> ". $row['versions'] ."&nbsp;&nbsp;</a>								
+								</p>
+			<p class='description' style='padding:0px; '>".
+				$row['description']
+			."</p>
+		</div>";
+			$pid = $row['pid'];	
+			$sql2 = "SELECT * FROM project,version INNER JOIN graph WHERE project.pid='$pid' AND project.pid=version.pid AND version.vid = graph.vid";
+			$rs2=$conn->query($sql2);
+			$rs2->data_seek(0);
+	while($row2 = $rs2->fetch_assoc()){
+				$nodes_array[]=$row2['nodes'];
+				$edges_array[]=$row2['edges'];
+				$diameter_array[]=$row2['diameter'];
+				$cc_array[]=$row2['cc'];
+			}		
+				echo"</div><p style='margin-top: 20px'>
+										<div class='show-stat-microcharts'>
+											<div class='col-xs-12 col-sm-3 col-md-3 col-lg-3'>
+												<ul id='sparks' class=''>
+													<li class='sparks-info'>
+														<h5> Nodes </h5>
+														<div class='sparkline' data-sparkline-type='line' data-sparkline-width='140px' data-sparkline-height='40px'>".
+															join(', ', $nodes_array)."
+														</div>
+													</li>
+												</ul>	
+											</div>
+											<div class='col-xs-12 col-sm-3 col-md-3 col-lg-3'>
+												<ul id='sparks' class=''>
+													<li class='sparks-info'>
+														<h5> Edges </h5>
+														<div class='sparkline' data-sparkline-type='line' data-sparkline-width='140px' data-sparkline-height='40px'>".
+															join(', ', $edges_array)."
+														</div>
+													</li>
+												</ul>
+											</div>
+											<div class='col-xs-12 col-sm-3 col-md-3 col-lg-3'>
+												<ul id='sparks' class=''>
+													<li class='sparks-info'>
+														<h5> Diameter </h5>
+														<div class='sparkline' data-sparkline-type='line' data-sparkline-width='140px' data-sparkline-height='40px'>".
+															join(', ', $diameter_array)."
+														</div>
+													</li>
+												</ul>
+											</div>
+											<div class='col-xs-12 col-sm-3 col-md-3 col-lg-3'>
+												<ul id='sparks' class=''>
+													<li class='sparks-info'>
+														<h5> Clustering Coeficient </h5>
+														<div class='sparkline' data-sparkline-type='line' data-sparkline-width='140px' data-sparkline-height='40px'>".
+															join(', ', $cc_array)."
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>	
+										<p style='margin-bottom: 20px'>
+										<hr></div>";
+										unset($nodes_array);
+										unset($edges_array);
+										unset($diameter_array);
+										unset($cc_array);
+										
+}
+
+
+	
+
+$msc=microtime(true)-$msc;
+$msc = round($msc, 4);
+echo "<span style='visibility:hidden;'> <span id='sqltime'>". $msc." seconds </span></span>";
+
+function getJSONdata($name){
+
+	$url= "https://api.github.com/users/".$name;
+	echo $url;
+	// JSON URL which should be requested
+	// Initializing curl
+	$ch = curl_init( $url );
+
+	// Configuring curl options
+	$options = array(
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_HTTPHEADER => array('Content-type: application/json') ,
+	);
+
+	// Setting curl options
+	curl_setopt_array( $ch, $options );
+
+	// Getting results
+	$result =  curl_exec($ch); // Getting JSON result string
+
+	$data = json_decode($result, true);
+	echo var_dump($data);
+}
+include_once("../../lib/config.php"); 
+include_once("../../inc/scripts.php"); 
+
+?>	
+	
+		
+								
+		
+								
+								
+										
+							
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+					

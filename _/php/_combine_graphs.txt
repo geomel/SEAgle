@@ -1,0 +1,38 @@
+<div class='col-xs-12 col-sm-3 col-md-3 col-lg-6'>
+											<h5 class='sparks-info text-center'> Nodes - Edges </h5>
+											<div class='sparkline'
+													data-sparkline-bar-val='[".join(', ', $nodes_array)."]'
+													data-sparkline-color-bottom='#2b5c59' 
+													data-sparkline-color-top='#3a6965' 
+													data-sparkline-height='78px'
+													data-sparkline-highlightline-color-top='#cce8e4'
+													data-sparkline-highlightspot-color-top='#9dbdb9' 
+													data-sparkline-line-val='[".join(', ', $edges_array)."]'
+													data-sparkline-line-width-top='3' 
+													data-sparkline-maxspot-color-top='#c2cccc'
+													data-sparkline-minspot-color-top='#97bfbf' 
+													data-sparkline-spot-color='#2b5c59' 
+													data-sparkline-spotradius-top='5' 
+													data-sparkline-type='compositeline' 
+													data-sparkline-width='80%'>
+											</div>
+										</div>
+										<div class='col-xs-12 col-sm-3 col-md-3 col-lg-6'>		
+											<h5 class='sparks-info text-center'> Diameter - Clustering Coeficient </h5>
+											<div class='sparkline'
+													data-sparkline-bar-val='[".join(', ', $diameter_array)."]'
+													data-sparkline-color-bottom='#2b5c59' 
+													data-sparkline-color-top='#3a6965' 
+													data-sparkline-height='78px'
+													data-sparkline-highlightline-color-top='#cce8e4'
+													data-sparkline-highlightspot-color-top='#9dbdb9' 
+													data-sparkline-line-val='[".join(', ', $cc_array)."]'
+													data-sparkline-line-width-top='3' 
+													data-sparkline-maxspot-color-top='#c2cccc'
+													data-sparkline-minspot-color-top='#97bfbf' 
+													data-sparkline-spot-color='#2b5c59' 
+													data-sparkline-spotradius-top='5' 
+													data-sparkline-type='compositeline' 
+													data-sparkline-width='80%'>
+											</div>
+										</div>	
