@@ -1,11 +1,10 @@
 <?php
 session_start();
 
-if(isset($_GET['f1']) && isset($_GET['f2'])){
 	$f1 = $_GET['f1'];
 	$f2 = $_GET['f2'];
-}	
-if(isset($f1) && isset($f2)){
+
+
  echo "<strong>".$f1. "</strong>: ".join(', ', $_SESSION[$f1]);
  echo "<p><strong>".$f2. "</strong>: ".join(', ', $_SESSION[$f2]);
  echo "<div class='sparkline' 
@@ -25,7 +24,7 @@ if(isset($f1) && isset($f2)){
 	data-sparkline-bar-val='[".join(', ', $_SESSION[$f2])."]'>
 </div> ";	
 
-include_once("../../lib/config.php"); 
-include_once("../../inc/scripts.php"); 
-}
+include("../../lib/config.php"); 
+include("../../inc/scripts.php"); 
+
 ?>

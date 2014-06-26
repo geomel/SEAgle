@@ -67,7 +67,7 @@ include("inc/header.php");
 									</li>
 								</ul>
 							</div>
-							<input class="form-control input-large" type="text" placeholder="Search between already analysed projects or type a git path (https://git-repo.com/user/example-project.git) to analyse a new one" id="search-project">
+							<input class="form-control input-large" type="text" placeholder="Search project or enter git repository (e.g. https://git-repo.com/user/example-project.git)" id="search-project">
 							<div class="input-group-btn">
 								<button type="submit" class="btn btn-default" id="search-button">
 									&nbsp;&nbsp;&nbsp;<i class="fa fa-fw fa-search fa-lg"></i>&nbsp;&nbsp;&nbsp;
