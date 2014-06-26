@@ -75,20 +75,16 @@ include("inc/header.php");
 							</div>
 						</div>
 						<div class='col-xs-12 col-sm-12 col-md-9 col-lg-9'>	
-								<span class="note"><span id="results">  </span>About <span id="execsqltime" style="padding:10px;"/> </span>
+								<span class="note"><span id="results">  </span>About <span id="execsqltime" style="margin-top:10px;"/> </span>
 							<div id="search-res"></div>		
 						</div>	
 				
-				<div class='col-xs-12 col-sm-12 col-md-3 col-lg-3'>	
-							
+				<div class='col-xs-12 col-sm-12 col-md-3 col-lg-3'>								
+							<a href='javascript:void(0)' class='btn btn-sm btn-default' id="showTimeline" style="margin-top:10px;"><i class='fa fa-arrow-down text-muted'></i> TIMELINE OVERVIEW</a>	
 								<!-- Timeline Content -->
-								<div class='smart-timeline'>
+								<div class='smart-timeline'>	
 									<ul class='smart-timeline-list'>
-										<div id="ajax-timeline"> </div>
-										<li class='text-center'>
-											<a href='javascript:void(0)' class='btn btn-sm btn-default' id="showTimeline"><i class='fa fa-arrow-down text-muted'></i> TIMELINE OVERVIEW</a>
-										</li>
-									</ul>
+										<div id="ajax-timeline"> </div>					
 								</div>
 								<!-- END Timeline Content -->
 							
