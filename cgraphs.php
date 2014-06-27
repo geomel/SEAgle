@@ -125,10 +125,19 @@ include("inc/nav.php");
 	include("inc/scripts.php"); 
 ?>	
 <script>
-		var nodes = [2,3,9,1,8,7,5];
-		var	edges = new Array();
-		var	diameter = [6,5,11,7,5,4,4];
-		var	cc = new Array();
+		var nodes = new Array();
+		var edges = new Array();
+		var diameter = new Array();
+		var cc = new Array();
+		var authors = new Array();
+		var commits = new Array();
+		var linesAdded = new Array();
+		var linesDeleted = new Array();
+		var cbo = new Array();
+		var lcom = new Array();
+		var wmc = new Array();
+		var nom = new Array();
+		var fieldArrays = new Array();
 		
 $(document).on('click', '#replot', function(e) {
 				e.preventDefault();
@@ -155,10 +164,11 @@ $(document).ready(function() {
 	});	
 	
 	function drawPlot(field1, field2){
-				//php2Js(field1);
-				//php2Js(field2);
-				var correlationValue = mathUtils.getPearsonsCorrelation(nodes, diameter);
-				var rsquaredValue = linearRegression(nodes,diameter);
+				fieldArrays = [];
+				php2Js(field1);
+				php2Js(field2);
+				var correlationValue = mathUtils.getPearsonsCorrelation(fieldArrays[0], fieldArrays[1]);
+				var rsquaredValue = linearRegression(fieldArrays[0], fieldArrays[1]);
 				alert(correlationValue);
 				alert(rsquaredValue.r2);
 				$("#plots").html("");
@@ -178,22 +188,74 @@ $(document).ready(function() {
 				<?php foreach($_SESSION['nodes'] as $key=>$value){
 					echo "nodes[".$key."]=".$value.";";
 				} ?>
+				fieldArrays.push(nodes);
 				break;
 			case "edges":
 				<?php foreach($_SESSION['edges'] as $key=>$value){
 					echo "edges[".$key."]=".$value.";";
 				} ?>
+				fieldArrays.push(edges);
 				break;
 			case "diameter":
 				<?php foreach($_SESSION['diameter'] as $key=>$value){
 					echo "diameter[".$key."]=".$value.";";
 				} ?>
+				fieldArrays.push(diameter);
 				break;	
 			case "cc":
 				<?php foreach($_SESSION['cc'] as $key=>$value){
 					echo "cc[".$key."]=".$value.";";
 				} ?>
-				break;				
+				fieldArrays.push(cc);
+				break;	
+			case "authors":
+				<?php foreach($_SESSION['authors'] as $key=>$value){
+					echo "authors[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(authors);
+				break;	
+			case "commits":
+				<?php foreach($_SESSION['commits'] as $key=>$value){
+					echo "commits[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(commits);
+				break;	
+			case "linesAdded":
+				<?php foreach($_SESSION['linesAdded'] as $key=>$value){
+					echo "linesAdded[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(linesAdded);
+				break;	
+			case "linesDeleted":
+				<?php foreach($_SESSION['linesDeleted'] as $key=>$value){
+					echo "linesDeleted[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(linesDeleted);
+				break;			
+			case "cbo":
+				<?php foreach($_SESSION['cbo'] as $key=>$value){
+					echo "cbo[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(cbo);
+				break;	
+			case "lcom":
+				<?php foreach($_SESSION['lcom'] as $key=>$value){
+					echo "lcom[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(lcom);
+				break;		
+			case "wmc":
+				<?php foreach($_SESSION['wmc'] as $key=>$value){
+					echo "wmc[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(wmc);
+				break;	
+			case "nom":
+				<?php foreach($_SESSION['nom'] as $key=>$value){
+					echo "nom[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(nom);
+				break;			
 	}
 }
 
