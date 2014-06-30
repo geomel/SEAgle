@@ -30,6 +30,14 @@ $page_nav["composite"]["active"] = true;
 include("inc/nav.php");
 
 ?>
+
+<?php
+
+
+$f = $_GET['plotoptions'];
+
+
+?>
 <!-- ==========================CONTENT STARTS HERE ========================== -->
 <!-- MAIN PANEL -->
 <div id="main" role="main">
@@ -64,46 +72,46 @@ include("inc/nav.php");
 <div id="select_error"> </div>	
 <div class="row">
 <div class='col-xs-6 col-sm-4 col-md-4 col-lg-4' >
-<form id="options">	
-<a href='#' class='btn btn-success btn-large' id='replot'><i class='fa fa-cloud-download'></i>Replot</a>
+<form id="options" method="GET" action="">	
+<input type="submit" value="Submit" class='btn btn-success btn-large'> 
 <h3>Graph Metrics</h3>
 	<label class="checkbox-inline">
-		  <input type="checkbox" id="inlineCheckbox1" value="nodes"> Nodes
+		  <input type="checkbox" id="inlineCheckbox1" value="nodes" name="plotoptions[]"> Nodes
 		</label>
 		<label class="checkbox-inline">
-		  <input type="checkbox" id="inlineCheckbox2" value="edges"> Edges
+		  <input type="checkbox" id="inlineCheckbox2" value="edges" name="plotoptions[]"> Edges
 		</label>
 		<label class="checkbox-inline">
-		  <input type="checkbox" id="inlineCheckbox3" value="diameter"> Diameter
+		  <input type="checkbox" id="inlineCheckbox3" value="diameter" name="plotoptions[]"> Diameter
 		</label>
 		<label class="checkbox-inline">
-		  <input type="checkbox" id="inlineCheckbox3" value="cc"> Clustering Coeficient
+		  <input type="checkbox" id="inlineCheckbox3" value="cc" name="plotoptions[]"> Clustering Coeficient
 		</label>
 <h3>Development Metrics</h3>
 	<label class="checkbox-inline">
-			  <input type="checkbox" id="inlineCheckbox1" value="authors"> Authors
+			  <input type="checkbox" id="inlineCheckbox1" value="authors" name="plotoptions[]"> Authors
 			</label>
 			<label class="checkbox-inline">
-			  <input type="checkbox" id="inlineCheckbox2" value="commits"> Commits
+			  <input type="checkbox" id="inlineCheckbox2" value="commits" name="plotoptions[]"> Commits
 			</label>
 			<label class="checkbox-inline">
-			  <input type="checkbox" id="inlineCheckbox3" value="linesAdded"> Lines Added
+			  <input type="checkbox" id="inlineCheckbox3" value="linesAdded" name="plotoptions[]"> Lines Added
 			</label>
 			<label class="checkbox-inline">
-			  <input type="checkbox" id="inlineCheckbox3" value="linesDeleted"> Lines Deleted
+			  <input type="checkbox" id="inlineCheckbox3" value="linesDeleted" name="plotoptions[]"> Lines Deleted
 			</label>
 <h3>Software Metrics</h3>
 	<label class="checkbox-inline">
-			  <input type="checkbox" id="inlineCheckbox1" value="cbo"> CBO
+			  <input type="checkbox" id="inlineCheckbox1" value="cbo" name="plotoptions[]"> CBO
 			</label>
 			<label class="checkbox-inline">
-			  <input type="checkbox" id="inlineCheckbox2" value="lcom"> LCOM
+			  <input type="checkbox" id="inlineCheckbox2" value="lcom" name="plotoptions[]"> LCOM
 			</label>
 			<label class="checkbox-inline">
-			  <input type="checkbox" id="inlineCheckbox3" value="wmc"> WMC
+			  <input type="checkbox" id="inlineCheckbox3" value="wmc" name="plotoptions[]"> WMC
 			</label>
 			<label class="checkbox-inline">
-			  <input type="checkbox" id="inlineCheckbox3" value="nom"> NOM
+			  <input type="checkbox" id="inlineCheckbox3" value="nom" name="plotoptions[]"> NOM
 			</label>
 			<p>
 </form>
@@ -113,7 +121,33 @@ include("inc/nav.php");
 							<div class='well well-sm well-light padding-50'>
 								<h4 class='txt-color-green'>Composite <span class='semi-bold'>Chart</span> <a href='javascript:void(0);' class='pull-right txt-color-green'><i class='fa fa-refresh'></i></a></h4>
 								<br>
-									<div id="plots"> </div>
+									<div id="rvalues"> </div>
+									<div id="plots">
+								<?php
+									if(isset($f)){
+										echo "<strong>".$f[0]. "</strong>: ".join(', ', $_SESSION[$f[0]]);
+										 echo "<p><strong>".$f[1]. "</strong>: ".join(', ', $_SESSION[$f[1]]);
+										 echo "<div class='sparkline' 
+											data-sparkline-type='compositeline' 
+											data-sparkline-spotradius-top='5' 
+											data-sparkline-color-top='#3a6965' 
+											data-sparkline-line-width-top='3' 
+											data-sparkline-color-bottom='#2b5c59' 
+											data-sparkline-spot-color='#2b5c59' 
+											data-sparkline-minspot-color-top='#97bfbf' 
+											data-sparkline-maxspot-color-top='#c2cccc' 
+											data-sparkline-highlightline-color-top='#cce8e4' 
+											data-sparkline-highlightspot-color-top='#9dbdb9' 
+											data-sparkline-width='96%' 
+											data-sparkline-height='78px' 
+											data-sparkline-line-val='[".join(', ', $_SESSION[$f[0]])."]'
+											data-sparkline-bar-val='[".join(', ', $_SESSION[$f[1]])."]'>
+										</div> ";	
+									}
+								?>
+
+
+									</div>
 							</div>
 						</div>
 </div>							
