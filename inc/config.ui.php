@@ -45,7 +45,7 @@ $page_nav = array(
 		)
 	),
 	   "composite" => array(
-                "title" => "Composite Graphs",
+                "title" => "Correlation Analysis",
                 "url" => APP_URL."/cgraphs.php",
 				"icon" => "fa-tasks"
 	),

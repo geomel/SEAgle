@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL & ~E_NOTICE);
 session_start();
 if(!isset($_SESSION['pname']))
 	header('Location: index.php');
@@ -33,9 +34,10 @@ include("inc/nav.php");
 
 <?php
 
-
-$f = $_GET['plotoptions'];
-
+if(isset($_GET)){
+	$f = $_GET['plotoptions'];
+	$rs = $_GET['rs'];
+}
 
 ?>
 <!-- ==========================CONTENT STARTS HERE ========================== -->
@@ -69,11 +71,11 @@ $f = $_GET['plotoptions'];
 				</ul>
 			</div>
 		</div>
-<div id="select_error"> </div>	
+<div id="select_error" class='col-xs-12 col-sm-8 col-md-3 col-lg-3'> </div>	
 <div class="row">
-<div class='col-xs-6 col-sm-4 col-md-4 col-lg-4' >
-<form id="options" method="GET" action="">	
-<input type="submit" value="Submit" class='btn btn-success btn-large'> 
+<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' >
+<form id="plotoptions" method="GET" action="">	
+<input type="submit" value="Plot" class='btn btn-success btn-large'> 
 <h3>Graph Metrics</h3>
 	<label class="checkbox-inline">
 		  <input type="checkbox" id="inlineCheckbox1" value="nodes" name="plotoptions[]"> Nodes
@@ -114,12 +116,13 @@ $f = $_GET['plotoptions'];
 			  <input type="checkbox" id="inlineCheckbox3" value="nom" name="plotoptions[]"> NOM
 			</label>
 			<p>
+			<input type="hidden" id="rsvalue" name="rs" value="" />
 </form>
 </div>							
 							
-						<div class='col-xs-6 col-sm-8 col-md-8 col-lg-8' >
+						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
 							<div class='well well-sm well-light padding-50'>
-								<h4 class='txt-color-green'>Composite <span class='semi-bold'>Chart</span> <a href='javascript:void(0);' class='pull-right txt-color-green'><i class='fa fa-refresh'></i></a></h4>
+								<h4 class='txt-color-green'>Composite <span class='semi-bold'>Chart</span> <a href='javascript:void(0);' class='pull-right txt-color-green'></a></h4>
 								<br>
 									<div id="rvalues"> </div>
 									<div id="plots">
@@ -142,7 +145,8 @@ $f = $_GET['plotoptions'];
 											data-sparkline-height='78px' 
 											data-sparkline-line-val='[".join(', ', $_SESSION[$f[0]])."]'
 											data-sparkline-bar-val='[".join(', ', $_SESSION[$f[1]])."]'>
-										</div> ";	
+										</div> ";
+										echo "Value of rsquwared is: ". $rs;										
 									}
 								?>
 
@@ -173,40 +177,39 @@ $f = $_GET['plotoptions'];
 		var nom = new Array();
 		var fieldArrays = new Array();
 		
-$(document).on('click', '#replot', function(e) {
-				e.preventDefault();
-				 var checkedBoxes = $("#options input:checked");
+$( "#plotoptions" ).on('submit', function(e) { 
+				var arr = [];
+				 var checkedBoxes = $("#plotoptions input:checked").each(function(){
+					arr.push($(this).val());
+				});
 				if(checkedBoxes.length>2){ // if nothing selected
 					$('#select_error').show();
 					$('#select_error').html("<div class='alert alert-error'>"+
 					"<a class='close' data-dismiss='alert'>x</a> <h4>More than two options Selected</h4>"+
 					"<p>Select two options and press replot</p></div>");
-					return;	
+					return false;	
+				}else if (checkedBoxes.length<2){	
+					$('#select_error').show();
+						$('#select_error').html("<div class='alert alert-error'>"+
+						"<a class='close' data-dismiss='alert'>x</a> <h4>Less than two options Selected</h4>"+
+						"<p>Select two options and press replot</p></div>");
+						return false;	
 				}else{
-					 var values = [];
-					$('#options input:checked').each(function() {
-						values.push(this.value);
-					});
-					drawPlot(values[0], values[1]);
-				}
+						var rs = calculateR(arr[0], arr[1]);
+						$("#rsvalue").val(rs);
+					}
 			});
 
-$(document).ready(function() {
-	$(document).ajaxStop(function(){
-		
-		});
-	});	
-	
-	function drawPlot(field1, field2){
+	function calculateR(f1, f2){
 				fieldArrays = [];
-				php2Js(field1);
-				php2Js(field2);
+				php2Js(f1);
+				php2Js(f2);
 				var correlationValue = mathUtils.getPearsonsCorrelation(fieldArrays[0], fieldArrays[1]);
 				var rsquaredValue = linearRegression(fieldArrays[0], fieldArrays[1]);
-				alert(correlationValue);
-				alert(rsquaredValue.r2);
-				$("#plots").html("");
-				$("#plots").load("_/php/_combine_graphs.php?f1="+field1+"&f2="+field2);
+				// alert(correlationValue);
+				return rsquaredValue.r2;
+			//	$("#plots").html("");
+			//	$("#plots").load("_/php/_combine_graphs.php?f1="+field1+"&f2="+field2);
 }
 
 
