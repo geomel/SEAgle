@@ -44,29 +44,8 @@ include("inc/header.php");
 	<!-- MAIN CONTENT -->
 	<div id="content" style="padding: 30px;">	
 		<div class="row">
-		<h1> Search <span class="semi-bold" id="filtertext">Everything</span></h1>
-				
 						<div class="input-group input-group-lg hidden-mobile">
-							<div class="input-group-btn">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-									Filter <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li>
-										<a href="="javascript:void(0)" id="f0" class="fa fa-check">&nbspEverything</a>
-									</li>
-									<li class="divider"></li>
-									<li >
-										<a href="#" id="f1">&nbspNodes</a>
-									</li>
-									<li>
-										<a href="#" id="f2">&nbspEdges</a>
-									</li>
-									<li>
-										<a href="#" id="f3">&nbspVersions</a>
-									</li>
-								</ul>
-							</div>
+			
 							<input class="form-control input-large" type="text" placeholder="Search project or enter git repository (e.g. https://git-repo.com/user/example-project.git)" id="search-project">
 							<div class="input-group-btn">
 								<button type="submit" class="btn btn-default" id="search-button">
