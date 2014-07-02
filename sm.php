@@ -143,22 +143,14 @@ include("inc/nav.php");
 
 <!-- PAGE RELATED PLUGIN(S) -->
 
-	<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
-<script language="javascript" type="text/javascript" src="js/plugin/jqplot/jquery.jqplot.min.js"></script>
-<script language="javascript" type="text/javascript" src="js/plugin/jqplot/plugins/jqplot.bubbleRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="js/plugin/jqplot/plugins/jqplot.trendline.js"></script>
-<script language="javascript" type="text/javascript" src="js/plugin/jqplot/plugins/jqplot.barRenderer.js"></script>
-<script type="text/javascript" src="js/plugin/jqplot/plugins/jqplot.highlighter.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="js/plugin/jqplot/jquery.jqplot.css" />	
-
 <!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
-<script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.cust.js"></script>
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.resize.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.fillbetween.min.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.orderBar.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.pie.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.tooltip.js"></script>
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.categories.js"></script>
 
 <!-- Datatable scripts -->
 
@@ -199,6 +191,7 @@ include("inc/nav.php");
 		var	wmc = new Array();
 		
 		
+		
 
  function php2Js(){
 	<?php
@@ -217,6 +210,9 @@ include("inc/nav.php");
 			foreach($_SESSION['wmc'] as $key=>$value){
 				echo "wmc[".$key."]=".$value.";";
 			}
+			$js_array = json_encode($_SESSION['versions_array']);
+			echo "versions_array = ". $js_array . ";\n";
+			
 	?>
  }
  function createJSTableDataForGraphs(networkData){
@@ -226,7 +222,7 @@ include("inc/nav.php");
 	for (i = 0; i < tableData.length; ++i)
 		tableData [i] = new Array(2);
 	for(i=0; i<tableData.length;i++){
-			tableData[j][0] = i+1;
+			tableData[j][0] = versions_array[i];
 			tableData[j][1] = networkData[i];
 			csvData += tableData[j][0] + "," + tableData[j][1] + "\n";
 			j++;
@@ -236,7 +232,7 @@ include("inc/nav.php");
  
  function addCharts(chartid, title, drawgraphid){
 
-		var content = " <article class='col-xs-12 col-sm-12 col-md-6 col-lg-6'> " +
+		var content = " <article class='col-xs-12 col-sm-12 col-md-12 col-lg-12'> " +
 					  "	<div class='jarviswidget' id='wid-id-"+chartid+"' data-widget-editbutton='false'> " +
 					  "	<header>" +
 					  "		<span class='widget-icon'> <i class='fa fa-bar-chart-o'></i> </span>" +
@@ -254,12 +250,19 @@ include("inc/nav.php");
 			$( "#charts_area" ).append(content);		  
 
 	}	
+	
+	
+	
+	
+
+	
  function drawLinePlot(flag, ydata){
-			// var d=tableData;
+			// var d=tableData
+			
 			var options = {
 				xaxis : {
-					mode : "Versions",
-					tickLength : 5
+					mode : "categories",
+					tickLength : 10
 				},
 				series : {
 					lines : {
@@ -275,7 +278,7 @@ include("inc/nav.php");
 						}
 					},
 					points: { show: true },
-					shadowSize : 0
+					shadowSize : 2
 				},
 				selection : {
 					mode : "x"
@@ -289,7 +292,7 @@ include("inc/nav.php");
 				},
 				tooltip : true,
 				tooltipOpts : {
-					content : "Version <b>%x</b> has <span>%y</span> "+ydata,
+					content : "<span>%y</span> "+ydata,
 					
 					defaultTheme : false
 				},
@@ -321,7 +324,6 @@ include("inc/nav.php");
  }
 $(document).ready(function() {
 
-		// DO NOT REMOVE : GLOBAL FUNCTIONS!
 		pageSetUp();
 		php2Js();
 		

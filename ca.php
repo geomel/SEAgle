@@ -143,22 +143,15 @@ include("inc/nav.php");
 
 <!-- PAGE RELATED PLUGIN(S) -->
 
-	<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
-<script language="javascript" type="text/javascript" src="js/plugin/jqplot/jquery.jqplot.min.js"></script>
-<script language="javascript" type="text/javascript" src="js/plugin/jqplot/plugins/jqplot.bubbleRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="js/plugin/jqplot/plugins/jqplot.trendline.js"></script>
-<script language="javascript" type="text/javascript" src="js/plugin/jqplot/plugins/jqplot.barRenderer.js"></script>
-<script type="text/javascript" src="js/plugin/jqplot/plugins/jqplot.highlighter.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="js/plugin/jqplot/jquery.jqplot.css" />	
 
 <!-- Flot Chart Plugin: Flot Engine, Flot Resizer, Flot Tooltip -->
-<script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.cust.js"></script>
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.resize.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.fillbetween.min.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.orderBar.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.pie.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.tooltip.js"></script>
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.categories.js"></script>
 
 <!-- Datatable scripts -->
 
@@ -232,6 +225,8 @@ include("inc/nav.php");
 			foreach($_SESSION['testFilesModified'] as $key=>$value){
 				echo "testFilesModified[".$key."]=".$value.";";
 			}
+			$js_array = json_encode($_SESSION['versions_array']);
+			echo "versions_array = ". $js_array . ";\n";
 	?>
  }
  function createJSTableDataForGraphs(networkData){
@@ -241,7 +236,7 @@ include("inc/nav.php");
 	for (i = 0; i < tableData.length; ++i)
 		tableData [i] = new Array(2);
 	for(i=0; i<tableData.length;i++){
-			tableData[j][0] = i+1;
+			tableData[j][0] = versions_array[i];
 			tableData[j][1] = networkData[i];
 			csvData += tableData[j][0] + "," + tableData[j][1] + "\n";
 			j++;
@@ -251,7 +246,7 @@ include("inc/nav.php");
  
  function addCharts(chartid, title, drawgraphid){
 
-		var content = " <article class='col-xs-12 col-sm-12 col-md-6 col-lg-6'> " +
+		var content = " <article class='col-xs-12 col-sm-12 col-md-12 col-lg-12'> " +
 					  "	<div class='jarviswidget' id='wid-id-"+chartid+"' data-widget-editbutton='false'> " +
 					  "	<header>" +
 					  "		<span class='widget-icon'> <i class='fa fa-bar-chart-o'></i> </span>" +
@@ -269,28 +264,29 @@ include("inc/nav.php");
 			$( "#charts_area" ).append(content);		  
 
 	}	
- function drawLinePlot(flag){
-			// var d=tableData;
+ function drawLinePlot(flag, ydata){
+			// var d=tableData
+			
 			var options = {
 				xaxis : {
-					mode : "Versions",
-					tickLength : 5
+					mode : "categories",
+					tickLength : 10
 				},
 				series : {
 					lines : {
 						show : true,
-						lineWidth : 1,
-						fill : false,
+						lineWidth : 2,
+						fill : true,
 						fillColor : {
 							colors : [{
-								opacity : 0.1
+								opacity : 0.2
 							}, {
 								opacity : 0.15
 							}]
 						}
 					},
-					//points: { show: true },
-					shadowSize : 0
+					points: { show: true },
+					shadowSize : 2
 				},
 				selection : {
 					mode : "x"
@@ -304,7 +300,7 @@ include("inc/nav.php");
 				},
 				tooltip : true,
 				tooltipOpts : {
-					content : "Version <b>%x</b> has <span>%y</span> nodes",
+					content : "<span>%y</span> "+ydata,
 					
 					defaultTheme : false
 				},
@@ -353,31 +349,31 @@ $(document).ready(function() {
 		
 		createJSTableDataForGraphs(authors);
 		addCharts("001","Number Of Authors / Version", "authorschart");
-		drawLinePlot("1");
+		drawLinePlot("1", "authors");
 		createJSTableDataForGraphs(commits);
 		addCharts("002","Number Of Commits / Version", "commitschart");
-		drawLinePlot("2");
+		drawLinePlot("2", "commits");
 		createJSTableDataForGraphs(filesAdded);
 		addCharts("003","Files Added / Version", "filesAddedchart");
-		drawLinePlot("3");
+		drawLinePlot("3", "files added");
 		createJSTableDataForGraphs(filesDeleted);
 		addCharts("004","Files Deleted / Version", "filesDeletedchart");
-		drawLinePlot("4");
+		drawLinePlot("4", "files deleted");
 		createJSTableDataForGraphs(filesModified);
 		addCharts("005", "Num Of Files Modified / Version", "filesModifiedchart");
-		drawLinePlot("5");
+		drawLinePlot("5", "files modified");
 		createJSTableDataForGraphs(linesAdded);
 		addCharts("006","Lines Added / Version", "linesAddedchart");
-		drawLinePlot("6");
+		drawLinePlot("6", "lines added");
 		createJSTableDataForGraphs(linesDeleted);
 		addCharts("007","Lines Deleted / Version", "linesDeletedchart");
-		drawLinePlot("7");
+		drawLinePlot("7", "lines deleted");
 		createJSTableDataForGraphs(testFilesAdded);
 		addCharts("008","Test Files Added / Version", "testFilesAddedchart");
-		drawLinePlot("8");
+		drawLinePlot("8", "test files added");
 		createJSTableDataForGraphs(testFilesModified);
 		addCharts("009","Test Files Modified / Version", "testFilesModifiedchart");
-		drawLinePlot("9");
+		drawLinePlot("9", "test files modified");
 		
 		
 		/* sales chart */
