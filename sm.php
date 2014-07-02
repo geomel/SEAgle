@@ -338,7 +338,7 @@ $(document).ready(function() {
 		addCharts("004","Number Of Fields / Version", "nofchart");
 		drawLinePlot("4", "fields");
 		createJSTableDataForGraphs(wmc);
-		addCharts("005", "Weighted Method Count / Version", "wmcchart");
+		addCharts("005", "Weighted Method Complexity / Version", "wmcchart");
 		drawLinePlot("5", "wmc");
 		
 		
