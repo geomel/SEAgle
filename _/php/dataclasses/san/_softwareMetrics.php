@@ -16,6 +16,7 @@ $rs->data_seek(0);
 echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 			<thead>
 				<tr>
+					<th>Version</th>
 					<th>Number Of Methods</th>
 					<th>Number Of Fields</th>
 					<th>Coupling Between Objects</th>
@@ -26,6 +27,7 @@ echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 	while($row = $rs->fetch_assoc())	
 		  {
 		  echo "<tr>";
+		  echo "<td>" . $row['name'] . "</td>";
 		  echo "<td>" . $row['nom'] . "</td>";
 		  echo "<td>" . $row['nof'] . "</td>";
 		  echo "<td>" . $row['cbo'] . "</td>";

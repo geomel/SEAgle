@@ -16,6 +16,7 @@ $rs->data_seek(0);
 echo "<table id='commitersMetricsTable' class='table table-striped table-hover' >
 			<thead>
 				<tr>
+					<th>Version</th>
 					<th>Authors</th>
 					<th>Commits</th>
 					<th>Lines Added</th>
@@ -26,6 +27,7 @@ echo "<table id='commitersMetricsTable' class='table table-striped table-hover' 
 	while($row = $rs->fetch_assoc())	
 		  {
 		  echo "<tr>";
+		  echo "<td>" . $row['name'] . "</td>";
 		  echo "<td>" . $row['authors'] . "</td>";
 		  echo "<td>" . $row['commits'] . "</td>";
 		  echo "<td>" . $row['linesAdded'] . "</td>";
