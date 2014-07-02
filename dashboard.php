@@ -64,7 +64,7 @@ include("inc/nav.php");
 				<article class="col-sm-12">
 					<!-- new widget -->
 			<div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
-			<h2 style="color:green; margin-top:20px"><span class="widget-icon"> <i class="fa fa-sitemap"></i> </span>Software As A Network:</h2>	
+			<h2 style="color:green; margin-top:20px"><span class="widget-icon"> <i class="fa fa-sitemap"></i> </span>Graph Based Metrics:</h2>	
 				<section id="widget-grid" class="">
 					<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
 						<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2999" data-widget-editbutton="false">
@@ -147,7 +147,7 @@ include("inc/nav.php");
 							
 								
 							
-							<h2 style="color:green; margin-top:30px"><span class="widget-icon"> <i class="fa fa-exchange"></i> </span>Commiters Activity:</h2>
+							<h2 style="color:green; margin-top:30px"><span class="widget-icon"> <i class="fa fa-exchange"></i> </span>Repository Metrics:</h2>
 								<section id="widget-grid" class="">
 								<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
 									<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3999" data-widget-editbutton="false">
@@ -225,7 +225,7 @@ include("inc/nav.php");
 							</div>
 						</div>	
 				</article>
-					<h2 style="color:green;"><span class="widget-icon"> <i class="fa fa-code"></i> </span>Software Metrics:</h2>	
+					<h2 style="color:green;"><span class="widget-icon"> <i class="fa fa-code"></i> </span>Source Code Metrics:</h2>	
 							<section id="widget-grid" class="">
 								<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
 									<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3999" data-widget-editbutton="false">

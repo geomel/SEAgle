@@ -13,7 +13,7 @@ require_once("inc/config.ui.php");
 YOU CAN SET CONFIGURATION VARIABLES HERE BEFORE IT GOES TO NAV, RIBBON, ETC.
 E.G. $page_title = "Custom Title" */
 
-$page_title = "Commiters Activity";
+$page_title = "Repository Metrics";
 
 /* ---------------- END PHP Custom Scripts ------------- */
 
@@ -36,7 +36,7 @@ include("inc/nav.php");
 	<?php
 		//configure ribbon (breadcrumbs) array("name"=>"url"), leave url empty if no url
 		//$breadcrumbs["New Crumb"] => "http://url.com"
-		$breadcrumbs["Evolution Analysis"] = "";
+		$breadcrumbs["Metrics"] = "";
 		include("inc/ribbon.php");
 	?>
 
