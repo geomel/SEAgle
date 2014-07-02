@@ -27,19 +27,19 @@ $page_nav = array(
 		"icon" => "fa-home"
 	),
 	"graphs" => array(
-		"title" => "Evolution Analysis",
+		"title" => "Metrics",
 		"icon" => "fa-bar-chart-o",
 		"sub" => array(
 			"san" => array(
-				"title" => "Software As A Network",
+				"title" => "Graph Based Metrics",
 				"url" => APP_URL."/san.php"
 			),
 			"ca" => array(
-				"title" => "Commiters Activity",
+				"title" => "Repository Metrics",
 				"url" => APP_URL."/ca.php"
 			),
 			"sm" => array(
-				"title" => "Software Metrics",
+				"title" => "Source Code Metrics",
 				"url" => APP_URL."/sm.php"
 			)
 		)

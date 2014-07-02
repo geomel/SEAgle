@@ -290,13 +290,13 @@ $( "#plotoptions" ).on('submit', function(e) {
 					$('#select_error').show();
 					$('#select_error').html("<div class='alert alert-error'>"+
 					"<a class='close' data-dismiss='alert'>x</a> <h4>More than two options Selected</h4>"+
-					"<p>Select two options and press replot</p></div>");
+					"<p>Select two options and press Plot</p></div>");
 					return false;	
 				}else if (checkedBoxes.length<2){	
 					$('#select_error').show();
 						$('#select_error').html("<div class='alert alert-error'>"+
 						"<a class='close' data-dismiss='alert'>x</a> <h4>Less than two options Selected</h4>"+
-						"<p>Select two options and press replot</p></div>");
+						"<p>Select two options and press Plot</p></div>");
 						return false;	
 				}else{
 						var rs = calculateR(arr[0], arr[1]);
