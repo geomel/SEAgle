@@ -22,10 +22,7 @@ session_start();
 		while($row = $rs->fetch_assoc()){
 			$_SESSION["pid"] = $row['pid'];
 			$_SESSION["pname"] = $row['name'];
-			$_SESSION["pimage"] = $row['pimage'];
 			$_SESSION["githubpath"] = $row['githubpath'];
-			$_SESSION["description"] = $row['description'];
-			$_SESSION["author"] = $row['author'];
 			$_SESSION["versions"] = $row['versions'];
 		}
 		
