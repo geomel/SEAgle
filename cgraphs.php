@@ -14,7 +14,7 @@ require_once("inc/config.ui.php");
 YOU CAN SET CONFIGURATION VARIABLES HERE BEFORE IT GOES TO NAV, RIBBON, ETC.
 E.G. $page_title = "Custom Title" */
 
-$page_title = "Composite Diagrams";
+$page_title = "Correlation Analysis";
 
 /* ---------------- END PHP Custom Scripts ------------- */
 

@@ -29,8 +29,18 @@ include("inc/header.php");
 
 
 ?>
+        <div class="navbar-collapse navbar-right collapse">
+			 <a href='javascript:void(0)' class='btn btn-sm btn-default' id="showTimeline" style="margin-top:10px; margin-right:20px"><i class='fa fa-arrow-down text-muted'></i> TIMELINE OVERVIEW</a>	
+						<!-- Timeline Content -->
+						<div class='smart-timeline'>	
+							<ul class='smart-timeline-list'>
+								<div id="ajax-timeline"> </div>					
+						</div>
+					<!-- END Timeline Content -->		
+        </div><!--/.navbar-collapse -->
 
-<img src="img/seanets_logo_big.png" alt="SEANets" class="img-responsive center-block" width="600" height="200" >	
+
+<img src="img/seanets_logo_big.png" alt="SEANets" class="img-responsive center-block" width="400" height="200" >	
 <!-- ==========================CONTENT STARTS HERE ========================== -->
 <!-- MAIN PANEL -->
 <div id="main" role="main">
@@ -42,36 +52,26 @@ include("inc/header.php");
 	?>
 
 	<!-- MAIN CONTENT -->
-	<div id="content" style="padding: 30px;">	
+	<div id="content" style="padding: 30px;" >	
 		<div class="row">
-						<div class="input-group input-group-lg hidden-mobile">
-			
-							<input class="form-control input-large" type="text" placeholder="Search project or enter git repository (e.g. https://git-repo.com/user/example-project.git)" id="search-project">
-							<div class="input-group-btn">
-								<button type="submit" class="btn btn-default" id="search-button">
+				<div class="col-lg-6 col-lg-offset-3">
+					<div class="input-group input-group-lg">
+						<input type="text" class="form-control input-large"  placeholder="Search project or enter git repository (e.g. https://git-repo.com/user/example-project.git)" id="search-project" /> 
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-default" id="search-button">
 									&nbsp;&nbsp;&nbsp;<i class="fa fa-fw fa-search fa-lg"></i>&nbsp;&nbsp;&nbsp;
-								</button>
-							</div>
-						</div>
-						<div class='col-xs-12 col-sm-12 col-md-9 col-lg-9'>	
+							</button>
+						</span>
+					</div><!-- /input-group -->
+				</div><!-- /.col-lg-4 -->
+						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="margin-left:30px;">	
 								<span class="note"><span id="results">  </span>About <span id="execsqltime" style="margin-top:10px;"/> </span>
 							<div id="search-res"></div>		
 						</div>	
-				
-				<div class='col-xs-12 col-sm-12 col-md-3 col-lg-3'>								
-							<a href='javascript:void(0)' class='btn btn-sm btn-default' id="showTimeline" style="margin-top:10px;"><i class='fa fa-arrow-down text-muted'></i> TIMELINE OVERVIEW</a>	
-								<!-- Timeline Content -->
-								<div class='smart-timeline'>	
-									<ul class='smart-timeline-list'>
-										<div id="ajax-timeline"> </div>					
-								</div>
-								<!-- END Timeline Content -->
-							
-				</div>
 		
 		</div>
 		
-			</div>
+	</div>
 		
 		</div>
 		
@@ -98,6 +98,7 @@ include("inc/header.php");
            // setTimeout(refreshTimeLine, 5000);
         });
     }
+
 
 	$(document).ready(function() {
 			$('#ajax-timeline').hide();
