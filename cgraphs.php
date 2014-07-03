@@ -37,6 +37,11 @@ include("inc/nav.php");
 if(isset($_GET)){
 	$f = $_GET['plotoptions'];
 	$rs = $_GET['rs'];
+	$field1 = $_GET['field1'];
+	$field2 = $_GET['field2'];
+	$cmd = "Rscript -e 'x <- \"".join(', ', $_SESSION[$f[0]])."\"; y <- \"".join(', ', $_SESSION[$f[1]])."\"; source(\"pearson_cor.r\")'";
+	$pvalue = shell_exec($cmd);
+	$pvalue = substr($pvalue, 3, strlen($pvalue));
 }
 
 ?>
@@ -63,7 +68,7 @@ if(isset($_GET)){
 						<h5> Name <span class="txt-color-blue"><i class="fa fa-barcode" data-rel="bootstrap-tooltip" title="Versions"></i>&nbsp;&nbsp<?php echo $_SESSION["pname"]; ?></span></h5>
 					</li>
 					<li class="sparks-info">
-						<h5> Versions <span class="txt-color-blue"><i class="fa fa-barcode" data-rel="bootstrap-tooltip" title="Versions"></i>&nbsp;&nbsp<?php echo $_SESSION["versions"]; ?></span></h5>
+						<h5> Versions <span class="txt-color-blue"><i class="fa fa-qrcode" data-rel="bootstrap-tooltip" title="Versions"></i>&nbsp;&nbsp<?php echo $_SESSION["versions"]; ?></span></h5>
 					</li>
 					<li class="sparks-info">
 						<h5> Git path <span class="txt-color-purple"><i class="fa fa-code" data-rel="bootstrap-tooltip" title="Git Path"></i>&nbsp&nbsp<?php echo "<a href='".$_SESSION["githubpath"]."'>".$_SESSION["githubpath"]."</a>";?></span></h5>
@@ -135,18 +140,27 @@ if(isset($_GET)){
 			</label>
 			<p>
 			<input type="hidden" id="rsvalue" name="rs" value="" />
+			<input type="hidden" id="field1" name="field1" value="" />
+			<input type="hidden" id="field2" name="field2" value="" />
 </form>
 </div>							
 							
 						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
 							<div class='well well-sm well-light padding-50'>
-								<h4 class='txt-color-green'>Composite <span class='semi-bold'>Chart</span> <a href='javascript:void(0);' class='pull-right txt-color-green'></a></h4>
+								<h4 class='txt-color-green'><?php if(isset($f)){ echo $field1. " VS "; } ?> <span> <?php echo $field2; ?></span> <a href='javascript:void(0);' class='pull-right txt-color-green'></a></h4>
 								<br>
 									<div id="rvalues"> </div>
 									<div id="plots">
 								<?php
 									if(isset($f)){
-										echo "r = ". $rs;
+										echo "correlation coefficient = ". $rs."<br>";
+										echo "p-value = ". $pvalue;
+										if($pvalue<=0.01)
+											echo " <span class='text-muted'>(Correlation is significant at the 0.01 level)</span>";
+										else if($pvalue<=0.05)
+											echo " <span class='text-muted'>(Correlation is significant at the 0.05 level)</span>";
+										else
+											echo " <span class='text-muted'>(Correlation is not statistically significant)</span>";
 										// echo "<strong>".$f[0]. "</strong>: ".join(', ', $_SESSION[$f[0]]);
 										// echo "<p><strong>".$f[1]. "</strong>: ".join(', ', $_SESSION[$f[1]]);
 										 echo "<p><div class='sparkline' 
@@ -324,7 +338,10 @@ $( "#plotoptions" ).on('submit', function(e) {
 						return false;	
 				}else{
 						var rs = calculateR(arr[0], arr[1]);
+						$("#field1").val(arr[1]);
+						$("#field2").val(arr[0]);
 						$("#rsvalue").val(rs);
+						
 					}
 			});
 

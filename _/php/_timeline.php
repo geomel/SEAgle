@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include("_connections.php");
-$sql = "SELECT * FROM timeline, project WHERE project.pid=timeline.pid ORDER BY date DESC";
+$sql = "SELECT * FROM timeline, project WHERE project.pid=timeline.pid ORDER BY date DESC LIMIT 0 , 10";
 
 $rs=$conn->query($sql);
 if($rs === false) {

@@ -38,9 +38,11 @@ include("inc/header.php");
 						</div>
 					<!-- END Timeline Content -->		
         </div><!--/.navbar-collapse -->
-
-
-<img src="img/seanets_logo_big.png" alt="SEANets" class="img-responsive center-block" width="400" height="200" >	
+<div class="row">
+	<div class="col-lg-6 col-lg-offset-3">
+		<img src="img/seanets_logo_big.png" alt="SEAgle" class="img-responsive center-block" width="450" height="200" style="padding-top:100px; margin-bottom:0px;">	
+	</div>
+</div>
 <!-- ==========================CONTENT STARTS HERE ========================== -->
 <!-- MAIN PANEL -->
 <div id="main" role="main">
@@ -73,15 +75,9 @@ include("inc/header.php");
 		
 	</div>
 		
-		</div>
-		
-		<!-- end row -->
-
-	</div>
-	<!-- END MAIN CONTENT -->
-
 </div>
-<!-- END MAIN PANEL -->
+		
+
 <!-- ==========================CONTENT ENDS HERE ========================== -->
 
 <?php 
@@ -185,7 +181,6 @@ include("inc/header.php");
 } 
 
 	function runJava(){
-		alert("run");
 		gpath = $('#gitpath').val();
 		alert("_/php/_trigger_java.php?gitpath=" + gpath);
 		$.ajax({ url: '_/php/_trigger_java.php?gitpath=' + gpath
@@ -207,7 +202,7 @@ include("inc/header.php");
 		}
 	*/
 	$.ajax({
-        url: "http://195.251.210.146/seanets/"+gpath+".txt",
+        url: "http://localhost/seagle/logs/"+gpath+".txt",
         dataType: 'text',
         success: function(text) {
          $("#server_data").html(text);

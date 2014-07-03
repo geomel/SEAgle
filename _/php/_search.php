@@ -52,14 +52,14 @@ echo  "<h1 class='font-md'> Search Results for <span class=''semi-bold'>Projects
 if($rows_returned!=0){		
 while($row = $rs->fetch_assoc()){
 		// getJSONData($row['author']) ;	
-	echo "<h3><i class='fa fa-folder-open'></i>&nbsp;&nbsp;<a href='_/php/_startProjectSession.php?pid=".$row['pid']."' onclick='storeResults(\"".$row['name']."\",\"".$row['pid']."\");'>". $row['name'] ."</a>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>";
+	echo "<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<a href='_/php/_startProjectSession.php?pid=".$row['pid']."' onclick='storeResults(\"".$row['name']."\",\"".$row['pid']."\");'>". $row['name'] ."</a>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>";
 			echo "<div class='url text-success small'>
 					<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='".$row['githubpath']."'>". $row['githubpath'] ."&nbsp;&nbsp;</a>
 					</div>		
 					<p style='margin-bottom: 20px'>
 		<div>
 			<p class='note'>
-									<i class='fa fa-barcode'></i> <b>Versions:&nbsp </b>". $row['versions'] ."&nbsp;&nbsp;								
+									<i class='fa fa-qrcode'></i> <b>Versions:&nbsp </b>". $row['versions'] ."&nbsp;&nbsp;								
 								</p></p>
 		</div>";
 	/*	
