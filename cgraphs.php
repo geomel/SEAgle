@@ -76,7 +76,7 @@ if(isset($_GET)){
 <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' >
 <form id="plotoptions" method="GET" action="">	
 <input type="submit" value="Plot" class='btn btn-success btn-large'> 
-<h3>Graph Metrics</h3>
+<h3>Graph Based Metrics</h3>
 	<label class="checkbox-inline">
 		  <input type="checkbox" id="inlineCheckbox1" value="nodes" name="plotoptions[]"> Nodes
 		</label>
@@ -89,7 +89,7 @@ if(isset($_GET)){
 		<label class="checkbox-inline">
 		  <input type="checkbox" id="inlineCheckbox3" value="cc" name="plotoptions[]"> Clustering Coeficient
 		</label>
-<h3>Development Metrics</h3>
+<h3>Repository Metrics</h3>
 	<label class="checkbox-inline">
 			  <input type="checkbox" id="inlineCheckbox1" value="authors" name="plotoptions[]"> Authors
 			</label>
@@ -102,7 +102,22 @@ if(isset($_GET)){
 			<label class="checkbox-inline">
 			  <input type="checkbox" id="inlineCheckbox3" value="linesDeleted" name="plotoptions[]"> Lines Deleted
 			</label>
-<h3>Software Metrics</h3>
+			<label class="checkbox-inline">
+			  <input type="checkbox" id="inlineCheckbox3" value="filesAdded" name="plotoptions[]"> Files Added
+			</label>
+			<label class="checkbox-inline">
+			  <input type="checkbox" id="inlineCheckbox3" value="filesDeleted" name="plotoptions[]"> Files Deleted
+			</label>
+			<label class="checkbox-inline">
+			  <input type="checkbox" id="inlineCheckbox3" value="filesModified" name="plotoptions[]"> Files Modified
+			</label>
+			<label class="checkbox-inline">
+			  <input type="checkbox" id="inlineCheckbox3" value="testFilesAdded" name="plotoptions[]"> Test Files Added
+			</label>
+			<label class="checkbox-inline">
+			  <input type="checkbox" id="inlineCheckbox3" value="testFilesModified" name="plotoptions[]"> Test Files Modified
+			</label>
+<h3>Source Code Metrics</h3>
 	<label class="checkbox-inline">
 			  <input type="checkbox" id="inlineCheckbox1" value="cbo" name="plotoptions[]"> CBO
 			</label>
@@ -114,6 +129,9 @@ if(isset($_GET)){
 			</label>
 			<label class="checkbox-inline">
 			  <input type="checkbox" id="inlineCheckbox3" value="nom" name="plotoptions[]"> NOM
+			</label>
+			<label class="checkbox-inline">
+			  <input type="checkbox" id="inlineCheckbox3" value="nof" name="plotoptions[]"> NOF
 			</label>
 			<p>
 			<input type="hidden" id="rsvalue" name="rs" value="" />
@@ -128,7 +146,7 @@ if(isset($_GET)){
 									<div id="plots">
 								<?php
 									if(isset($f)){
-										echo "Rsquared value is: ". $rs;
+										echo "r = ". $rs;
 										// echo "<strong>".$f[0]. "</strong>: ".join(', ', $_SESSION[$f[0]]);
 										// echo "<p><strong>".$f[1]. "</strong>: ".join(', ', $_SESSION[$f[1]]);
 										 echo "<p><div class='sparkline' 
@@ -207,10 +225,16 @@ if(isset($_GET)){
 		var commits = new Array();
 		var linesAdded = new Array();
 		var linesDeleted = new Array();
+		var filesAdded = new Array();
+		var filesDeleted = new Array();
+		var filesModified = new Array();
+		var testFilesAdded = new Array();
+		var testFilesModified = new Array();
 		var cbo = new Array();
 		var lcom = new Array();
 		var wmc = new Array();
 		var nom = new Array();
+		var nof = new Array();
 		var fieldArrays = new Array();
 
 $(document).ready(function() {
@@ -309,9 +333,9 @@ $( "#plotoptions" ).on('submit', function(e) {
 				php2Js(f1);
 				php2Js(f2);
 				var correlationValue = mathUtils.getPearsonsCorrelation(fieldArrays[0], fieldArrays[1]);
-				var rsquaredValue = linearRegression(fieldArrays[0], fieldArrays[1]);
+				// var rsquaredValue = linearRegression(fieldArrays[0], fieldArrays[1]);
 				// alert(correlationValue);
-				return rsquaredValue.r2;
+				return correlationValue.toFixed(4);;
 			//	$("#plots").html("");
 			//	$("#plots").load("_/php/_combine_graphs.php?f1="+field1+"&f2="+field2);
 }
@@ -372,7 +396,37 @@ $( "#plotoptions" ).on('submit', function(e) {
 					echo "linesDeleted[".$key."]=".$value.";";
 				} ?>
 				fieldArrays.push(linesDeleted);
-				break;			
+				break;
+			case "filesAdded":
+				<?php foreach($_SESSION['filesAdded'] as $key=>$value){
+					echo "filesAdded[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(filesAdded);
+				break;
+			case "filesDeleted":
+				<?php foreach($_SESSION['filesDeleted'] as $key=>$value){
+					echo "filesDeleted[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(filesDeleted);
+				break;
+			case "filesModified":
+				<?php foreach($_SESSION['filesModified'] as $key=>$value){
+					echo "filesModified[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(filesModified);
+				break;
+			case "testFilesAdded":
+				<?php foreach($_SESSION['testFilesAdded'] as $key=>$value){
+					echo "testFilesAdded[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(testFilesAdded);
+				break;
+			case "testFilesModified":
+				<?php foreach($_SESSION['testFilesModified'] as $key=>$value){
+					echo "testFilesModified[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(testFilesModified);
+				break;		
 			case "cbo":
 				<?php foreach($_SESSION['cbo'] as $key=>$value){
 					echo "cbo[".$key."]=".$value.";";
@@ -396,7 +450,13 @@ $( "#plotoptions" ).on('submit', function(e) {
 					echo "nom[".$key."]=".$value.";";
 				} ?>
 				fieldArrays.push(nom);
-				break;			
+				break;
+			case "nof":
+				<?php foreach($_SESSION['nof'] as $key=>$value){
+					echo "nof[".$key."]=".$value.";";
+				} ?>
+				fieldArrays.push(nof);
+				break;	
 	}
 }
 
