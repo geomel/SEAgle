@@ -1,31 +1,17 @@
 <?php
-session_start();
-include("_connections.php");
-/*
 
-*/		
+include("_connections.php");
+
 if(isset($_GET['search_value'])){
 	$search_value = $_REQUEST['search_value'];
-	$filter_flag = $_REQUEST['filter_flag'];
 }
-/*
-filter flag values:
-0 -> Search All
-1 -> Nodes
-2 -> Edges
-3 -> Versions
-*/
+
 $git_flag = false;
 
 if(isset($search_value)){
 	if (strpos($search_value,'.git')) 
 		$git_flag = true;
-		switch ($filter_flag){
-			case 0:
-				$sql = "select * from project where(name like '%$search_value%' OR versions like '%$search_value%' OR githubpath like '%$search_value%') ";
-				//$sql2 = "SELECT * FROM project,version INNER JOIN graph WHERE project.pid=version.pid AND version.vid = graph.vid";		
-				break;
-		}		
+				$sql = "select * from project where(name like '%$search_value%' OR versions like '%$search_value%' OR githubpath like '%$search_value%') ";			
 }
 else{
 	$sql = "SELECT * FROM project";	

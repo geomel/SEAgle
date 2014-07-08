@@ -112,8 +112,6 @@ include("inc/header.php");
            // setTimeout(refreshTimeLine, 5000);
         });
     }
-
-
 	$(document).ready(function() {
 			$('#ajax-timeline').hide();
 			
@@ -130,7 +128,7 @@ include("inc/header.php");
 		refreshTimeLine();
 			$('#search-project').keypress(function(e) {
 				if(e.which == 13) {
-					$("#search-res").load("_/php/_search.php?search_value=" + $("#search-project").val()+"&filter_flag=0",function (text, statusText){
+					$("#search-res").load("_/php/_search.php?search_value=" + $("#search-project").val(),function (text, statusText){
 					$("#execsqltime").load("_/php/_search.php #sqltime");
 						});	
 			}	
