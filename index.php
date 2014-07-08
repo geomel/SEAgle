@@ -1,32 +1,11 @@
 <?php
-
 //initilize the page
 require_once("inc/init.php");
-
-//require UI configuration (nav, ribbon, etc.)
-// require_once("inc/config.ui.php");
-
-/*---------------- PHP Custom Scripts ---------
-
-YOU CAN SET CONFIGURATION VARIABLES HERE BEFORE IT GOES TO NAV, RIBBON, ETC.
-E.G. $page_title = "Custom Title" */
-
 $page_title = "Welcome To SEAgle";
-
-/* ---------------- END PHP Custom Scripts ------------- */
-
-//include header
-//you can add your custom css in $page_css array.
-//Note: all css files are inside css/ folder
 $page_css[] = "your_style.css";
 $no_main_header = true;
 $page_body_prop = array("id"=>"login", "class"=>"animated fadeInDown");
 include("inc/header.php");
- 
-//include left panel (navigation)
-//follow the tree in inc/config.ui.php
-
-
 
 ?>
         <div class="navbar-collapse navbar-right collapse">
@@ -37,7 +16,7 @@ include("inc/header.php");
 								<div id="ajax-timeline"> </div>					
 						</div>
 					<!-- END Timeline Content -->		
-        </div><!--/.navbar-collapse -->
+        </div>
 <div class="row">
 	<div class="col-lg-6 col-lg-offset-3">
 		<a href="index.php"><img src="img/seanets_logo_big.png" alt="SEAgle" class="img-responsive center-block" width="450" height="200" style="padding-top:100px; margin-bottom:0px;"></a>	
@@ -46,13 +25,6 @@ include("inc/header.php");
 <!-- ==========================CONTENT STARTS HERE ========================== -->
 <!-- MAIN PANEL -->
 <div id="main" role="main">
-	<?php
-		//configure ribbon (breadcrumbs) array("name"=>"url"), leave url empty if no url
-		//$breadcrumbs["New Crumb"] => "http://url.com"
-	
-		
-	?>
-
 	<!-- MAIN CONTENT -->
 	<div id="content" style="padding: 30px;" >	
 		<div class="row">
@@ -99,158 +71,11 @@ include("inc/header.php");
 <!-- ==========================CONTENT ENDS HERE ========================== -->
 
 <?php 
-	//include required scripts
 	include("inc/scripts.php"); 
 ?>
 
-<!-- PAGE RELATED PLUGIN(S) 
-<script src="..."></script>-->
-
-<script type="text/javascript">
-	function refreshTimeLine(){
-        $('#ajax-timeline').load('_/php/_timeline.php', function(){		
-           // setTimeout(refreshTimeLine, 5000);
-        });
-    }
-	$(document).ready(function() {
-			$('#ajax-timeline').hide();
-			
-				$('#showTimeline').click(function() {
-					 refreshTimeLine();
-					 $('#ajax-timeline').toggle("slow");
-				});
-				
-			$('#mailnotification').hide();		
-			
-		$("#search-project").focus();	
-		$("#search-res").load("_/php/_search.php");
-		$("#execsqltime").load("_/php/_search.php #sqltime");
-		refreshTimeLine();
-			$('#search-project').keypress(function(e) {
-				if(e.which == 13) {
-					$("#search-res").load("_/php/_search.php?search_value=" + $("#search-project").val(),function (text, statusText){
-					$("#execsqltime").load("_/php/_search.php #sqltime");
-						});	
-			}	
-			  });
-			$("#search-button").click(function(){
-				$("#search-res").load("_/php/_search.php?search_value=" + $("#search-project").val()+"&filter_flag=0",function (text, statusText){
-					$("#execsqltime").load("_/php/_search.php #sqltime");
-						});	
-			});	
-		
-		$("#mailbtn").click(function(e) {
-			$.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() });
-			$('#mailnotification').hide();
-			$('#search-res').show();
-			document.getElementById("search-res").innerHTML = "Thank You.<p>A mail will be sent when the proccess will complete at: " + $('#email').val() ;
-			
-		});		
-	})
-	
- function removeSelectedClass(){
-		$( "a" ).each(function( index ) {
-				$( this ).removeClass( "fa fa-check" );
-		});
-} 
-
-	function runJava(){
-        openSocket();
-		$('#mailnotification').show();
-		$('#analyzebtn').hide();
-		$('#search-res').hide();
-		gpath = $('#search-project').val();
-		$.ajax({ url: '_/php/_trigger_java.php?gitpath=' + gpath}); 
-}
-
- function readServerLog(gpath){
-/*
-	if(show_hide_server_flag){
-			$('#server_data').show("slow");
-			show_hide_server_flag=0;
-		} else{
-			$('#server_data').hide("slow");
-			show_hide_server_flag=1;
-		}
-	*/
-	$.ajax({
-        url: "http://se.uom.gr/seagle/logs/"+gpath+".txt",
-        dataType: 'text',
-        success: function(text) {
-         $("#server_data").html(text);
-		 $("#server_data:contains(Finished!)").css("background","url(assets/css/img/done.png) right no-repeat #efefef")
-			 setTimeout(readServerLog(gpath), 2000); // refresh every 2 seconds
-        }
-		
-	}).done(function() {
-			$("#search-res").load("_/php/_search.php?val=" + "geomel");
-		});
-	}	
-
-	
-	
-	
-	
-var webSocket;
-
-//PRIN NA KALESEIS TO WEB SERVICE PREPEI NA ANOIKSEIS TO SOCKET KALWNTAS THN openSocket().
-
-//AFOU TELEIOSEI H ANALYSH PREPEI NA KALESEIS THN closeSocket()
-
-function openSocket() {
-    // Ensures only one connection is open at a time
-    if (webSocket !== undefined && webSocket.readyState !== WebSocket.CLOSED) {
-        writeResponse("WebSocket is already opened.");
-        return;
-    }
-    // Create a new instance of the websocket
-    webSocket = new WebSocket("ws://se.uom.gr:8080/SEAgleweb/loggerSocket");
-
-    /**
-     * Binds functions to the listeners for the websocket.
-     */
-    webSocket.onopen = function(event) {
-        // For reasons I can't determine, onopen gets called twice
-        // and the first time event.data is undefined.
-        // Leave a comment if you know the answer.
-        if (event.data === undefined)
-            return;
-
-        writeResponse(event.data);
-    };
-
-    webSocket.onmessage = function(event) {
-		if(event.data=="Finished!"){
-			writeResponse(event.data);
-			closeSocket();
-		}else
-			writeResponse(event.data);	
-    };
-
-    webSocket.onclose = function(event) {
-        writeResponse("Analysis is complete");
-    };
-}
-
-/**
- * Sends the value of the text input to the server
- */
-function send(text) {
-    webSocket.send(text);
-}
-
-function closeSocket() {
-    webSocket.close();
-}
-
-function writeResponse(text) {
-    document.getElementById("status").innerHTML = "<br/>" + text;
-}	
-	
-	
-</script>
+<script src="_/js/_index.js"></script>
 
 <?php 
-	//include footer
 	include("inc/footer.php"); 
 ?>
