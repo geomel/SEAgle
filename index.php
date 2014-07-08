@@ -69,7 +69,7 @@ include("inc/header.php");
 						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="margin-left:30px;">	
 								<span class="note"><span id="results">  </span>About <span id="execsqltime" style="margin-top:10px;"/> </span>
 							<div id="search-res"></div>	
-								<div id="status" class="font-lg text-success"> </div>	
+								<div id="status" class="font-lg text-success text-center"> </div>	
 								<div id="mailnotification">
 									<form id="order-form" class="smart-form" novalidate="novalidate" style="margin-top:30px;">
 										<div class="row">
@@ -115,6 +115,7 @@ include("inc/header.php");
 	$(document).ready(function() {
 			$('#ajax-timeline').hide();
 				$('#showTimeline').click(function() {
+					 refreshTimeLine();
 					 $('#ajax-timeline').toggle("slow");
 				});
 				
@@ -251,7 +252,7 @@ function openSocket() {
     };
 
     webSocket.onclose = function(event) {
-        writeResponse("Connection closed");
+        writeResponse("Analysis is complete");
     };
 }
 
