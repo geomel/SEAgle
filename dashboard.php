@@ -136,7 +136,7 @@ include("inc/nav.php");
 								<div class="widget-body" style="margin-left:30px;">
 								<?php
 										include("_/php/_connections.php");
-										include ("_/php/dataclasses/_tableData.php"); 
+										include ("_/php/dataclasses/_graphBasedMetrics.php"); 
 									?>
 								</div>
 							</div>

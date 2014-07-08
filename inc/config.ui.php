@@ -32,7 +32,7 @@ $page_nav = array(
 		"sub" => array(
 			"san" => array(
 				"title" => "Graph Based Metrics",
-				"url" => APP_URL."/san.php"
+				"url" => APP_URL."/gbm.php"
 			),
 			"ca" => array(
 				"title" => "Repository Metrics",
