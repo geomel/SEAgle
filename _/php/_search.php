@@ -27,7 +27,6 @@ $rs->data_seek(0);
 echo  "<h1 class='font-md'> Search Results for <span class=''semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >( ". $rows_returned ." results) </span></small></h1><p>";
 if($rows_returned!=0){		
 while($row = $rs->fetch_assoc()){
-		// getJSONData($row['author']) ;	
 	echo "<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<a href='_/php/_startProjectSession.php?pid=".$row['pid']."' onclick='storeResults(\"".$row['name']."\",\"".$row['pid']."\");'>". $row['name'] ."</a>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>";
 			echo "<div class='url text-success'>
 					<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='".$row['githubpath']."'>". $row['githubpath'] ."&nbsp;&nbsp;</a>
@@ -109,7 +108,6 @@ while($row = $rs->fetch_assoc()){
 					 <h3>This git url does not exist in our database. Analyse this project now?</h3>
 					 <a href='#' class='btn btn-success btn-large' id='analyzebtn' onclick='runJava()'><i class='fa fa-cloud-download'></i> Start Analysing ".$search_value." Now</a><p>
 				</div>
-			
 				";
 	else
 		echo "<h3>No data found. Try a different query</h3>";
@@ -120,29 +118,6 @@ $msc=microtime(true)-$msc;
 $msc = round($msc, 4);
 echo "<span style='visibility:hidden;'> <span id='sqltime'>". $msc." seconds </span></span>";
 
-function getJSONdata($name){
-
-	$url= "https://api.github.com/users/".$name;
-	echo $url;
-	// JSON URL which should be requested
-	// Initializing curl
-	$ch = curl_init( $url );
-
-	// Configuring curl options
-	$options = array(
-	CURLOPT_RETURNTRANSFER => true,
-	CURLOPT_HTTPHEADER => array('Content-type: application/json') ,
-	);
-
-	// Setting curl options
-	curl_setopt_array( $ch, $options );
-
-	// Getting results
-	$result =  curl_exec($ch); // Getting JSON result string
-
-	$data = json_decode($result, true);
-	echo var_dump($data);
-}
 include_once("../../lib/config.php"); 
 include_once("../../inc/scripts.php"); 
 
