@@ -103,7 +103,7 @@ include("inc/nav.php");
 								<div class="widget-body" style="margin-left:30px;">
 									<?php
 										include("_/php/_connections.php");
-										include ("_/php/dataclasses/san/_commitersData.php"); 
+										include ("_/php/dataclasses/_commitersData.php"); 
 									?>
 								</div>
 							</div>
