@@ -69,7 +69,9 @@ include("inc/header.php");
 						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="margin-left:30px;">	
 								<span class="note"><span id="results">  </span>About <span id="execsqltime" style="margin-top:10px;"/> </span>
 							<div id="search-res"></div>	
-								<div id="status" class="font-lg text-success text-center"> </div>	
+								<div id="status" class="font-lg text-success text-center">
+									
+								</div>	
 								<div id="mailnotification">
 									<form id="order-form" class="smart-form" novalidate="novalidate" style="margin-top:30px;">
 										<div class="row">
@@ -77,7 +79,7 @@ include("inc/header.php");
 											<h4>Your request may take some time to complete.</h4><span style="margin-top:10px"> You may enter your email below if you like to be notified when the analysis will complete.</span>
 												<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
 													<input type="email" name="email" placeholder="E-mail" id="email">
-													<button class="btn btn-primary" id="mailbtn">
+													<button class="btn btn-primary btn-large" id="mailbtn">
 														Submit
 													</button>
 												</label>
@@ -114,37 +116,13 @@ include("inc/header.php");
 
 	$(document).ready(function() {
 			$('#ajax-timeline').hide();
+			
 				$('#showTimeline').click(function() {
 					 refreshTimeLine();
 					 $('#ajax-timeline').toggle("slow");
 				});
 				
-			$('#mailnotification').hide();	
-			
-			$("#f0").click(function(e){
-				removeSelectedClass();
-				$( "#f0" ).addClass( "fa fa-check" );
-				$( "#filtertext" ).html('Everything');
-				e.preventDefault();
-			});
-			$("#f1").click(function(e){
-				removeSelectedClass();
-				$( "#f1" ).addClass( "fa fa-check" );
-				$( "#filtertext" ).html('Nodes');
-				e.preventDefault();
-			});
-			$("#f2").click(function(e){
-				removeSelectedClass();
-				$( "#f2" ).addClass( "fa fa-check" );
-				$( "#filtertext" ).html('Edges');
-				e.preventDefault();
-			});
-			$("#f3").click(function(e){
-				removeSelectedClass();
-				$( "#f3" ).addClass( "fa fa-check" );
-				$( "#filtertext" ).html('Versions');
-				e.preventDefault();
-			});
+			$('#mailnotification').hide();		
 			
 		$("#search-project").focus();	
 		$("#search-res").load("_/php/_search.php");
@@ -228,7 +206,7 @@ function openSocket() {
         return;
     }
     // Create a new instance of the websocket
-    webSocket = new WebSocket("ws://se.uom.gr:8080/seanetsweb/loggerSocket");
+    webSocket = new WebSocket("ws://se.uom.gr:8080/SEAgleweb/loggerSocket");
 
     /**
      * Binds functions to the listeners for the websocket.

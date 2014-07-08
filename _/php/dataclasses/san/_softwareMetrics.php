@@ -21,6 +21,7 @@ echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 					<th>Number Of Fields</th>
 					<th>Coupling Between Objects</th>
 					<th>Lack Of Cohesion Of Methods</th>
+					<th>Weighted Method Complexity</th>
 				</tr>
 			</thead>
 		<tbody>";
@@ -32,6 +33,7 @@ echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 		  echo "<td>" . $row['nof'] . "</td>";
 		  echo "<td>" . $row['cbo'] . "</td>";
 		  echo "<td>" . $row['lcom'] . "</td>";
+		  echo "<td>" . $row['wmc'] . "</td>";
 		  echo "</tr>";
 		  }
 echo "</tbody>

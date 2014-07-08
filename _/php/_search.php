@@ -25,16 +25,6 @@ if(isset($search_value)){
 				$sql = "select * from project where(name like '%$search_value%' OR versions like '%$search_value%' OR githubpath like '%$search_value%') ";
 				//$sql2 = "SELECT * FROM project,version INNER JOIN graph WHERE project.pid=version.pid AND version.vid = graph.vid";		
 				break;
-			case 1:
-				$sql = "";
-				break;
-			case 2:
-				$sql = "";
-				break;	
-			case 3:
-				$sql = "";
-				break;	
-					
 		}		
 }
 else{

@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
-		<title> <?php echo $page_title != "" ? $page_title." - " : ""; ?>SEANets </title>
+		<title> <?php echo $page_title != "" ? $page_title." - " : ""; ?>SEAgle </title>
 		<meta name="description" content="Software Evolution Analysis With Networks">
 		<meta name="author" content="uom">
 		
