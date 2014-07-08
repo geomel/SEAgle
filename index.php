@@ -17,11 +17,16 @@ include("inc/header.php");
 						</div>
 					<!-- END Timeline Content -->		
         </div>
-<div class="row">
+	<div class="row" style="padding:20px">	
+		<button type="button" class="btn btn-labeled btn-success btn-lg" data-toggle="modal" data-target="#myModal">
+			<i class="fa fa-video-camera"></i>
+				Instructional Video
+		</button>	
+	</div>	
+
 	<div class="col-lg-6 col-lg-offset-3">
 		<a href="index.php"><img src="img/seanets_logo_big.png" alt="SEAgle" class="img-responsive center-block" width="450" height="200" style="padding-top:100px; margin-bottom:0px;"></a>	
 	</div>
-</div>
 <!-- ==========================CONTENT STARTS HERE ========================== -->
 <!-- MAIN PANEL -->
 <div id="main" role="main">
@@ -67,7 +72,22 @@ include("inc/header.php");
 		
 </div>
 		
-
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel">SEAgle Instructional Video</h4>
+					</div>
+					<div class="modal-body">
+						<iframe width="560" height="315" src="//www.youtube.com/embed/P9aOpLZAMyA" frameborder="0" allowfullscreen></iframe>
+					</div>
+					
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 <!-- ==========================CONTENT ENDS HERE ========================== -->
 
 <?php 
