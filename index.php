@@ -11,7 +11,7 @@ require_once("inc/init.php");
 YOU CAN SET CONFIGURATION VARIABLES HERE BEFORE IT GOES TO NAV, RIBBON, ETC.
 E.G. $page_title = "Custom Title" */
 
-$page_title = "Welcome To SEANets";
+$page_title = "Welcome To SEAgle";
 
 /* ---------------- END PHP Custom Scripts ------------- */
 
@@ -40,7 +40,7 @@ include("inc/header.php");
         </div><!--/.navbar-collapse -->
 <div class="row">
 	<div class="col-lg-6 col-lg-offset-3">
-		<img src="img/seanets_logo_big.png" alt="SEAgle" class="img-responsive center-block" width="450" height="200" style="padding-top:100px; margin-bottom:0px;">	
+		<a href="index.php"><img src="img/seanets_logo_big.png" alt="SEAgle" class="img-responsive center-block" width="450" height="200" style="padding-top:100px; margin-bottom:0px;"></a>	
 	</div>
 </div>
 <!-- ==========================CONTENT STARTS HERE ========================== -->
@@ -68,7 +68,23 @@ include("inc/header.php");
 				</div><!-- /.col-lg-4 -->
 						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="margin-left:30px;">	
 								<span class="note"><span id="results">  </span>About <span id="execsqltime" style="margin-top:10px;"/> </span>
-							<div id="search-res"></div>		
+							<div id="search-res"></div>	
+								<div id="status" class="font-lg text-success"> </div>	
+								<div id="mailnotification">
+									<form id="order-form" class="smart-form" novalidate="novalidate" style="margin-top:30px;">
+										<div class="row">
+											<section class="col col-4">
+											<h4>Your request may take some time to complete.</h4><span style="margin-top:10px"> You may enter your email below if you like to be notified when the analysis will complete.</span>
+												<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+													<input type="email" name="email" placeholder="E-mail" id="email">
+													<button class="btn btn-primary" id="mailbtn">
+														Submit
+													</button>
+												</label>
+											</section>
+										</div>	
+									</form>
+								</div>
 						</div>	
 		
 		</div>
@@ -101,6 +117,8 @@ include("inc/header.php");
 				$('#showTimeline').click(function() {
 					 $('#ajax-timeline').toggle("slow");
 				});
+				
+			$('#mailnotification').hide();	
 			
 			$("#f0").click(function(e){
 				removeSelectedClass();
@@ -144,33 +162,12 @@ include("inc/header.php");
 						});	
 			});	
 		
-		$("#analyzebtnn").click(function(e) {
-			$.SmartMessageBox({
-				title : "Notification Email",
-				content : "Your query will take some time to download and analyze your project. Please enter your email address to inform you when the process will complete.",
-				buttons : "[Cancel][Submit]",
-				input : "text",
-				placeholder : "johndoe@example.com"
-			}, function(ButtonPress, Value) {
-				if (ButtonPress == "Cancel") {
-					alert("Are you sure you want to cancel that? :(");	
-					e.preventDefault();
-				}
-	
-				Value1 = Value.toUpperCase();
-				ValueOriginal = Value;
-				$.SmartMessageBox({
-					title : "Hey! <strong>" + Value1 + ",</strong>",
-					content : "And now please provide your password:",
-					buttons : "[Login]",
-					input : "password",
-					placeholder : "Password"
-				}, function(ButtonPress, Value) {
-					alert("Username: " + ValueOriginal + " and your password is: " + Value);
-				});
-			});
-	
-			e.preventDefault();
+		$("#mailbtn").click(function(e) {
+			$.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() });
+			$('#mailnotification').hide();
+			$('#search-res').show();
+			document.getElementById("search-res").innerHTML = "Thank You.<p>A mail will be sent when the proccess will complete at: " + $('#email').val() ;
+			
 		});		
 	})
 	
@@ -181,14 +178,12 @@ include("inc/header.php");
 } 
 
 	function runJava(){
-		gpath = $('#gitpath').val();
-		alert("_/php/_trigger_java.php?gitpath=" + gpath);
-		$.ajax({ url: '_/php/_trigger_java.php?gitpath=' + gpath
-		});
-	   setTimeout(function() {readServerLog(gpath.split("/").pop().slice(0,-4).toLowerCase())}, 2000); //trim and lowercase string
-		$('#downloadBtn').hide("slow");
-		$('#gitpath').prop('disabled', true);
-	
+        openSocket();
+		$('#mailnotification').show();
+		$('#analyzebtn').hide();
+		$('#search-res').hide();
+		gpath = $('#search-project').val();
+		$.ajax({ url: '_/php/_trigger_java.php?gitpath=' + gpath}); 
 }
 
  function readServerLog(gpath){
@@ -202,7 +197,7 @@ include("inc/header.php");
 		}
 	*/
 	$.ajax({
-        url: "http://localhost/seagle/logs/"+gpath+".txt",
+        url: "http://se.uom.gr/seagle/logs/"+gpath+".txt",
         dataType: 'text',
         success: function(text) {
          $("#server_data").html(text);
@@ -210,11 +205,72 @@ include("inc/header.php");
 			 setTimeout(readServerLog(gpath), 2000); // refresh every 2 seconds
         }
 		
-}).done(function() {
+	}).done(function() {
 			$("#search-res").load("_/php/_search.php?val=" + "geomel");
 		});
-}	
+	}	
 
+	
+	
+	
+	
+var webSocket;
+
+//PRIN NA KALESEIS TO WEB SERVICE PREPEI NA ANOIKSEIS TO SOCKET KALWNTAS THN openSocket().
+
+//AFOU TELEIOSEI H ANALYSH PREPEI NA KALESEIS THN closeSocket()
+
+function openSocket() {
+    // Ensures only one connection is open at a time
+    if (webSocket !== undefined && webSocket.readyState !== WebSocket.CLOSED) {
+        writeResponse("WebSocket is already opened.");
+        return;
+    }
+    // Create a new instance of the websocket
+    webSocket = new WebSocket("ws://se.uom.gr:8080/seanetsweb/loggerSocket");
+
+    /**
+     * Binds functions to the listeners for the websocket.
+     */
+    webSocket.onopen = function(event) {
+        // For reasons I can't determine, onopen gets called twice
+        // and the first time event.data is undefined.
+        // Leave a comment if you know the answer.
+        if (event.data === undefined)
+            return;
+
+        writeResponse(event.data);
+    };
+
+    webSocket.onmessage = function(event) {
+		if(event.data=="Finished!"){
+			writeResponse(event.data);
+			closeSocket();
+		}else
+			writeResponse(event.data);	
+    };
+
+    webSocket.onclose = function(event) {
+        writeResponse("Connection closed");
+    };
+}
+
+/**
+ * Sends the value of the text input to the server
+ */
+function send(text) {
+    webSocket.send(text);
+}
+
+function closeSocket() {
+    webSocket.close();
+}
+
+function writeResponse(text) {
+    document.getElementById("status").innerHTML = "<br/>" + text;
+}	
+	
+	
 </script>
 
 <?php 

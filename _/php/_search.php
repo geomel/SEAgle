@@ -53,7 +53,7 @@ if($rows_returned!=0){
 while($row = $rs->fetch_assoc()){
 		// getJSONData($row['author']) ;	
 	echo "<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<a href='_/php/_startProjectSession.php?pid=".$row['pid']."' onclick='storeResults(\"".$row['name']."\",\"".$row['pid']."\");'>". $row['name'] ."</a>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>";
-			echo "<div class='url text-success small'>
+			echo "<div class='url text-success'>
 					<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='".$row['githubpath']."'>". $row['githubpath'] ."&nbsp;&nbsp;</a>
 					</div>		
 					<p style='margin-bottom: 20px'>
@@ -131,8 +131,10 @@ while($row = $rs->fetch_assoc()){
 	if($git_flag==true)
 		echo 	"<div class='center-block'>
 					 <h3>This git url does not exist in our database. Analyse this project now?</h3>
-					 <a href='#' class='btn btn-success btn-large' id='analyzebtn' onclick='runJava()'><i class='fa fa-cloud-download'></i> ".$search_value."</a>
-				</div>";
+					 <a href='#' class='btn btn-success btn-large' id='analyzebtn' onclick='runJava()'><i class='fa fa-cloud-download'></i> Start Analysing ".$search_value." Now</a><p>
+				</div>
+			
+				";
 	else
 		echo "<h3>No data found. Try a different query</h3>";
 		
