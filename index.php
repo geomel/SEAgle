@@ -44,20 +44,34 @@ include("inc/header.php");
 				</div><!-- /.col-lg-4 -->
 				<div class="col-lg-6 col-lg-offset-3">
 					<form class="smart-form" style="margin-top:10px;">	
-							<section>
-											<label class="text-muted">Search Filter</label>
-											<div class="inline-group">
-												<label class="radio">
-													<input type="radio" name="radio-inline" checked="checked">
-													<i></i>All</label>
-												<label class="radio">
-													<input type="radio" name="radio-inline">
-													<i></i>Number of Versions</label>
-												<label class="radio">
-													<input type="radio" name="radio-inline">
-													<i></i>TimeLine</label>
-											</div>
-							</section>
+						<div class="well">
+								<section>
+												<label class="text-muted">Search Filter</label>
+												<div class="inline-group">
+													<label class="radio">
+														<input type="radio" name="radio-inline" checked="checked" rel="tooltip" data-placement="bottom" data-original-title="Tooltip Bottommmm">
+														<i></i>All</label>
+													<label class="radio">
+														<input type="radio" name="radio-inline">
+														<i></i>Number of Versions</label>
+													<label class="radio">
+														<input type="radio" name="radio-inline">
+														<i></i>TimeLine</label>
+														<ul><li>
+												</div>
+								</section>
+								<ul class="demo-btns text-center">
+														<li>
+															<a href="javascript:void(0);" class="btn btn-default btn-lg" rel="tooltip" data-placement="top" data-original-title="<h1><b>One</b> <em>Really</em> big tip!</h1>" data-html="true">Big Tip</a>
+														</li>
+														<li>
+															<a href="javascript:void(0);" class="btn btn-default btn-lg" rel="tooltip" data-placement="top" data-original-title="<i class='fa fa-check fa-3x text-success'></i> <i class='fa fa-times fa-3x text-danger'></i>" data-html="true">has Icon</a>
+														</li>
+														<li>
+															<a href="javascript:void(0);" class="btn btn-default btn-lg" rel="tooltip" data-placement="top" data-original-title="<img src='img/avatars/sunny.png' alt='me' class='online'>" data-html="true">also Image</a>
+														</li>
+												</ul>
+							</div>
 						</form>	
 					</div>	
 						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="margin-left:30px;">	
@@ -82,13 +96,10 @@ include("inc/header.php");
 									</form>
 								</div>
 						</div>	
-		
 		</div>
 		
 	</div>
-		
-</div>
-		
+</div>	
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -99,7 +110,7 @@ include("inc/header.php");
 						<h4 class="modal-title" id="myModalLabel">SEAgle Instructional Video</h4>
 					</div>
 					<div class="modal-body">
-						<iframe width="560" height="315" src="//www.youtube.com/embed/P9aOpLZAMyA" frameborder="0" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="//www.youtube.com/embed/ALqPT9IsTrQ" frameborder="0" allowfullscreen></iframe>
 					</div>
 					
 				</div><!-- /.modal-content -->
@@ -112,6 +123,7 @@ include("inc/header.php");
 ?>
 
 <script src="_/js/_index.js"></script>
+
 
 <?php 
 	include("inc/footer.php"); 
