@@ -17,10 +17,7 @@ include("inc/header.php");
         <div class="pull-right">
 			 <a href='javascript:void(0)' class='btn btn-sm btn-default' id="showTimeline" style="margin-top:-50px; margin-right:20px"><i class='fa fa-arrow-down text-muted'></i> TIMELINE OVERVIEW</a>	
 						<!-- Timeline Content -->
-						<div class='smart-timeline'>	
-							<ul class='smart-timeline-list'>
-								<div id="ajax-timeline"> </div>					
-						</div>
+						
 					<!-- END Timeline Content -->		
         </div>
 	<div class="col-lg-6 col-lg-offset-3">
@@ -43,39 +40,34 @@ include("inc/header.php");
 					</div><!-- /input-group -->
 				</div><!-- /.col-lg-4 -->
 				<div class="col-lg-6 col-lg-offset-3">
-					<form class="smart-form" style="margin-top:10px;">	
+					<form class="smart-form" >	
 						<div class="well">
-								<section>
-												<label class="text-muted">Search Filter</label>
-												<div class="inline-group">
-													<label class="radio">
-														<input type="radio" name="radio-inline" checked="checked" rel="tooltip" data-placement="bottom" data-original-title="Tooltip Bottommmm">
-														<i></i>All</label>
-													<label class="radio">
-														<input type="radio" name="radio-inline">
-														<i></i>Number of Versions</label>
-													<label class="radio">
-														<input type="radio" name="radio-inline">
-														<i></i>TimeLine</label>
-														<ul><li>
-												</div>
+								<section style="margin-top:10px;">
+										<div class="inline-group" style="margin-left:5px;">
+											<label class="radio">
+												<input type="radio" name="results-filter"  value="1" checked>
+												<i></i>No Filter</label>
+											<label class="radio">
+												<input type="radio" name="results-filter"  value="0">
+												<i></i>Show All</label>
+											<label class="radio">
+												<input type="radio" name="results-filter" value="1">
+												<i></i>Minimum Number of Versions</label>
+											<label class="radio">
+												<input type="radio" name="results-filter" value="2">
+												<i></i>Show TimeLine</label>	
+										</div>		
 								</section>
-								<ul class="demo-btns text-center">
-														<li>
-															<a href="javascript:void(0);" class="btn btn-default btn-lg" rel="tooltip" data-placement="top" data-original-title="<h1><b>One</b> <em>Really</em> big tip!</h1>" data-html="true">Big Tip</a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="btn btn-default btn-lg" rel="tooltip" data-placement="top" data-original-title="<i class='fa fa-check fa-3x text-success'></i> <i class='fa fa-times fa-3x text-danger'></i>" data-html="true">has Icon</a>
-														</li>
-														<li>
-															<a href="javascript:void(0);" class="btn btn-default btn-lg" rel="tooltip" data-placement="top" data-original-title="<img src='img/avatars/sunny.png' alt='me' class='online'>" data-html="true">also Image</a>
-														</li>
-												</ul>
+							
 							</div>
 						</form>	
 					</div>	
 						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="margin-left:30px;">	
 								<span class="note"><span id="results">  </span>About <span id="execsqltime" style="margin-top:10px;"/> </span>
+								<div class='smart-timeline'>	
+									<ul class='smart-timeline-list'>
+										<div id="ajax-timeline"> </div>					
+								</div>
 							<div id="search-res"></div>	
 								<div id="status" class="font-lg text-success text-center">
 									

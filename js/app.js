@@ -1321,7 +1321,7 @@ function drawBreadCrumb() {
  * to check for form elements, tooltip activation, popovers, etc...
  */
 function pageSetUp() {
-	alert("iN PAGE SETUP");
+	
 	if ($.device === "desktop"){
 		// is desktop
 		
