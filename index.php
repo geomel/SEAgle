@@ -8,18 +8,12 @@ $page_body_prop = array("id"=>"login", "class"=>"animated fadeInDown");
 include("inc/header.php");
 
 ?>
-	<div style="padding:20px; margin-top:10px">	
+	<div style="padding:20px;">	
 		<button type="button" class="btn btn-labeled btn-success btn-lg" data-toggle="modal" data-target="#myModal">
 			<i class="fa fa-video-camera"></i>
 				Instructional Video
 		</button>	
 	</div>	
-        <div class="pull-right">
-			 <a href='javascript:void(0)' class='btn btn-sm btn-default' id="showTimeline" style="margin-top:-50px; margin-right:20px"><i class='fa fa-arrow-down text-muted'></i> TIMELINE OVERVIEW</a>	
-						<!-- Timeline Content -->
-						
-					<!-- END Timeline Content -->		
-        </div>
 	<div class="col-lg-6 col-lg-offset-3">
 		<a href="index.php"><img src="img/seanets_logo_big.png" alt="SEAgle" class="img-responsive center-block" width="450" height="200" style="padding-top:20px; margin-bottom:20px;"></a>	
 	</div>
@@ -41,15 +35,12 @@ include("inc/header.php");
 				</div><!-- /.col-lg-4 -->
 				<div class="col-lg-6 col-lg-offset-3">
 					<form class="smart-form" >	
-						<div class="well">
+						<div class="ell">
 								<section style="margin-top:10px;">
 										<div class="inline-group" style="margin-left:5px;">
 											<label class="radio">
-												<input type="radio" name="results-filter"  value="1" checked>
-												<i></i>No Filter</label>
-											<label class="radio">
 												<input type="radio" name="results-filter"  value="0">
-												<i></i>Show All</label>
+												<i></i>Show All Projects</label>
 											<label class="radio">
 												<input type="radio" name="results-filter" value="1">
 												<i></i>Minimum Number of Versions</label>
@@ -63,7 +54,7 @@ include("inc/header.php");
 						</form>	
 					</div>	
 						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="margin-left:30px;">	
-								<span class="note"><span id="results">  </span>About <span id="execsqltime" style="margin-top:10px;"/> </span>
+								<span class="note"><span id="results">  </span> <span id="execsqltime" style="margin-top:10px;"/> </span>
 								<div class='smart-timeline'>	
 									<ul class='smart-timeline-list'>
 										<div id="ajax-timeline"> </div>					
@@ -115,8 +106,3 @@ include("inc/header.php");
 ?>
 
 <script src="_/js/_index.js"></script>
-
-
-<?php 
-	include("inc/footer.php"); 
-?>
