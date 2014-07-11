@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include("_connections.php");
-$sql = "SELECT * FROM timeline, project WHERE project.pid=timeline.pid ORDER BY date DESC LIMIT 0 , 10";
+$sql = "SELECT * FROM timeline, project WHERE project.pid=timeline.pid ORDER BY date DESC LIMIT 0 , 15";
 
 $rs=$conn->query($sql);
 if($rs === false) {
@@ -26,6 +26,7 @@ echo "<li>
 			</p>
 			<p>
 				<a href='_/php/_startProjectSession.php?pid=".$row['pid']."' onclick='storeResults(\"".$row['name']."\",\"".$row['pid']."\");'  class='btn btn-xs btn-primary'><i class='fa fa-file'></i>&nbsp;&nbsp". $row['name'] ."</a>
+				<br>".$row['versions']." Versions
 			</p>
 		</div>
 	</li>";

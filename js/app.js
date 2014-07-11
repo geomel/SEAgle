@@ -1,7 +1,4 @@
-	/*
-	 * VARIABLES
-	 * Description: All Global Vars
-	 */
+	
 	// Impacts the responce rate of some of the responsive elements (lower value affects CPU but improves speed)
 	$.throttle_delay = 250;
 	
@@ -11,10 +8,7 @@
 	// Note: You will also need to change this variable in the "variable.less" file.
 	$.navbar_height = 49; 
 
-	/*
-	 * APP DOM REFERENCES
-	 * Description: Obj DOM reference, please try to avoid changing these
-	 */	
+	
 	$.root_ = $('body');
 	$.left_panel = $('#left-panel');
 	$.shortcut_dropdown = $('#shortcut');

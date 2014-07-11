@@ -5,36 +5,20 @@ if(!isset($_SESSION['pname']))
 //initilize the page
 require_once("inc/init.php");
 
-//require UI configuration (nav, ribbon, etc.)
+//require UI configuration (nav, ribbon)
 require_once("inc/config.ui.php");
-
-/*---------------- PHP Custom Scripts ---------
-
-YOU CAN SET CONFIGURATION VARIABLES HERE BEFORE IT GOES TO NAV, RIBBON, ETC.
-E.G. $page_title = "Custom Title" */
-
 $page_title = "Dashboard";
-
-/* ---------------- END PHP Custom Scripts ------------- */
-
-//include header
-//you can add your custom css in $page_css array.
-//Note: all css files are inside css/ folder
 $page_css[] = "your_style.css";
 include("inc/header.php");
 
-//include left panel (navigation)
-//follow the tree in inc/config.ui.php
 $page_nav["dashboard"]["active"] = true;
 include("inc/nav.php");
 
 ?>
-<!-- ==========================CONTENT STARTS HERE ========================== -->
-<!-- MAIN PANEL -->
+
 <div id="main" role="main">
 	<?php
-		//configure ribbon (breadcrumbs) array("name"=>"url"), leave url empty if no url
-		//$breadcrumbs["New Crumb"] => "http://url.com"
+
 		include("inc/ribbon.php");
 	?>
 
@@ -61,14 +45,11 @@ include("inc/nav.php");
 	
 				<!-- row -->
 		<div class="row">
-			
 				<article class="col-sm-12">
 					<!-- new widget -->
-			<section id="widget-grid" class="">			
-				<div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
-				
+			<div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
 			<h2 style="color:green; margin-top:20px; margin-left:20px;"><span class="widget-icon"> <i class="fa fa-sitemap"></i> </span>Graph Based Metrics:</h2>	
-				
+				<section id="widget-grid" class="">
 					<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
 						<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2999" data-widget-editbutton="false">
 							<header style="margin-bottom:0px; margin-right:0px">
@@ -118,42 +99,37 @@ include("inc/nav.php");
 											</div>
 								</div>								
 							</div>
-					</article>	
-				</section>
+						</article>	
+
 			<div class="row">
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
 					
-					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3000" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false" style="margin-left:15px;">
-							<!-- widget edit box -->
+					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3000" data-widget-editbutton="false" style="margin-left:20px;">
 							<div class="jarviswidget-editbox">
-								<!-- This area used as dropdown edit box -->
-		
+								<!-- This area used as dropdown edit box -->		
 							</div>
-							<!-- end widget edit box -->
-		
-							<!-- widget content -->
 							<div class="widget-body no-padding">
 								<div class="widget-body-toolbar">
 		
 								</div>
 								<div class="widget-body" style="margin-left:0px;">
-								<?php
-										include("_/php/_connections.php");
-										include ("_/php/dataclasses/_graphBasedMetrics.php"); 
+									<?php
+											include("_/php/_connections.php");
+											include ("_/php/dataclasses/_graphBasedMetrics.php"); 
 									?>
 								</div>
 							</div>
 						</div>	
 				</article>
 					
-				
+				</section>
 							
 								
 							
 							<h2 style="color:green; margin-top:30px; margin-left:20px;"><span class="widget-icon"> <i class="fa fa-exchange"></i> </span>Repository Metrics:</h2>
 								<section id="widget-grid" class="">
 								<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
-									<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3999" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+									<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3999" data-widget-editbutton="false">
 										<header style="margin-bottom:0px; margin-right:0px">
 										<span class="widget-icon"> <i class="fa fa-table"></i> </span>
 										<h2>Development Activity</h2>
@@ -205,7 +181,7 @@ include("inc/nav.php");
 								</article>
 								</section>
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
-					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3000" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false" style="margin-left:15px;">
+					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3000" data-widget-editbutton="false">
 						
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
@@ -219,16 +195,16 @@ include("inc/nav.php");
 								<div class="widget-body-toolbar">
 		
 								</div>
-								<div class="widget-body" style="margin-left:0px;">
+								<div class="widget-body" style="margin-left:30px;">
 								<?php
 										include("_/php/_connections.php");
-										include ("_/php/dataclasses/_commitersData.php"); 
+										include ("_/php/dataclasses/_commitersData.php");  
 									?>
 								</div>
 							</div>
 						</div>	
 				</article>
-					<h2 style="color:green; margin-left:20px;"><span class="widget-icon"> <i class="fa fa-code"></i> </span>Source Code Metrics:</h2>	
+					<h2 style="color:green; margin-left:20px;"><span class="widget-icon"> <i class="fa fa-code"></i> </span>Source Code Metrics:</h2>
 							<section id="widget-grid" class="">
 								<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
 									<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3999" data-widget-editbutton="false">
@@ -282,7 +258,7 @@ include("inc/nav.php");
 
 								<!-- end content -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
-					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3020" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false" style="margin-left:15px;">
+					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3020" data-widget-editbutton="false">
 							<!-- widget edit box -->
 									<div class="jarviswidget-editbox">
 										<!-- This area used as dropdown edit box -->
@@ -295,7 +271,7 @@ include("inc/nav.php");
 										<div class="widget-body-toolbar">
 				
 										</div>
-										<div class="widget-body" style="margin-left:0px;">
+										<div class="widget-body" style="margin-left:30px;">
 										<?php
 												include("_/php/_connections.php");
 												include ("_/php/dataclasses/_softwareMetrics.php"); 
@@ -304,8 +280,6 @@ include("inc/nav.php");
 									</div>
 					</div>	
 				</article>
-			
-				
 
 				</article>
 			</div>
@@ -356,6 +330,14 @@ include("inc/nav.php");
 				</div>		
 			</div>		
 	</div>
+
+	
+	
+	
+	
+	
+	
+	
 	
 </div>	
 	
@@ -370,10 +352,139 @@ include("inc/nav.php");
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.resize.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/flot/jquery.flot.tooltip.js"></script>
 
+<!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+<!-- Full Calendar -->
+		<!-- PAGE RELATED PLUGIN(S) -->
+		<!-- PAGE RELATED PLUGIN(S) -->
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/datatables/jquery.dataTables-cust.min.js"></script>
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/datatables/ColReorder.min.js"></script>
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/datatables/FixedColumns.min.js"></script>
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/datatables/ColVis.min.js"></script>
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/datatables/ZeroClipboard.js"></script>
 <script src="<?php echo ASSETS_URL; ?>/js/plugin/datatables/media/js/TableTools.min.js"></script>
-<script src="<?php echo ASSETS_URL; ?>/js/plugin/datatables/DT_bootstrap.js"></script>	
-<script src="_/js/_dashboard.js"></script>
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/datatables/DT_bootstrap.js"></script>
+
+<script src="<?php echo ASSETS_URL; ?>/js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		 refreshTimeLine();
+		 
+		 
+		 //------------------------ DATATABLE TOOLS --------------------------
+		 /* Add the events etc before DataTables hides a column */
+		$("#datatable_fixed_column thead input").keyup(function() {
+			oTable.fnFilter(this.value, oTable.oApi._fnVisibleToColumnIndex(oTable.fnSettings(), $("thead input").index(this)));
+		});
+
+		$("#datatable_fixed_column thead input").each(function(i) {
+			this.initVal = this.value;
+		});
+		$("#datatable_fixed_column thead input").focus(function() {
+			if (this.className == "search_init") {
+				this.className = "";
+				this.value = "";
+			}
+		});
+		$("#datatable_fixed_column thead input").blur(function(i) {
+			if (this.value == "") {
+				this.className = "search_init";
+				this.value = this.initVal;
+			}
+		});		
+		
+
+		var oTable = $('#datatable_fixed_column').dataTable({
+			"sDom" : "<'dt-top-row'><'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+			//"sDom" : "t<'row dt-wrapper'<'col-sm-6'i><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'>>",
+			"oLanguage" : {
+				"sSearch" : "Search all columns:"
+			},
+			"bSortCellsTop" : true
+		});		
+		
+
+
+		/*
+		 * COL ORDER
+		 */
+		$('#datatable_col_reorder').dataTable({
+			"sPaginationType" : "bootstrap",
+			"sDom" : "R<'dt-top-row'Clf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+			"fnInitComplete" : function(oSettings, json) {
+				$('.ColVis_Button').addClass('btn btn-default btn-sm').html('Columns <i class="icon-arrow-down"></i>');
+			}
+		});
+		
+		/* END COL ORDER */
+
+		/* TABLE TOOLS */
+		$('#datatable_tabletools').dataTable({
+			"sDom" : "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+			"oTableTools" : {
+				"aButtons" : ["copy", "print", {
+					"sExtends" : "collection",
+					"sButtonText" : 'Save <span class="caret" />',
+					"aButtons" : ["csv", "xls", "pdf"]
+				}],
+				"sSwfPath" : "<?php echo ASSETS_URL; ?>/js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf"
+			},
+			"fnInitComplete" : function(oSettings, json) {
+				$(this).closest('#dt_table_tools_wrapper').find('.DTTT.btn-group').addClass('table_tools_group').children('a.btn').each(function() {
+					$(this).addClass('btn-sm btn-default');
+				});
+			}
+		});
+		
+			/* TABLE TOOLS */
+		$('#commitersMetricsTable').dataTable({
+			"sDom" : "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+			"oTableTools" : {
+				"aButtons" : ["copy", "print", {
+					"sExtends" : "collection",
+					"sButtonText" : 'Save <span class="caret" />',
+					"aButtons" : ["csv", "xls", "pdf"]
+				}],
+				"sSwfPath" : "<?php echo ASSETS_URL; ?>/js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf"
+			},
+			"fnInitComplete" : function(oSettings, json) {
+				$(this).closest('#dt_table_tools_wrapper').find('.DTTT.btn-group').addClass('table_tools_group').children('a.btn').each(function() {
+					$(this).addClass('btn-sm btn-default');
+				});
+			}
+		});
+		
+		$('#softMetricsTable').dataTable({
+			"sDom" : "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
+			"oTableTools" : {
+				"aButtons" : ["copy", "print", {
+					"sExtends" : "collection",
+					"sButtonText" : 'Save <span class="caret" />',
+					"aButtons" : ["csv", "xls", "pdf"]
+				}],
+				"sSwfPath" : "<?php echo ASSETS_URL; ?>/js/plugin/datatables/media/swf/copy_csv_xls_pdf.swf"
+			},
+			"fnInitComplete" : function(oSettings, json) {
+				$(this).closest('#dt_table_tools_wrapper').find('.DTTT.btn-group').addClass('table_tools_group').children('a.btn').each(function() {
+					$(this).addClass('btn-sm btn-default');
+				});
+			}
+		});
+
+	/* END TABLE TOOLS */
+		 
+	})
+	
+	function refreshTimeLine(){
+        $('#ajax-timeline').load('_/php/_timeline.php', function(){		
+           // setTimeout(refreshTimeLine, 5000);
+        });
+		
+    }
+</script>		
+
 
 <?php 
 	//include footer

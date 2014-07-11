@@ -56,7 +56,6 @@
 		<!-- FastClick: For mobile devices -->
 		<script src="<?php echo ASSETS_URL; ?>/js/plugin/fastclick/fastclick.js"></script>
 		
-		<script src="<?php echo ASSETS_URL; ?>/js/plugin/pagination/jquery.twbsPagination.js"></script>
 
 		<!--[if IE 7]>
 
