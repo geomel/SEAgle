@@ -188,8 +188,8 @@ $(document).ready(function() {
 	// RESET WIDGETS
 	$('#refresh').click(function(e) {
 		$.SmartMessageBox({
-			title : "<i class='fa fa-refresh' style='color:green'></i> Clear Local Storage",
-			content : "Would you like to RESET all your saved widgets and clear LocalStorage?",
+			title : "<i class='fa fa-refresh' style='color:green'></i> SEAGle - Clear Local Storage",
+			content : "Would you like to clear LocalStorage?",
 			buttons : '[No][Yes]'
 		}, function(ButtonPressed) {
 			if (ButtonPressed == "Yes" && localStorage) {

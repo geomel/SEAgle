@@ -53,7 +53,7 @@ include("inc/nav.php");
 						<h5> Versions <span class="txt-color-blue"><i class="fa fa-qrcode" data-rel="bootstrap-tooltip" title="Versions"></i>&nbsp;&nbsp<?php echo $_SESSION["versions"]; ?></span></h5>
 					</li>
 					<li class="sparks-info">
-						<h5> Git path <span class="txt-color-purple"><i class="fa fa-code" data-rel="bootstrap-tooltip" title="Git Path"></i>&nbsp&nbsp<?php echo "<a href='".$_SESSION["githubpath"]."'>".$_SESSION["githubpath"]."</a>";?></span></h5>
+						<h5> Git path <span class="txt-color-purple"><i class="fa fa-code" data-rel="bootstrap-tooltip" title="Git Path"></i>&nbsp&nbsp<?php echo "<a href='".$_SESSION["githubpath"]."' target='_blank'>".$_SESSION["githubpath"]."</a>";?></span></h5>
 					</li>
 				</ul>
 			</div>
@@ -61,11 +61,14 @@ include("inc/nav.php");
 	
 				<!-- row -->
 		<div class="row">
+			
 				<article class="col-sm-12">
 					<!-- new widget -->
-			<div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
-			<h2 style="color:green; margin-top:20px"><span class="widget-icon"> <i class="fa fa-sitemap"></i> </span>Graph Based Metrics:</h2>	
-				<section id="widget-grid" class="">
+			<section id="widget-grid" class="">			
+				<div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+				
+			<h2 style="color:green; margin-top:20px; margin-left:20px;"><span class="widget-icon"> <i class="fa fa-sitemap"></i> </span>Graph Based Metrics:</h2>	
+				
 					<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
 						<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2999" data-widget-editbutton="false">
 							<header style="margin-bottom:0px; margin-right:0px">
@@ -115,12 +118,12 @@ include("inc/nav.php");
 											</div>
 								</div>								
 							</div>
-						</article>	
-
+					</article>	
+				</section>
 			<div class="row">
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
 					
-					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3000" data-widget-editbutton="false">
+					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3000" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false" style="margin-left:15px;">
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
@@ -133,7 +136,7 @@ include("inc/nav.php");
 								<div class="widget-body-toolbar">
 		
 								</div>
-								<div class="widget-body" style="margin-left:30px;">
+								<div class="widget-body" style="margin-left:0px;">
 								<?php
 										include("_/php/_connections.php");
 										include ("_/php/dataclasses/_graphBasedMetrics.php"); 
@@ -143,14 +146,14 @@ include("inc/nav.php");
 						</div>	
 				</article>
 					
-				</section>
+				
 							
 								
 							
-							<h2 style="color:green; margin-top:30px"><span class="widget-icon"> <i class="fa fa-exchange"></i> </span>Repository Metrics:</h2>
+							<h2 style="color:green; margin-top:30px; margin-left:20px;"><span class="widget-icon"> <i class="fa fa-exchange"></i> </span>Repository Metrics:</h2>
 								<section id="widget-grid" class="">
 								<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
-									<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3999" data-widget-editbutton="false">
+									<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3999" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
 										<header style="margin-bottom:0px; margin-right:0px">
 										<span class="widget-icon"> <i class="fa fa-table"></i> </span>
 										<h2>Development Activity</h2>
@@ -202,7 +205,7 @@ include("inc/nav.php");
 								</article>
 								</section>
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
-					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3000" data-widget-editbutton="false">
+					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3000" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false" style="margin-left:15px;">
 						
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
@@ -216,7 +219,7 @@ include("inc/nav.php");
 								<div class="widget-body-toolbar">
 		
 								</div>
-								<div class="widget-body" style="margin-left:30px;">
+								<div class="widget-body" style="margin-left:0px;">
 								<?php
 										include("_/php/_connections.php");
 										include ("_/php/dataclasses/_commitersData.php"); 
@@ -225,7 +228,7 @@ include("inc/nav.php");
 							</div>
 						</div>	
 				</article>
-					<h2 style="color:green;"><span class="widget-icon"> <i class="fa fa-code"></i> </span>Source Code Metrics:</h2>	
+					<h2 style="color:green; margin-left:20px;"><span class="widget-icon"> <i class="fa fa-code"></i> </span>Source Code Metrics:</h2>	
 							<section id="widget-grid" class="">
 								<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
 									<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3999" data-widget-editbutton="false">
@@ -279,7 +282,7 @@ include("inc/nav.php");
 
 								<!-- end content -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
-					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3020" data-widget-editbutton="false">
+					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3020" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false" style="margin-left:15px;">
 							<!-- widget edit box -->
 									<div class="jarviswidget-editbox">
 										<!-- This area used as dropdown edit box -->
@@ -292,7 +295,7 @@ include("inc/nav.php");
 										<div class="widget-body-toolbar">
 				
 										</div>
-										<div class="widget-body" style="margin-left:30px;">
+										<div class="widget-body" style="margin-left:0px;">
 										<?php
 												include("_/php/_connections.php");
 												include ("_/php/dataclasses/_softwareMetrics.php"); 

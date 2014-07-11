@@ -33,7 +33,7 @@ if($rows_returned!=0){
 while($row = $rs->fetch_assoc()){
 	echo "<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<a href='_/php/_startProjectSession.php?pid=".$row['pid']."' onclick='storeResults(\"".$row['name']."\",\"".$row['pid']."\");'>". $row['name'] ."</a>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>";
 			echo "<div class='url text-success'>
-					<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='".$row['githubpath']."'>". $row['githubpath'] ."&nbsp;&nbsp;</a>
+					<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='".$row['githubpath']."' target='_blank'>". $row['githubpath'] ."&nbsp;&nbsp;</a>
 					</div>		
 					<p style='margin-bottom: 20px'>
 		<div>

@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(0);
 session_start();
 if(!isset($_SESSION['pname']))
 	header('Location: index.php');
@@ -71,7 +71,7 @@ if(isset($_GET)){
 						<h5> Versions <span class="txt-color-blue"><i class="fa fa-qrcode" data-rel="bootstrap-tooltip" title="Versions"></i>&nbsp;&nbsp<?php echo $_SESSION["versions"]; ?></span></h5>
 					</li>
 					<li class="sparks-info">
-						<h5> Git path <span class="txt-color-purple"><i class="fa fa-code" data-rel="bootstrap-tooltip" title="Git Path"></i>&nbsp&nbsp<?php echo "<a href='".$_SESSION["githubpath"]."'>".$_SESSION["githubpath"]."</a>";?></span></h5>
+						<h5> Git path <span class="txt-color-purple"><i class="fa fa-code" data-rel="bootstrap-tooltip" title="Git Path"></i>&nbsp&nbsp<?php echo "<a href='".$_SESSION["githubpath"]."' target='_blank'>".$_SESSION["githubpath"]."</a>";?></span></h5>
 					</li>
 				</ul>
 			</div>
@@ -80,7 +80,8 @@ if(isset($_GET)){
 <div class="row">
 <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' >
 <form id="plotoptions" method="GET" action="">	
-<input type="submit" value="Plot" class='btn btn-success btn-large'> 
+<h3 class="text-muted">Select two options and &nbsp&nbsp<input type="submit" value="Plot" class='btn btn-success btn-lg'>  </h3>
+<hr>
 <h3>Graph Based Metrics</h3>
 	<label class="checkbox-inline">
 		  <input type="checkbox" id="inlineCheckbox1" value="nodes" name="plotoptions[]"> Nodes
@@ -143,6 +144,7 @@ if(isset($_GET)){
 			<input type="hidden" id="field1" name="field1" value="" />
 			<input type="hidden" id="field2" name="field2" value="" />
 </form>
+<hr>
 </div>							
 							
 						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
