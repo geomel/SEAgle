@@ -93,14 +93,17 @@ include("inc/header.php");
 						<h4 class="modal-title" id="myModalLabel">SEAgle Instructional Video</h4>
 					</div>
 					<div class="modal-body">
-						<iframe width="560" height="315" src="//www.youtube.com/embed/ALqPT9IsTrQ" frameborder="0" allowfullscreen></iframe>
+						<iframe width="560" height="315" src="//www.youtube.com/embed/SQKUw3XNilc" frameborder="0" allowfullscreen></iframe>
 					</div>
 					
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
-<!-- ==========================CONTENT ENDS HERE ========================== -->
-
+<!-- ==========================CONTENT ENDS HERE ==========================
+<div id='page-content'> </div>
+  <ul id='pagination-demo' class='pagination-sm'></ul>
+  
+ -->  
 <?php 
 	include("inc/scripts.php"); 
 ?>
