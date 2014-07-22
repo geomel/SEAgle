@@ -4,7 +4,8 @@ include("_connections.php");
 
 if(isset($_GET['search_value'])){
 	$search_value = $_REQUEST['search_value'];
-	$flag = $_REQUEST['flag'];
+	// $flag = $_REQUEST['flag'];
+	 $flag = 1;
 }
 
 $git_flag = false;
@@ -13,14 +14,15 @@ if(isset($search_value)){
 	if (strpos($search_value,'.git')) 
 		$git_flag = true;
 			if($flag=="1")
-				$sql = "select * from project where(versions >= '$search_value') ORDER BY versions ASC";	
+				// $sql = "select * from project where(versions >= '$search_value') ORDER BY versions ASC";	
+				$sql = "select * from project where(name like '%$search_value%' OR versions like '%$search_value%' OR githubpath like '%$search_value%') ORDER BY name ASC";
 			else
 				$sql = "select * from project where(name like '%$search_value%' OR versions like '%$search_value%' OR githubpath like '%$search_value%') ORDER BY name ASC";			
 }
 else{
 	$sql = "SELECT * FROM project";	
 }
-	$msc=microtime(true);
+$msc=microtime(true);
 $rs=$conn->query($sql);
 if($rs === false) {
   trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);

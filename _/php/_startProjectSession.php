@@ -6,10 +6,10 @@ session_start();
 		$pid=$_GET['pid'];
 		
 		$project_sql = "SELECT * from project where (pid like '$pid' ) ";
-		$graph_sql = "SELECT * FROM project,version INNER JOIN graph WHERE project.pid='$pid' AND project.pid=version.pid AND version.vid = graph.vid";
-		$version_sql = "SELECT version.name FROM version, project WHERE project.pid='$pid' AND project.pid=version.pid";
-		$repository_sql = "SELECT * FROM project, version INNER JOIN repometric WHERE project.pid='$pid' AND project.pid=version.pid AND version.vid = repometric.vid";
-		$sourcecode_sql = "SELECT * FROM project, version INNER JOIN sourcemetric WHERE project.pid='$pid' AND project.pid=version.pid AND version.vid = sourcemetric.vid";
+		$graph_sql = "SELECT * FROM project,version INNER JOIN graph WHERE project.pid='$pid' AND project.pid=version.pid AND version.vid = graph.vid ORDER BY version.date ASC";
+		$version_sql = "SELECT version.name FROM version, project WHERE project.pid='$pid' AND project.pid=version.pid ORDER BY version.date ASC";
+		$repository_sql = "SELECT * FROM project, version INNER JOIN repometric WHERE project.pid='$pid' AND project.pid=version.pid AND version.vid = repometric.vid ORDER BY version.date ASC";
+		$sourcecode_sql = "SELECT * FROM project, version INNER JOIN sourcemetric WHERE project.pid='$pid' AND project.pid=version.pid AND version.vid = sourcemetric.vid ORDER BY version.date ASC";
 		
 		$rs=$conn->query($project_sql);
 		if($rs === false) {

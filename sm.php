@@ -972,6 +972,7 @@ $(document).ready(function() {
 
 		/* TABLE TOOLS */
 		$('#softMetricsTable').dataTable({
+			"aaSorting": [],
 			"sDom" : "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
 			"oTableTools" : {
 				"aButtons" : ["copy", "print", {

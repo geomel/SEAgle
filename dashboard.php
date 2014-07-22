@@ -371,57 +371,9 @@ include("inc/nav.php");
 <script type="text/javascript">
 	$(document).ready(function() {
 		 refreshTimeLine();
-		 
-		 
-		 //------------------------ DATATABLE TOOLS --------------------------
-		 /* Add the events etc before DataTables hides a column */
-		$("#datatable_fixed_column thead input").keyup(function() {
-			oTable.fnFilter(this.value, oTable.oApi._fnVisibleToColumnIndex(oTable.fnSettings(), $("thead input").index(this)));
-		});
-
-		$("#datatable_fixed_column thead input").each(function(i) {
-			this.initVal = this.value;
-		});
-		$("#datatable_fixed_column thead input").focus(function() {
-			if (this.className == "search_init") {
-				this.className = "";
-				this.value = "";
-			}
-		});
-		$("#datatable_fixed_column thead input").blur(function(i) {
-			if (this.value == "") {
-				this.className = "search_init";
-				this.value = this.initVal;
-			}
-		});		
-		
-
-		var oTable = $('#datatable_fixed_column').dataTable({
-			"sDom" : "<'dt-top-row'><'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
-			//"sDom" : "t<'row dt-wrapper'<'col-sm-6'i><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'>>",
-			"oLanguage" : {
-				"sSearch" : "Search all columns:"
-			},
-			"bSortCellsTop" : true
-		});		
-		
-
-
-		/*
-		 * COL ORDER
-		 */
-		$('#datatable_col_reorder').dataTable({
-			"sPaginationType" : "bootstrap",
-			"sDom" : "R<'dt-top-row'Clf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
-			"fnInitComplete" : function(oSettings, json) {
-				$('.ColVis_Button').addClass('btn btn-default btn-sm').html('Columns <i class="icon-arrow-down"></i>');
-			}
-		});
-		
-		/* END COL ORDER */
-
 		/* TABLE TOOLS */
 		$('#datatable_tabletools').dataTable({
+			"aaSorting": [],
 			"sDom" : "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
 			"oTableTools" : {
 				"aButtons" : ["copy", "print", {
@@ -440,6 +392,7 @@ include("inc/nav.php");
 		
 			/* TABLE TOOLS */
 		$('#commitersMetricsTable').dataTable({
+			"aaSorting": [],
 			"sDom" : "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
 			"oTableTools" : {
 				"aButtons" : ["copy", "print", {
@@ -457,6 +410,7 @@ include("inc/nav.php");
 		});
 		
 		$('#softMetricsTable').dataTable({
+			"aaSorting": [],
 			"sDom" : "<'dt-top-row'Tlf>r<'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-6'i><'col-sm-6 text-right'p>>",
 			"oTableTools" : {
 				"aButtons" : ["copy", "print", {

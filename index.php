@@ -41,9 +41,10 @@ include("inc/header.php");
 											<label class="radio">
 												<input type="radio" name="results-filter"  value="0">
 												<i></i>Show All Projects</label>
-											<label class="radio">
+											<!-- <label class="radio">
 												<input type="radio" name="results-filter" value="1">
 												<i></i>Minimum Number of Versions</label>
+												-->
 											<label class="radio">
 												<input type="radio" name="results-filter" value="2">
 												<i></i>Show TimeLine</label>	
@@ -63,8 +64,7 @@ include("inc/header.php");
 								<div id="status" class="font-lg text-success text-center">
 									
 								</div>	
-								<div id="mailnotification">
-									<form id="order-form" class="smart-form" novalidate="novalidate" style="margin-top:30px;">
+								<div id="mailnotification">								
 										<div class="row">
 											<section class="col col-4">
 											<h4>Your request may take some time to complete.</h4><span style="margin-top:10px"> You may enter your email below if you like to be notified when the analysis will complete.</span>
@@ -75,8 +75,7 @@ include("inc/header.php");
 													</button>
 												</label>
 											</section>
-										</div>	
-									</form>
+										</div>									
 								</div>
 						</div>	
 		</div>
