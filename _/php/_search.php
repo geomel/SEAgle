@@ -33,7 +33,7 @@ $rs->data_seek(0);
 echo  "<h1 class='font-md'> Search Results for <span class=''semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >( ". $rows_returned ." results) </span></small></h1><p>";
 if($rows_returned!=0){		
 while($row = $rs->fetch_assoc()){
-	echo "<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<a href='_/php/_startProjectSession.php?pid=".$row['pid']."' onclick='storeResults(\"".$row['name']."\",\"".$row['pid']."\");'>". $row['name'] ."</a>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>";
+	echo "<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<u><a href='_/php/_startProjectSession.php?pid=".$row['pid']."' onclick='storeResults(\"".$row['name']."\",\"".$row['pid']."\");'>". $row['name'] ."</a></u>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>";
 			echo "<div class='url text-success'>
 					<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='".$row['githubpath']."' target='_blank'>". $row['githubpath'] ."&nbsp;&nbsp;</a>
 					</div>		
