@@ -20,6 +20,9 @@ echo "<table id='datatable_tabletools' class='table table-striped table-hover' >
 					<th>Nodes</th>
 					<th>Edges</th>
 					<th>Diameter</th>
+					<th>Density</th>
+                    <th>Alpha</th>
+                    <th>Average Degree</th>
 					<th>Clustering Coeficient</th>
 				</tr>
 			</thead>
@@ -31,7 +34,10 @@ echo "<table id='datatable_tabletools' class='table table-striped table-hover' >
 		  echo "<td>" . $row['nodes'] . "</td>";
 		  echo "<td>" . $row['edges'] . "</td>";
 		  echo "<td>" . $row['diameter'] . "</td>";
-		  echo "<td>" . $row['cc'] . "</td>";
+		  echo "<td>" . round($row['density'],3) . "</td>";
+          echo "<td>" . round($row['alpha'],3) . "</td>";
+          echo "<td>" . round($row['averageDegree'],3) . "</td>";
+		  echo "<td>" . round($row['cc'],3) . "</td>";
 		  echo "</tr>";
 		  }
 echo "</tbody>

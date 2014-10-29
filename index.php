@@ -69,19 +69,6 @@ include("inc/header.php");
 							<div id="search-res"></div>	
 								<div id="status" class="font-lg text-success text-center">
 									
-								</div>	
-								<div id="mailnotification">								
-										<div class="row">
-											<section class="col col-4">
-											<h4>Your request may take some time to complete.</h4><span style="margin-top:10px"> You may enter your email below if you like to be notified when the analysis will complete.</span>
-												<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
-													<input type="email" name="email" placeholder="E-mail" id="email">
-													<button class="btn btn-primary btn-large" id="mailbtn">
-														Submit
-													</button>
-												</label>
-											</section>
-										</div>									
 								</div>
 						</div>	
 		</div>

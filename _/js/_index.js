@@ -65,8 +65,8 @@ function refreshTimeLine(){
 		
 		$("#mailbtn").click(function(e) {
 			$('#mailnotification').hide();
-			document.getElementById("execsqltime").innerHTML = "Thank You.<p>A notification email will be sent when the proccess will complete at: " + $('#email').val() + "<br>Until then leave this page open." ;
-			
+			document.getElementById("execsqltime").innerHTML = "Thank You.<p>A notification email will be sent when the proccess will complete at: " + $('#email').val() ;
+            $.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() });
 		});		
 	})
 
@@ -77,7 +77,9 @@ function refreshTimeLine(){
 		$('#analyzebtn').hide();
 		$('#search-res').hide();
 		gpath = $('#search-project').val();
-		$.ajax({ url: '_/php/_trigger_java.php?gitpath=' + gpath}); 
+        reciever_email = $('#email').val();
+        alert('_/php/_trigger_java.php?gitpath=' + gpath + '&reciever=' + reciever_email);
+		$.ajax({ url: '_/php/_trigger_java.php?gitpath=' + gpath + '&reciever=' + reciever_email});
 }
 
  function readServerLog(gpath){
@@ -138,7 +140,7 @@ function openSocket() {
 
     webSocket.onclose = function(event) {
         writeResponse("The analysis for the project you requested, is now complete.<p><p>You may view it by pressing the 'Show Timeline' option above.");
-		setTimeout($.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() }), 4000);	
+		//setTimeout($.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() }), 4000);
     };
 }
 

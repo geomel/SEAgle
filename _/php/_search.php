@@ -111,6 +111,19 @@ while($row = $rs->fetch_assoc()){
 }else{
 	if($git_flag==true)
 		echo 	"<div class='center-block'>
+		            <div id='mailnotification'>
+                        <div class='row'>
+                            <section class='col col-4'>
+                            <h4>Your request may take some time to complete.</h4><span style='margin-top:10px'> Enter your email below if you like to be notified when the analysis will complete.</span>
+                                <label class='input'> <i class='icon-append fa fa-envelope-o'></i>
+                                    <input type='email' name='email' placeholder='E-mail' id='email'>
+                                    <button class='btn btn-primary btn-large' id='mailbtn'>
+                                        Submit
+                                    </button>
+                                </label>
+                            </section>
+                        </div>
+					</div>
 					 <h3>This git url does not exist in our database. Analyse this project now?</h3>
 					 <a href='#' class='btn btn-success btn-large' id='analyzebtn' onclick='runJava()'><i class='fa fa-cloud-download'></i> Start Analysing ".$search_value." Now</a><p>
 				</div>

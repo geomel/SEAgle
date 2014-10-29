@@ -1,7 +1,7 @@
 <?php
 
 include("_connections.php"); 
-$sql = "SELECT * FROM project order by pid desc limit 1";	
+$sql = "SELECT * FROM project order by pid desc limit 1";
 $rs=$conn->query($sql);
 if($rs === false) {
   trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);

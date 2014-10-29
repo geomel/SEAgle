@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="Seagle Project">
+    <serverData>
+      <paths name="Seagle Project">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/seagle" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
+
