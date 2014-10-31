@@ -17,6 +17,7 @@ echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 			<thead>
 				<tr>
 					<th>Version</th>
+					<th>Lines of Code</th>
 					<th>Number Of Methods</th>
 					<th>Number Of Fields</th>
 					<th>Coupling Between Objects</th>
@@ -29,11 +30,12 @@ echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 		  {
 		  echo "<tr>";
 		  echo "<td>" . $row['name'] . "</td>";
+		  echo "<td>" . $row['loc'] . "</td>";
 		  echo "<td>" . $row['nom'] . "</td>";
 		  echo "<td>" . $row['nof'] . "</td>";
-		  echo "<td>" . $row['cbo'] . "</td>";
-		  echo "<td>" . $row['lcom'] . "</td>";
-		  echo "<td>" . $row['wmc'] . "</td>";
+		  echo "<td>" . round($row['cbo'],3) . "</td>";
+		  echo "<td>" . round($row['lcom'],3) . "</td>";
+		  echo "<td>" . round($row['wmc'],3) . "</td>";
 		  echo "</tr>";
 		  }
 echo "</tbody>
