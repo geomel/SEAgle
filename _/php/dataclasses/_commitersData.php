@@ -21,6 +21,9 @@ echo "<table id='commitersMetricsTable' class='table table-striped table-hover' 
 					<th>Commits</th>
 					<th>Lines Added</th>
 					<th>Lines Deleted </th>
+					<th>Files Added</th>
+                    <th>Files Modified</th>
+					<th>Files Deleted </th>
 				</tr>
 			</thead>
 		<tbody>";
@@ -32,6 +35,9 @@ echo "<table id='commitersMetricsTable' class='table table-striped table-hover' 
 		  echo "<td>" . $row['commits'] . "</td>";
 		  echo "<td>" . $row['linesAdded'] . "</td>";
 		  echo "<td>" . $row['linesDeleted'] . "</td>";
+		  echo "<td>" . $row['filesAdded'] . "</td>";
+          echo "<td>" . $row['filesModified'] . "</td>";
+		  echo "<td>" . $row['filesDeleted'] . "</td>";
 		  echo "</tr>";
 		  }
 echo "</tbody>
