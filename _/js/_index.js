@@ -67,7 +67,18 @@ function refreshTimeLine(){
 			$('#mailnotification').hide();
 			document.getElementById("execsqltime").innerHTML = "Thank You.<p>A notification email will be sent when the proccess will complete at: " + $('#email').val() ;
             $.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() });
-		});		
+		});	
+
+		
+		// select / deselect versions
+				$('#all').click(function(){
+					if($(this).is(':checked')){
+						$('#checkVersions').attr("checked",false);
+					}
+					else{
+						$('#checkVersions').attr("checked",true);
+					}
+				})	
 	})
 
 
@@ -78,8 +89,23 @@ function refreshTimeLine(){
 		$('#search-res').hide();
 		gpath = $('#search-project').val();
         reciever_email = $('#email').val();
-        alert('_/php/_trigger_java.php?gitpath=' + gpath + '&reciever=' + reciever_email);
-		$.ajax({ url: '_/php/_trigger_java.php?gitpath=' + gpath + '&reciever=' + reciever_email});
+     //   alert('_/php/_trigger_java.php?gitpath=' + gpath + '&reciever=' + reciever_email);
+		$.ajax({ url: '_/php/_trigger_java.php?gitpath=' + gpath + '&reciever=' + reciever_email,
+		data: {
+               
+			   },
+		success: function(result) {
+		   result = result.slice(34);
+		   var json = JSON.stringify(eval("(" + result ));
+		   json = JSON.parse(json);
+		   var $grouplist = $('#checkVersions');
+		   $.each(json, function() {
+				$('<label class="checkbox"><input type="checkbox" id="checkVersions" checked="checked" value=\''+this.id+'\'><i></i>' + 
+				this.date + "   " + this.name + '</label>').appendTo($grouplist);
+			});
+			
+		}
+		});
 }
 
  function readServerLog(gpath){
