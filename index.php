@@ -60,20 +60,73 @@ include("inc/header.php");
 							</div>
 						</form>	
 					</div>	
-						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="margin-left:30px;">	
-						<div id="checkVersions"> 
-								<input type="checkbox" id="selectall">ALL
+						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="margin-left:30px;">							
+							<div id="checkVersions"> 
+									<input type="checkbox" id="selectall">ALL
+							</div>	
+									<span class="note"><span id="results">  </span> <span id="execsqltime" style="margin-top:10px;"/> </span>
+									<div class='smart-timeline'>	
+										<ul class='smart-timeline-list'>
+											<div id="ajax-timeline"> </div>					
+									</div>
+								<div id="search-res"></div>	
+									<div id="status" class="font-lg text-success text-center">
+										
+									</div>
 						</div>	
-								<span class="note"><span id="results">  </span> <span id="execsqltime" style="margin-top:10px;"/> </span>
-								<div class='smart-timeline'>	
-									<ul class='smart-timeline-list'>
-										<div id="ajax-timeline"> </div>					
+						
+						<div class="col-lg-6 col-lg-offset-3">
+						
+							<div class="widget-body fuelux">
+								
+								<div class="wizard">
+									<ul class="steps">
+										<li data-target="#step1" class="active">
+											<span class="badge badge-info">1</span>Enter Email<span class="chevron"></span>
+										</li>
+										<li data-target="#step2">
+											<span class="badge">2</span>Select Versions<span class="chevron"></span>
+										</li>
+										<li data-target="#step3">
+											<span class="badge">3</span>Complete<span class="chevron"></span>
+										</li>
+									</ul>
+									<div class="actions">
+										<button type="button" class="btn btn-sm btn-primary btn-prev">
+											<i class="fa fa-arrow-left"></i>Prev
+										</button>
+										<button type="button" class="btn btn-sm btn-success btn-next" data-last="Finish">
+											Next<i class="fa fa-arrow-right"></i>
+										</button>
+									</div>
 								</div>
-							<div id="search-res"></div>	
-								<div id="status" class="font-lg text-success text-center">
-									
+								
+								<div class="step-content">
+									<form class="form-horizontal" id="fuelux-wizard" method="post">
+		
+										<div class="step-pane active" id="step1">
+											<h3><strong>Step 1 </strong> - Enter Email</h3>
+		
+	
+										</div>
+		
+										<div class="step-pane" id="step2">
+											<h3><strong>Step 2 </strong> - Select Versions</h3>
+		
+											
+		
+										</div>
+		
+										<div class="step-pane" id="step3">
+											<h3><strong>Step 3 </strong> - Complete</h3>
+											
+										</div>
+									</form>
 								</div>
-						</div>	
+		
+							</div>
+						
+						</div>
 		</div>
 		
 	</div>
@@ -119,5 +172,7 @@ include("inc/header.php");
 <?php 
 	include("inc/scripts.php"); 
 ?>
+
+ <script src="<?php echo ASSETS_URL; ?>/js/plugin/fuelux/wizard/wizard.js"></script>
 
 <script src="_/js/_index.js"></script>

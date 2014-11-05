@@ -68,6 +68,8 @@ function refreshTimeLine(){
 			document.getElementById("execsqltime").innerHTML = "Thank You.<p>A notification email will be sent when the proccess will complete at: " + $('#email').val() ;
             $.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() });
 		});	
+		
+		 $('#checkVersions').hide();
 
 	})
 
@@ -88,6 +90,7 @@ function refreshTimeLine(){
 		   result = result.slice(34);
 		   var json = JSON.stringify(eval("(" + result ));
 		   json = JSON.parse(json);
+		   $('#checkVersions').show();
 		   var $grouplist = $('#checkVersions');
 		   $.each(json, function() {
 				$('<label class="checkbox"><input type="checkbox" class="check" name="check[]" checked="checked" value=\''+this.id+'\'><i></i>' + 
@@ -187,3 +190,7 @@ function closeSocket() {
 function writeResponse(text) {
     document.getElementById("status").innerHTML = "<br/>" + text;
 }	
+
+
+
+
