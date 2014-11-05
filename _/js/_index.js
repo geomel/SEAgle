@@ -69,16 +69,6 @@ function refreshTimeLine(){
             $.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() });
 		});	
 
-		
-		// select / deselect versions
-				$('#all').click(function(){
-					if($(this).is(':checked')){
-						$('#checkVersions').attr("checked",false);
-					}
-					else{
-						$('#checkVersions').attr("checked",true);
-					}
-				})	
 	})
 
 
@@ -94,19 +84,32 @@ function refreshTimeLine(){
 		data: {
                
 			   },
-		success: function(result) {
+		success: function(result) { // trims json data from server to be valid
 		   result = result.slice(34);
 		   var json = JSON.stringify(eval("(" + result ));
 		   json = JSON.parse(json);
 		   var $grouplist = $('#checkVersions');
 		   $.each(json, function() {
-				$('<label class="checkbox"><input type="checkbox" id="checkVersions" checked="checked" value=\''+this.id+'\'><i></i>' + 
+				$('<label class="checkbox"><input type="checkbox" class="check" name="check[]" checked="checked" value=\''+this.id+'\'><i></i>' + 
 				this.date + "   " + this.name + '</label>').appendTo($grouplist);
-			});
-			
+			});		
 		}
 		});
 }
+
+
+    $('#selectall').click(function(event) {  //on click 
+        if(this.checked) { // check select status
+            $('.check').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"               
+            });
+        }else{
+            $('.check').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });         
+        }
+    });
+    
 
  function readServerLog(gpath){
 /*

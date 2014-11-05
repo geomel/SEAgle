@@ -62,7 +62,7 @@ include("inc/header.php");
 					</div>	
 						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="margin-left:30px;">	
 						<div id="checkVersions"> 
-								<input type="checkbox" id="all">ALL
+								<input type="checkbox" id="selectall">ALL
 						</div>	
 								<span class="note"><span id="results">  </span> <span id="execsqltime" style="margin-top:10px;"/> </span>
 								<div class='smart-timeline'>	
