@@ -1,35 +1,27 @@
 <?php
 	$client = new SoapClient("http://se.uom.gr:8080/SeagleWS/SeagleWS?WSDL");
 
-
-    if(isset($_GET['reciever'])){
-        $reciever = $_GET['reciever'];
-        $mail_params = array("userMail"=>"$reciever");
-        $client->__soapCall('setmail', array($mail_params));
-    }
-/*
-	if(isset($_GET['gitpath'])){
+// 1. Sends gitPath and receives versions
+		if(isset($_GET['gitpath'])){
 		$gitPath = $_GET['gitpath'];
-	//	$gitPath = "https://github.com/socrata-cookbooks/java.git";
-		echo $gitPath;
-		$params = array("gitPath"=>"$gitPath");
-		$client->__soapCall('analyze', array($params)); // tha epistrefei dedomena json to web service
-	}
-	else{
-		echo "path not set!";
-	}
-	
-*/
-	if(isset($_GET['gitpath'])){
-		$gitPath = $_GET['gitpath'];
-		$params = array("gitPath"=>"$gitPath");
-		$jsonResponse = $client->__soapCall('downloadProject', array($params)); // tha epistrefei dedomena json to web service
+		$gitPathParam = array("gitPath"=>"$gitPath");
+		$jsonResponse = $client->__soapCall('downloadProject', array($gitPathParam)); // tha epistrefei dedomena json to web service
 		print_r($jsonResponse);
 	}
-	else{
-		return "path not set!";
+	
+// 2. Sends versions in JSON format	
+	if(isset($_GET['ready2Analyze'])){
+		$versions = $_GET['ready2Analyze'];
+		$versionParams = array("versionsInJSONString"=>"$versions");
+		$response = $client->__soapCall('analyzeVersions', array($versionParams)); // tha epistrefei null ?
 	}
 	
-	// setVersions, 
-	//downloadProject, stelno gitpath gia na paro ta json
+// 2. Sends the user email to be notified on completion		
+	if(isset($_GET['mailnotification'])){
+        $mailnotification = $_GET['mailnotification'];
+        $mail_params = array("userMail"=>"$mailnotification");
+        $client->__soapCall('setmail', array($mail_params));
+    }
+
+
 ?>

@@ -29,6 +29,7 @@ include("inc/header.php");
 	<!-- MAIN CONTENT -->
 	<div id="content" style="padding: 30px;" >	
 		<div class="row">
+			<div id="searchControls">
 				<div class="col-lg-6 col-lg-offset-3">
 					<div class="input-group input-group-lg">
 						<input type="text" class="form-control input-large"  placeholder="Search project or enter git repository (e.g. https://git-repo.com/user/example-project.git)" id="search-project" /> 
@@ -59,7 +60,66 @@ include("inc/header.php");
 							
 							</div>
 						</form>	
-					</div>	
+					</div>
+			</div>
+	<div class='col-lg-6 col-lg-offset-3' id="wiz">						
+							<div class='widget-body fuelux'>							
+								<div class='wizard'>
+									<ul class='steps'>
+										<li data-target='#step1' class='active'>
+											<span class='badge badge-info'>1</span>Select Versions<span class='chevron'></span>
+										</li>
+										<li data-target='#step2'>
+											<span class='badge'>2</span>Email notification<span class='chevron'></span>
+										</li>
+										<li data-target='#step3'>
+											<span class='badge'>3</span>Ready<span class='chevron'></span>
+										</li>
+									</ul>
+									<div class='actions'>
+										<button type='button' class='btn btn-sm btn-primary btn-prev'>
+											<i class='fa fa-arrow-left'></i>Prev
+										</button>
+										<button type='button' class='btn btn-sm btn-success btn-next' data-last='Done'>
+											Next<i class='fa fa-arrow-right'></i>
+										</button>
+									</div>
+								</div>					
+								<div class='step-content'>
+									<form class='form-horizontal' id='fuelux-wizard' method='post'>
+										<div class='step-pane active' id='step1'>
+											<h3><strong>Step 1 </strong> - Select which versions to analyze</h3>
+												<div id='checkVersions'> 
+													<input type='checkbox' id='selectall' checked>ALL
+												</div>
+										</div>
+										<div class='step-pane' id='step2'>
+											<h3><strong>Step 2 </strong> - Email notification on completion</h3>
+												<div class='center-block'>
+													<div id='mailnotification'>
+														<div class='row'>
+															<section class='col col-4'>
+															<h4>Your request may take some time to complete.</h4><span style='margin-top:10px'> Enter your email below if you like to be notified when the analysis will complete.</span>
+																<label class='input'> <i class='icon-append fa fa-envelope-o'></i>
+																	<input type='email' name='email' placeholder='E-mail' id='email'>
+																</label>
+															</section>
+														</div>
+													</div>
+													 <a href='#' class='btn btn-success btn-large' id='analyzebtn' onclick=''><i class='fa fa-cloud-download'></i> Start Analysing ".$search_value." Now</a><p>
+												</div>
+												
+										</div>		
+										<div class='step-pane' id='step3'>
+											<h3><strong>Step 3 </strong> Go!</h3>
+ <a href='#' class='btn btn-success btn-large' id='analyzebtn' onclick='runJava()'><i class='fa fa-cloud-download'></i> Start Analysing Now</a><p>											
+										</div>
+									</form>
+								</div>
+							</div>						
+	</div>
+
+					
 						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="margin-left:30px;">							
 								
 									<span class="note"><span id="results">  </span> <span id="execsqltime" style="margin-top:10px;"/> </span>

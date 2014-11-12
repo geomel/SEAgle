@@ -110,66 +110,9 @@ while($row = $rs->fetch_assoc()){
 	}
 }else{
 	if($git_flag==true)
-		echo 	"		<div class='col-lg-6 col-lg-offset-3'>						
-							<div class='widget-body fuelux'>							
-								<div class='wizard'>
-									<ul class='steps'>
-										<li data-target='#step1' class='active'>
-											<span class='badge badge-info'>1</span>Enter Email<span class='chevron'></span>
-										</li>
-										<li data-target='#step2'>
-											<span class='badge'>2</span>Select Versions<span class='chevron'></span>
-										</li>
-										<li data-target='#step3'>
-											<span class='badge'>3</span>Complete<span class='chevron'></span>
-										</li>
-									</ul>
-									<div class='actions'>
-										<button type='button' class='btn btn-sm btn-primary btn-prev'>
-											<i class='fa fa-arrow-left'></i>Prev
-										</button>
-										<button type='button' class='btn btn-sm btn-success btn-next' data-last='Finish'>
-											Next<i class='fa fa-arrow-right'></i>
-										</button>
-									</div>
-								</div>					
-								<div class='step-content'>
-									<form class='form-horizontal' id='fuelux-wizard' method='post'>
-										<div class='step-pane active' id='step1'>
-											<h3><strong>Step 1 </strong> - Enter Email</h3>
-											<div class='center-block'>
-		            <div id='mailnotification'>
-                        <div class='row'>
-                            <section class='col col-4'>
-                            <h4>Your request may take some time to complete.</h4><span style='margin-top:10px'> Enter your email below if you like to be notified when the analysis will complete.</span>
-                                <label class='input'> <i class='icon-append fa fa-envelope-o'></i>
-                                    <input type='email' name='email' placeholder='E-mail' id='email'>
-                                    <button class='btn btn-primary btn-large' id='mailbtn'>
-                                        Submit
-                                    </button>
-                                </label>
-                            </section>
-                        </div>
-					</div>
-					 <h3>This git url does not exist in our database. Analyse this project now?</h3>
-					 <a href='#' class='btn btn-success btn-large' id='analyzebtn' onclick='runJava()'><i class='fa fa-cloud-download'></i> Start Analysing ".$search_value." Now</a><p>
-				</div>
-										</div>
-										<div class='step-pane' id='step2'>
-											<h3><strong>Step 2 </strong> - Select Versions</h3>
-												<div id='checkVersions'> 
-													<input type='checkbox' id='selectall'>ALL
-												</div>
-										</div>		
-										<div class='step-pane' id='step3'>
-											<h3><strong>Step 3 </strong> - Complete</h3>										
-										</div>
-									</form>
-								</div>
-	
-							</div>						
-						</div>
-				";
+		echo "<script type='text/javascript'>"
+				, "runWizard();"
+				, "</script>";				
 	else
 		echo "<h3>No data found. Try a different query</h3>";
 		
@@ -180,8 +123,7 @@ $msc = round($msc, 4);
 echo "<span style='visibility:hidden;'> <span id='sqltime'>". $msc." seconds </span></span>";
 
 include_once("../../lib/config.php"); 
-include_once("../../inc/scripts.php"); 
-echo "<script src='../../seagle_/js/plugin/fuelux/wizard/wizard.js'></script>";
+
 
 ?>	
 	

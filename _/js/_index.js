@@ -4,7 +4,7 @@ function refreshTimeLine(){
     }
 	
 	$(document).ready(function() {
-		
+		$('#wiz').hide();
 		$('#ajax-timeline').hide();
 		
 		$("input:radio[name=results-filter]").click(function() {
@@ -31,13 +31,13 @@ function refreshTimeLine(){
 						$("#execsqltime").load("_/php/_search.php #sqltime");
                         $('#ajax-timeline').show();
 						$("#search-project").attr("disabled", "disabled"); 
-						$('#mailnotification').hide();
+					//	$('#mailnotification').hide();
                         break;
 					}	
 		});
 			
 				
-		$('#mailnotification').hide();		
+	//	$('#mailnotification').hide();		
 			
 		$("#search-project").focus();	
 		
@@ -45,7 +45,7 @@ function refreshTimeLine(){
 		$('#search-project').keypress(function(e) {
 			if(e.which == 13) {
 				$('#search-res').show();
-				$('#mailnotification').hide();
+		//		$('#mailnotification').hide();
 				if($('input:radio[name=results-filter]:checked').val()=="1")
 					$("#search-res").load("_/php/_search.php?search_value=" + $("#search-project").val() + "&flag=1");
 				else{	
@@ -57,32 +57,39 @@ function refreshTimeLine(){
 			  });
 			$("#search-button").click(function(){
 				$('#search-res').show();
-				$('#mailnotification').hide();
+			//	$('#mailnotification').hide();
 				$("#search-res").load("_/php/_search.php?search_value=" + $("#search-project").val()+"&filter_flag=0",function (text, statusText){
 					$("#execsqltime").load("_/php/_search.php #sqltime");
 						});	
 			});	
 		
 		$("#mailbtn").click(function(e) {
-			$('#mailnotification').hide();
-			document.getElementById("execsqltime").innerHTML = "Thank You.<p>A notification email will be sent when the proccess will complete at: " + $('#email').val() ;
+		//	$('#mailnotification').hide();
+		//	document.getElementById("execsqltime").innerHTML = "Thank You.<p>A notification email will be sent when the proccess will complete at: " + $('#email').val() ;
             $.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() });
 		});	
 		
-		 $('#checkVersions').hide();
+		// $('#checkVersions').hide();
 
 	})
 
 
-	function runJava(){
-        openSocket();
-		$('#mailnotification').show();
+	
+	function runWizard(){
+		$('#wiz').show();
+		$('#searchControls').hide();
+		getVersions();
+	}
+
+	function getVersions(){
+       // openSocket();
+	//	$('#mailnotification').show();
 		$('#analyzebtn').hide();
 		$('#search-res').hide();
 		gpath = $('#search-project').val();
         reciever_email = $('#email').val();
      //   alert('_/php/_trigger_java.php?gitpath=' + gpath + '&reciever=' + reciever_email);
-		$.ajax({ url: '_/php/_trigger_java.php?gitpath=' + gpath + '&reciever=' + reciever_email,
+		$.ajax({ url: '_/php/_trigger_java.php?gitpath=' + gpath ,
 		data: {
                
 			   },
@@ -93,13 +100,34 @@ function refreshTimeLine(){
 		   $('#checkVersions').show();
 		   var $grouplist = $('#checkVersions');
 		   $.each(json, function() {
-				$('<label class="checkbox"><input type="checkbox" class="check" name="check[]" checked="checked" value=\''+this.id+'\'><i></i>' + 
-				this.date + "   " + this.name + '</label>').appendTo($grouplist);
+				$('<label class="checkbox"><input type="checkbox" class="check" name="check[]" checked="checked" value=\''+this.id+'\'><i></i>(' + 
+				this.date + ")   " + this.name + '</label>').appendTo($grouplist);
 			});		
 		}
 		});
 }
 
+	function runJava(){
+        openSocket();
+		gpath = $('#search-project').val();
+        reciever_email = $('#email').val();
+		var versions_json={};
+		var version = [];
+		versions_json =  $("#checkVersions input:checkbox:checked").map(function(){
+			 version.push($(this).val());
+		});	
+	
+		jsonSelectedVeriosns = JSON.stringify(version);
+		
+		$.ajax({ url: '_/php/_trigger_java.php?ready2Analyze=' +  jsonSelectedVeriosns,
+		data: {
+               
+			   },
+		success: function(result) { 
+		   	
+		}
+		});
+}
 
     $('#selectall').click(function(event) {  //on click 
         if(this.checked) { // check select status
@@ -113,17 +141,8 @@ function refreshTimeLine(){
         }
     });
     
-
- function readServerLog(gpath){
 /*
-	if(show_hide_server_flag){
-			$('#server_data').show("slow");
-			show_hide_server_flag=0;
-		} else{
-			$('#server_data').hide("slow");
-			show_hide_server_flag=1;
-		}
-	*/
+ function readServerLog(gpath){
 	$.ajax({
         url: "http://se.uom.gr/seagle/logs/"+gpath+".txt",
         dataType: 'text',
@@ -137,6 +156,7 @@ function refreshTimeLine(){
 			$("#search-res").load("_/php/_search.php?val=" + "geomel");
 		});
 	}	
+*/
 	
 var webSocket;
 
@@ -171,8 +191,21 @@ function openSocket() {
     };
 
     webSocket.onclose = function(event) {
-        writeResponse("The analysis for the project you requested, is now complete.<p><p>You may view it by pressing the 'Show Timeline' option above.");
-		//setTimeout($.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() }), 4000);
+        writeResponse("The analysis for the project you requested, is now complete.");
+		// refreshTimeline();
+		
+		$.ajax({ url: '_/php/_trigger_java.php?mailnotification=' + $('#email').val() + '00' + $("#search-project").val() ,
+		data: {
+               
+			   },
+		success: function(result) { 
+					$('#ajax-timeline').load('_/php/_timeline.php', function(){		
+				});
+				$('#wiz').hide();
+				$('#searchControls').show();
+				$('#ajax-timeline').show();
+			}
+		});
     };
 }
 
@@ -192,5 +225,5 @@ function writeResponse(text) {
 }	
 
 
-
+ //$.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() });
 

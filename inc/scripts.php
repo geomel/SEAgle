@@ -17,6 +17,8 @@
 				document.write('<script src="<?php echo ASSETS_URL; ?>/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
 			}
 		</script>
+		
+				
 
 		<!-- JS TOUCH : include this plugin for mobile drag / drop touch events
 		<script src="<?php echo ASSETS_URL; ?>/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
@@ -55,7 +57,7 @@
 
 		<!-- FastClick: For mobile devices -->
 		<script src="<?php echo ASSETS_URL; ?>/js/plugin/fastclick/fastclick.js"></script>
-		
+		<script src="<?php echo ASSETS_URL; ?>/js/plugin/fuelux/wizard/wizard.js"></script>
 
 		<!--[if IE 7]>
 
@@ -63,7 +65,6 @@
 
 		<![endif]-->
 
-		
 
 		<!-- MAIN APP JS FILE -->
 		<script src="<?php echo ASSETS_URL; ?>/js/app.js"></script>		
@@ -78,3 +79,4 @@
 			})
 
 		</script>
+				
