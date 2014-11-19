@@ -15,7 +15,7 @@ include("inc/header.php");
 		</button>	
 		<button type="button" class="btn btn-labeled btn-success btn-lg" data-toggle="modal" data-target="#myModalRelatedPaper">
 			<i class="fa fa-book"></i>
-			Related Paper			
+			Related Papers			
 		</button>	
 
 	</div>	
@@ -80,7 +80,7 @@ include("inc/header.php");
 										<button type='button' class='btn btn-sm btn-primary btn-prev'>
 											<i class='fa fa-arrow-left'></i>Prev
 										</button>
-										<button type='button' class='btn btn-sm btn-success btn-next' data-last='Done'>
+										<button type='button' class='btn btn-sm btn-success btn-next' data-last='Go!'>
 											Next<i class='fa fa-arrow-right'></i>
 										</button>
 									</div>
@@ -88,19 +88,23 @@ include("inc/header.php");
 								<div class='step-content'>
 									<form class='form-horizontal' id='fuelux-wizard' method='post'>
 										<div class='step-pane active' id='step1'>
-											<h3><strong>Step 1 </strong> - Select which versions to analyze</h3>
+											<h3><strong>Step 1 </strong> - Select the versions you wish to analyze</h3>
 												<div id='checkVersions'> 
 													<input type='checkbox' id='selectall' checked>ALL
+													<div id="loading">
+														<img src="img\loading_.gif" width="200" height="100"></img>
+														
+													</div>	 
 												</div>
 										</div>
 										<div class='step-pane' id='step2'>
-											<h3><strong>Step 2 </strong> - Email notification on completion</h3>
+											<h3><strong>Step 2 </strong> - Email notification on completion(Optional)</h3>
 												<div class='center-block'>
 													<div id='mailnotification'>
 														<div class='row'>
 															<section class='col col-4'>
-															<h4>Your request may take some time to complete.</h4><span style='margin-top:10px'> Enter your email below if you like to be notified when the analysis will complete.</span>
-																<label class='input'> <i class='icon-append fa fa-envelope-o'></i>
+															<h4>Your request may take some time to complete.</h4><span style='margin-top:10px'> <p>Enter your email below if you like to be notified when the analysis will complete.</span>
+																<p><label class='input'> <i class='icon-append fa fa-envelope-o'></i>
 																	<input type='email' name='email' placeholder='E-mail' id='email'>
 																</label>
 															</section>
@@ -112,13 +116,12 @@ include("inc/header.php");
 										</div>		
 										<div class='step-pane' id='step3'>
 											<h3><strong>Step 3 </strong> Go!</h3>
- <a href='#' class='btn btn-success btn-large' id='analyzebtn' onclick='runJava()'><i class='fa fa-cloud-download'></i> Start Analysing Now</a><p>											
+ <button class="btn btn-xl btn-block btn-success" type="button" onclick="runJava()"><i class='fa fa-cloud-download'></i><h5>&nbsp Start Analysing Now</h5></a><p>											
 										</div>
 									</form>
 								</div>
 							</div>						
 	</div>
-
 					
 						<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style="margin-left:30px;">							
 								
@@ -128,7 +131,7 @@ include("inc/header.php");
 											<div id="ajax-timeline"> </div>					
 									</div>
 								<div id="search-res"></div>	
-									<div id="status" class="font-lg text-success text-center">
+									<div id="status" class="muted text-center">
 										
 									</div>
 						</div>				

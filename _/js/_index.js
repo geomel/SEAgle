@@ -4,9 +4,10 @@ function refreshTimeLine(){
     }
 	
 	$(document).ready(function() {
+		
 		$('#wiz').hide();
 		$('#ajax-timeline').hide();
-		
+		$('#loading').hide();
 		$("input:radio[name=results-filter]").click(function() {
 			var value = $(this).val();
 			switch (value) {
@@ -78,6 +79,7 @@ function refreshTimeLine(){
 	function runWizard(){
 		$('#wiz').show();
 		$('#searchControls').hide();
+		$('#loading').show();
 		getVersions();
 	}
 
@@ -102,7 +104,12 @@ function refreshTimeLine(){
 		   $.each(json, function() {
 				$('<label class="checkbox"><input type="checkbox" class="check" name="check[]" checked="checked" value=\''+this.id+'\'><i></i>(' + 
 				this.date + ")   " + this.name + '</label>').appendTo($grouplist);
-			});		
+				});		
+			},
+		complete: function() {
+			
+			$('#loading').hide();
+		
 		}
 		});
 }
