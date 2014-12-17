@@ -166,8 +166,30 @@ include("inc/header.php");
 						<h4 class="modal-title" id="myModalLabel2">Related Paper and Recommended Citation</h4>
 					</div>
 					<div class="modal-body">
-						T. Chaikalis, E.Ligu, G. Melas and A. Chatzigeorgiou “Seagle: Effortless Software Evolution Analysis”, 30th International Conference on Software Maintenance and Evolution (ICSME’2014), Tool Demonstraction Track, Victoria, British Columbia, Canada, Sept. 28 – Oct. 3, 2014.
-					</div>
+				<p><strong>A. Chatzigeorgiou and G. Melas,</strong> <em>"Trends in Object-Oriented Software Evolution: Investigating Network Properties",</em> 34th International Conference on Software Engineering (ICSE'2012), 
+					New Ideas & Emerging Results track (NIER), Zurich, Switzerland, June 2-9, 2012. (Acceptance ratio: 17.7%, 26/147)
+					<a href="assets/slides/ICSE2012.ppt">Presentation Slides</a></p>
+					<p><strong>T. Chaikalis, G. Melas and A. Chatzigeorgiou,</strong><em> "SEANets: Software Evolution Analysis with Networks",</em> 28th IEEE International Conference on Software Maintenance (ICSM'2012), Tool Demonstration Track, Riva del Garda, Trento, Italy, September 23rd - 30th, 2012.
+					<a href="assets/papers/ICSM_2012.pdf">Download pdf</a></p>
+                <p>
+                    <strong>T. Chaikalis, E.Ligu, G. Melas and A. Chatzigeorgiou, </strong>
+                    “Seagle: Effortless Software Evolution Analysis”
+                    , 30th International Conference on Software Maintenance and Evolution (ICSME’2014), Tool Demonstraction Track, 
+                    Victoria, British Columbia, Canada, Sept. 28 – Oct. 3, 2014. <a href="assets/papers/ICSME_2014.pdf" target="_blank">
+					Download pdf </a>
+                </p>
+                <p>   
+                    @inproceedings{chaikalis_seagle:_2014, <br>
+                    address = {Victoria, British Columbia, Canada},<br>
+                    series = {Tool Demonstration Track},<br>
+                    title = {Seagle: Effortless Software Evolution Analysis},<br>
+                    author = {Chaikalis, Theodore and Melas, George and Ligu, Elivs and Chatzigeorgiou, Alexander},<br>
+                    month = sept-oct,<br>
+                    year = {2014}, <br>
+                    pages = {581--584}
+                    }
+                </p>
+            </div>
 					
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
