@@ -8,7 +8,7 @@ var url = "http://195.251.210.137:8080/seagle2/rs/";
 var resultHTML = "";
 
 
-function getAllProjects(){
+function getAllProjects(flag){
 
 	$.ajax({
 			dataType:"json",
@@ -18,9 +18,13 @@ function getAllProjects(){
 		resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >( " + response.projects.length + " results) </span></small></h1><p> ";
 		for (var i = 0; i < response.projects.length; i++) {
 			var project = response.projects[i];
-			displayData(project.name, project.url, project.versionCount);
-			}
-		 $('div#search-res').html(resultHTML);	
+			if(flag==0)
+				displayAllData(project.name, project.url, project.versionCount);
+			else
+				displayTimeLine (project.analyzed, project.name, project.url, project.versionCount);
+		}
+		 $('div#search-res').html(resultHTML);
+		 $('div#ajax-timeline').html(resultHTML);
 		},
 			error:function (er_response) {
 				console.log("On error: " + JSON.stringify(er_response))
@@ -31,7 +35,7 @@ function getAllProjects(){
 }	
 
 
-function displayData(pname, purl, pversions){
+function displayAllData(pname, purl, pversions){
 	 resultHTML += 	"<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<u><a href='_/php/_startProjectSession.php?pid=10' onclick='storeResults(\"" + pname + "\",\"" + purl + "\");'>" + pname + "</a></u>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>" +
 					"<div class='url text-success'>" +
 					"<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='" + purl + "' target='_blank'>" + purl + "&nbsp;&nbsp;</a>" +
@@ -44,6 +48,27 @@ function displayData(pname, purl, pversions){
 						"</div>";
 }
 	
+function displayTimeLine (pdate, pname, purl, pversions){
+
+	resultHTML += "<li>"+
+		"<div class='smart-timeline-icon bg-color-greenDark'>" +
+			"<i class='fa fa-bar-chart-o'></i>" +
+		"</div>" +
+		"<div class='smart-timeline-time'>" +
+			"<small>"+ pdate +"</small>" +
+		"</div>" +
+		"<div class='smart-timeline-content'>" +
+			"<p>"
+				"<strong class='txt-color-greenDark'>" + pname +"</strong>" +
+			"</p>" +
+			"<p>" +
+				"<a href='_/php/_startProjectSession.php?pid=10' onclick='storeResults(\"" + pname +"\",\"" + purl + "\");'  class='btn btn-xs btn-primary'><i class='fa fa-file'></i>&nbsp;&nbsp" + pname + "</a>" +
+				"<br>" + pversions + " Versions" +
+			"</p>" +
+		"</div>" +
+	"</li>";
+
+}	
 	
 	$(document).ready(function() {
 		
@@ -60,7 +85,7 @@ function displayData(pname, purl, pversions){
 						$("#search-project").removeAttr("disabled");
 						$("#search-project").focus();	
 						// $("#search-res").load("_/php/_search.php");
-						getAllProjects();
+						getAllProjects(0); // 0 means all projects flag pressed
 						$("#execsqltime").load("_/php/_search.php #sqltime");	
 						console.log("case 0 triggered");
 						break;
@@ -73,8 +98,9 @@ function displayData(pname, purl, pversions){
 						break;	
                     case ("2"):
 						$('#search-res').hide();
-						refreshTimeLine();
-						$("#execsqltime").load("_/php/_search.php #sqltime");
+					//	refreshTimeLine();
+					//	$("#execsqltime").load("_/php/_search.php #sqltime");
+						getAllProjects(1); // 1 means timeline flag pressed
                         $('#ajax-timeline').show();
 						$("#search-project").attr("disabled", "disabled"); 
 					//	$('#mailnotification').hide();
