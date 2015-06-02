@@ -12,12 +12,17 @@
 				})();
 
 		</script>
-
-			
+<script type="text/javascript">
+	setTimeout(function(){var a=document.createElement("script");
+	var b=document.getElementsByTagName("script")[0];
+	a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0030/6226.js?"+Math.floor(new Date().getTime()/3600000);
+	a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>			
 	</body>
 		<hr>
 			<footer style="text-align: center" >
-				<p>&copy; <a href="http://www.uom.gr">UOM</a> - <a href="http://csse.uom.gr">Software Engineering Group 2014</a></p>
+				<a href="http://goo.gl/forms/PjcENA2B6s">User Feedback</a><p>
+				<p>&copy; <a href="http://www.uom.gr">UOM</a> - <a href="http://csse.uom.gr">Software Engineering Group 2015</a></p>
 				<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
 				<img alt="Creative Commons License" style="border-width:0"
 				src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br /><span

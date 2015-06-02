@@ -9,13 +9,17 @@ include("inc/header.php");
 
 ?>
 	<div style="padding:20px;">	
-		<button type="button" class="btn btn-labeled btn-success btn-lg" data-toggle="modal" data-target="#myModal">
+		<button type="button" class="btn btn-labeled btn-success btn-lg" data-toggle="modal" data-target="#ModalVideo">
 			<i class="fa fa-video-camera"></i>
 				Instructional Video
 		</button>	
-		<button type="button" class="btn btn-labeled btn-success btn-lg" data-toggle="modal" data-target="#myModalRelatedPaper">
+		<button type="button" class="btn btn-labeled btn-success btn-lg" data-toggle="modal" data-target="#ModalRelatedPaper">
 			<i class="fa fa-book"></i>
 			Related Papers			
+		</button>	
+		<button type="button" class="btn btn-labeled btn-primary btn-lg" data-toggle="modal" data-target="#ModalReview">
+			<i class="fa-history"></i>
+			User Feedback			
 		</button>	
 
 	</div>	
@@ -139,7 +143,7 @@ include("inc/header.php");
 		
 	</div>
 </div>	
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="ModalVideo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -155,8 +159,25 @@ include("inc/header.php");
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
+		
+		<div class="modal fade" id="ModalReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title" id="myModalLabel">SEAgle User Feedback</h4>
+					</div>
+					<div class="modal-body">
+						<iframe src="https://docs.google.com/forms/d/1YR0AfZLrbS_jrEc7tp9hR6Cj_YLyd0UyzhE-7IrVU5g/viewform?embedded=true" width="560" height="500" frameborder="0" marginheight="0" marginwidth="0">Φόρτωση...</iframe>
+					</div>
+					
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 
-		<div class="modal fade" id="myModalRelatedPaper" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+		<div class="modal fade" id="ModalRelatedPaper" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -204,3 +225,9 @@ include("inc/header.php");
 ?>
 
 <script src="_/js/_index.js"></script>
+<script type="text/javascript">
+	setTimeout(function(){var a=document.createElement("script");
+	var b=document.getElementsByTagName("script")[0];
+	a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0030/6226.js?"+Math.floor(new Date().getTime()/3600000);
+	a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
