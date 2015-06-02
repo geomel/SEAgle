@@ -2,6 +2,48 @@ function refreshTimeLine(){
         $('#ajax-timeline').load('_/php/_timeline.php', function(){		
         });
     }
+
+var url = "http://195.251.210.137:8080/seagle2/rs/";	
+
+var resultHTML = "";
+
+
+function getAllProjects(){
+
+	$.ajax({
+			dataType:"json",
+			url: url +'project',
+		success: function(response) {
+		//	console.log("On success: " + JSON.stringify(response));		
+		resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >( " + response.projects.length + " results) </span></small></h1><p> ";
+		for (var i = 0; i < response.projects.length; i++) {
+			var project = response.projects[i];
+			displayData(project.name, project.url, project.versionCount);
+			}
+		 $('div#search-res').html(resultHTML);	
+		},
+			error:function (er_response) {
+				console.log("On error: " + JSON.stringify(er_response))
+			}								
+		});
+		
+
+}	
+
+
+function displayData(pname, purl, pversions){
+	 resultHTML += 	"<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<u><a href='_/php/_startProjectSession.php?pid=10' onclick='storeResults(\"" + pname + "\",\"" + purl + "\");'>" + pname + "</a></u>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>" +
+					"<div class='url text-success'>" +
+					"<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='" + purl + "' target='_blank'>" + purl + "&nbsp;&nbsp;</a>" +
+					"</div>" + 		
+					"<p style='margin-bottom: 20px'>" +					
+						"<div>" + 
+							"<p class='note'>" +
+								"<i class='fa fa-qrcode'></i> <b>Versions:&nbsp </b>" + pversions  + "&nbsp;&nbsp;" +								
+								"</p></p>" +
+						"</div>";
+}
+	
 	
 	$(document).ready(function() {
 		
@@ -17,14 +59,17 @@ function refreshTimeLine(){
 						$('#search-res').show();
 						$("#search-project").removeAttr("disabled");
 						$("#search-project").focus();	
-						$("#search-res").load("_/php/_search.php");
-						$("#execsqltime").load("_/php/_search.php #sqltime");		
+						// $("#search-res").load("_/php/_search.php");
+						getAllProjects();
+						$("#execsqltime").load("_/php/_search.php #sqltime");	
+						console.log("case 0 triggered");
 						break;
 					case("1"):
 						$('#ajax-timeline').hide();
 						$("#search-project").removeAttr("disabled");
 						$("#search-project").attr("placeholder", "Enter the minimum number of versions a project must have (e.g. 20)");
 						$("#search-project").focus();		
+						console.log("case 1 triggered");
 						break;	
                     case ("2"):
 						$('#search-res').hide();
@@ -33,6 +78,7 @@ function refreshTimeLine(){
                         $('#ajax-timeline').show();
 						$("#search-project").attr("disabled", "disabled"); 
 					//	$('#mailnotification').hide();
+					console.log("case 2 triggered");
                         break;
 					}	
 		});
