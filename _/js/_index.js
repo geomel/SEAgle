@@ -1,13 +1,85 @@
-function refreshTimeLine(){
-        $('#ajax-timeline').load('_/php/_timeline.php', function(){		
-        });
-    }
-
 var url = "http://195.251.210.137:8080/seagle2/rs/";	
 
 var resultHTML = "";
+	
+	$(document).ready(function() {
+		$('#wiz').hide();
+		$('#ajax-timeline').hide();
+		$('#loading').hide();
+		$("input:radio[name=results-filter]").click(function() {
+			var value = $(this).val();
+			switch (value) {
+					case("0"):
+						$('#ajax-timeline').hide();
+						$("#search-project").attr("placeholder", "Search project or enter git repository (e.g. https://git-repo.com/user/example-project.git)");
+						$('#search-res').show();
+						$("#search-project").removeAttr("disabled");
+						$("#search-project").focus();	
+						// $("#search-res").load("_/php/_search.php");
+						getAllProjects(0); // 0 means show all projects pressed
+						$("#execsqltime").load("_/php/_search.php #sqltime");	
+						console.log("case 0 triggered");
+						break;
+					case("1"):
+						$('#ajax-timeline').hide();
+						$("#search-project").removeAttr("disabled");
+						$("#search-project").attr("placeholder", "Enter the minimum number of versions a project must have (e.g. 20)");
+						$("#search-project").focus();		
+						break;	
+                    case ("2"):
+						$('#search-res').hide();
+					//	refreshTimeLine();
+					//	$("#execsqltime").load("_/php/_search.php #sqltime");
+						getAllProjects(1); // 1 means show timeline pressed
+                        $('#ajax-timeline').show();
+						$("#search-project").attr("disabled", "disabled"); 
+                        break;
+					}	
+		});
+			
+			
+		$("#search-project").focus();	
 
+		$('#search-project').keypress(function (e) {
+			$('#search-res').show();
+			if(e.which == 13){	
+				if($('#search-project').val()!=""){		
+					$.ajax({
+						datatype: "json",
+						url: url + 'project/' + $('#search-project').val(),
+						success: function(response) {
+								resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(1 results) </span></small></h1><p> ";
+								displayAllData(response.name, response.url, response.versionCount);
+								$('div#search-res').html(resultHTML);
+						},
+						error:function (er_response) {
+							resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(0 results) </span></small></h1><p> ";
+							displayError(er_response.status, er_response.message );
+							$('div#search-res').html(resultHTML);
+						}	
+					});
+				}
+			}	
+		});
+	
+			$("#search-button").click(function(){
+				$('#search-res').show();
+			//	$('#mailnotification').hide();
+				$("#search-res").load("_/php/_search.php?search_value=" + $("#search-project").val()+"&filter_flag=0",function (text, statusText){
+					$("#execsqltime").load("_/php/_search.php #sqltime");
+						});	
+			});	
+		
+		$("#mailbtn").click(function(e) {
+		//	$('#mailnotification').hide();
+		//	document.getElementById("execsqltime").innerHTML = "Thank You.<p>A notification email will be sent when the proccess will complete at: " + $('#email').val() ;
+            $.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() });
+		});	
 
+	})
+	
+	
+	
 function getAllProjects(flag){
 
 	$.ajax({
@@ -47,8 +119,10 @@ function displayAllData(pname, purl, pversions){
 						"</div>";
 }
 	
-function displayError(){
-	
+function displayError(status, message){
+	resultHTML += 	"<h3><i class='fa fa-ban'></i>&nbsp;&nbsp;<u>" + status + "</u></h3>" +
+					"<div class='url text-error'>" +
+					"<i class='fa fa-code'></i> <b>Server Response:&nbsp </b>" + message + "</div>";			 							
 	
 }
 	
@@ -72,86 +146,11 @@ function displayTimeLine (pdate, pname, purl, pversions){
 	"</li>";
 
 }	
-	
-	$(document).ready(function() {
-		$('#wiz').hide();
-		$('#ajax-timeline').hide();
-		$('#loading').hide();
-		$("input:radio[name=results-filter]").click(function() {
-			var value = $(this).val();
-			switch (value) {
-					case("0"):
-						$('#ajax-timeline').hide();
-						$("#search-project").attr("placeholder", "Search project or enter git repository (e.g. https://git-repo.com/user/example-project.git)");
-						$('#search-res').show();
-						$("#search-project").removeAttr("disabled");
-						$("#search-project").focus();	
-						// $("#search-res").load("_/php/_search.php");
-						getAllProjects(0); // 0 means show all projects pressed
-						$("#execsqltime").load("_/php/_search.php #sqltime");	
-						console.log("case 0 triggered");
-						break;
-					case("1"):
-						$('#ajax-timeline').hide();
-						$("#search-project").removeAttr("disabled");
-						$("#search-project").attr("placeholder", "Enter the minimum number of versions a project must have (e.g. 20)");
-						$("#search-project").focus();		
-						console.log("case 1 triggered");
-						break;	
-                    case ("2"):
-						$('#search-res').hide();
-					//	refreshTimeLine();
-					//	$("#execsqltime").load("_/php/_search.php #sqltime");
-						getAllProjects(1); // 1 means show timeline pressed
-                        $('#ajax-timeline').show();
-						$("#search-project").attr("disabled", "disabled"); 
-					//	$('#mailnotification').hide();
-					console.log("case 2 triggered");
-                        break;
-					}	
-		});
-			
-			
-		$("#search-project").focus();	
-		
-		
-		$('#search-project').keypress(function (e) {
-			$('#search-res').show();
-			if(e.which == 13){	
-				$.ajax({
-					datatype: "json",
-					url: url + 'project/' + $('#search-project').val(),
-					success: function(response) {
-							resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(1 results) </span></small></h1><p> ";
-							displayAllData(response.name, response.url, response.versionCount);
-							$('div#search-res').html(resultHTML);
-					},
-					error:function (response) {
-						resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(0 results) </span></small></h1><p> ";
-						console.log("On error: " + JSON.stringify(er_response))
-					}	
-				});
-			}
-		});
-	
-			$("#search-button").click(function(){
-				$('#search-res').show();
-			//	$('#mailnotification').hide();
-				$("#search-res").load("_/php/_search.php?search_value=" + $("#search-project").val()+"&filter_flag=0",function (text, statusText){
-					$("#execsqltime").load("_/php/_search.php #sqltime");
-						});	
-			});	
-		
-		$("#mailbtn").click(function(e) {
-		//	$('#mailnotification').hide();
-		//	document.getElementById("execsqltime").innerHTML = "Thank You.<p>A notification email will be sent when the proccess will complete at: " + $('#email').val() ;
-            $.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() });
-		});	
-		
-		// $('#checkVersions').hide();
 
-	})
-
+function refreshTimeLine(){
+        $('#ajax-timeline').load('_/php/_timeline.php', function(){		
+        });
+    }
 
 	
 	function runWizard(){
