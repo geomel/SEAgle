@@ -41,10 +41,28 @@ var resultHTML = "";
 		$("#search-project").focus();	
 
 		$('#search-project').keypress(function (e) {
-			var url = "http://195.251.210.137:8080/seagle2/rs/";
-			$('#search-res').show();
 			if(e.which == 13){	
-				if($('#search-project').val()!=""){	
+				searchQuery();
+			}	
+		});
+	
+		$("#search-button").click(function(){
+			searchQuery();
+		});	
+		
+		$("#mailbtn").click(function(e) {
+		//	$('#mailnotification').hide();
+		//	document.getElementById("execsqltime").innerHTML = "Thank You.<p>A notification email will be sent when the proccess will complete at: " + $('#email').val() ;
+            $.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() });
+		});	
+
+	})
+	
+	
+function searchQuery(){
+	var url = "http://195.251.210.137:8080/seagle2/rs/";
+	$('#search-res').show();
+	if($('#search-project').val()!=""){	
 					if ($('#search-project').val().toLowerCase().indexOf(".git") >= 0) // if is a git url
 					   url+='project/?purl=';
 					else
@@ -64,26 +82,7 @@ var resultHTML = "";
 							}	
 						});
 				}
-			}	
-		});
-	
-			$("#search-button").click(function(){
-				$('#search-res').show();
-			//	$('#mailnotification').hide();
-				$("#search-res").load("_/php/_search.php?search_value=" + $("#search-project").val()+"&filter_flag=0",function (text, statusText){
-					$("#execsqltime").load("_/php/_search.php #sqltime");
-						});	
-			});	
-		
-		$("#mailbtn").click(function(e) {
-		//	$('#mailnotification').hide();
-		//	document.getElementById("execsqltime").innerHTML = "Thank You.<p>A notification email will be sent when the proccess will complete at: " + $('#email').val() ;
-            $.ajax({ url: '_/php/_sendmail.php?reciever=' + $('#email').val() });
-		});	
-
-	})
-	
-	
+}	
 	
 function getAllProjects(flag){
 
@@ -124,13 +123,6 @@ function displayAllData(pname, purl, pversions){
 						"</div>";
 }
 	
-function displayError(status, message){
-	resultHTML += 	"<h3><i class='fa fa-ban'></i>&nbsp;&nbsp;<u>" + status + "</u></h3>" +
-					"<div class='url text-error'>" +
-					"<i class='fa fa-code'></i> <b>Server Response:&nbsp </b>" + message + "</div>";			 							
-	
-}
-	
 function displayTimeLine (pdate, pname, purl, pversions){
 	resultHTML += "<li>"+
 		"<div class='smart-timeline-icon bg-color-greenDark'>" +
@@ -150,6 +142,13 @@ function displayTimeLine (pdate, pname, purl, pversions){
 		"</div>" +
 	"</li>";
 
+}
+
+function displayError(status, message){
+	resultHTML += 	"<h3><i class='fa fa-ban'></i>&nbsp;&nbsp;<u>" + status + "</u></h3>" +
+					"<div class='url text-error'>" +
+					"<i class='fa fa-code'></i> <b>Server Response:&nbsp </b>" + message + "</div>";			 							
+	
 }	
 
 function refreshTimeLine(){
