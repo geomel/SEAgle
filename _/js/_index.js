@@ -13,12 +13,11 @@ function getAllProjects(flag){
 	$.ajax({
 			dataType:"json",
 			url: url +'project',
-		success: function(response) {
-		//	console.log("On success: " + JSON.stringify(response));		
+		success: function(response) {		
 		resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >( " + response.projects.length + " results) </span></small></h1><p> ";
 		for (var i = 0; i < response.projects.length; i++) {
 			var project = response.projects[i];
-			if(flag==0)
+			if(flag==0)  // 0 means show all projects pressed
 				displayAllData(project.name, project.url, project.versionCount);
 			else
 				displayTimeLine (project.analyzed, project.name, project.url, project.versionCount);
@@ -36,7 +35,6 @@ function getAllProjects(flag){
 
 
 function displayAllData(pname, purl, pversions){
-	
 	 resultHTML += 	"<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<u><a href='_/php/_startProjectSession.php?pid=10' onclick='storeResults(\"" + pname + "\",\"" + purl + "\");'>" + pname + "</a></u>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>" +
 					"<div class='url text-success'>" +
 					"<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='" + purl + "' target='_blank'>" + purl + "&nbsp;&nbsp;</a>" +
@@ -49,8 +47,12 @@ function displayAllData(pname, purl, pversions){
 						"</div>";
 }
 	
+function displayError(){
+	
+	
+}
+	
 function displayTimeLine (pdate, pname, purl, pversions){
-		console.log(pdate + " " + pname);
 	resultHTML += "<li>"+
 		"<div class='smart-timeline-icon bg-color-greenDark'>" +
 			"<i class='fa fa-bar-chart-o'></i>" +
@@ -72,7 +74,6 @@ function displayTimeLine (pdate, pname, purl, pversions){
 }	
 	
 	$(document).ready(function() {
-		
 		$('#wiz').hide();
 		$('#ajax-timeline').hide();
 		$('#loading').hide();
@@ -86,7 +87,7 @@ function displayTimeLine (pdate, pname, purl, pversions){
 						$("#search-project").removeAttr("disabled");
 						$("#search-project").focus();	
 						// $("#search-res").load("_/php/_search.php");
-						getAllProjects(0); // 0 means all projects flag pressed
+						getAllProjects(0); // 0 means show all projects pressed
 						$("#execsqltime").load("_/php/_search.php #sqltime");	
 						console.log("case 0 triggered");
 						break;
@@ -101,7 +102,7 @@ function displayTimeLine (pdate, pname, purl, pversions){
 						$('#search-res').hide();
 					//	refreshTimeLine();
 					//	$("#execsqltime").load("_/php/_search.php #sqltime");
-						getAllProjects(1); // 1 means timeline flag pressed
+						getAllProjects(1); // 1 means show timeline pressed
                         $('#ajax-timeline').show();
 						$("#search-project").attr("disabled", "disabled"); 
 					//	$('#mailnotification').hide();
@@ -110,25 +111,29 @@ function displayTimeLine (pdate, pname, purl, pversions){
 					}	
 		});
 			
-				
-	//	$('#mailnotification').hide();		
 			
 		$("#search-project").focus();	
 		
-	//	$("#execsqltime").load("_/php/_search.php #sqltime");
-		$('#search-project').keypress(function(e) {
-			if(e.which == 13) {
-				$('#search-res').show();
-		//		$('#mailnotification').hide();
-				if($('input:radio[name=results-filter]:checked').val()=="1")
-					$("#search-res").load("_/php/_search.php?search_value=" + $("#search-project").val() + "&flag=1");
-				else{	
-					$("#search-res").load("_/php/_search.php?search_value=" + $("#search-project").val()  + "&flag=0",function (text, statusText){
-					$("#execsqltime").load("_/php/_search.php #sqltime");
-					});
-				}			
+		
+		$('#search-project').keypress(function (e) {
+			$('#search-res').show();
+			if(e.which == 13){	
+				$.ajax({
+					datatype: "json",
+					url: url + 'project/' + $('#search-project').val(),
+					success: function(response) {
+							resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(1 results) </span></small></h1><p> ";
+							displayAllData(response.name, response.url, response.versionCount);
+							$('div#search-res').html(resultHTML);
+					},
+					error:function (response) {
+						resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(0 results) </span></small></h1><p> ";
+						console.log("On error: " + JSON.stringify(er_response))
 					}	
-			  });
+				});
+			}
+		});
+	
 			$("#search-button").click(function(){
 				$('#search-res').show();
 			//	$('#mailnotification').hide();
