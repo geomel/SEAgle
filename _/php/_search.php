@@ -20,7 +20,7 @@ if(isset($search_value)){
 				$sql = "select * from project where(name like '%$search_value%' OR versions like '%$search_value%' OR githubpath like '%$search_value%') ORDER BY name ASC";			
 }
 else{
-	$sql = "SELECT * FROM project";	
+	$sql = "SELECT * FROM project";	//display all projects
 }
 $msc=microtime(true);
 $rs=$conn->query($sql);

@@ -41,23 +41,28 @@ var resultHTML = "";
 		$("#search-project").focus();	
 
 		$('#search-project').keypress(function (e) {
+			var url = "http://195.251.210.137:8080/seagle2/rs/";
 			$('#search-res').show();
 			if(e.which == 13){	
-				if($('#search-project').val()!=""){		
-					$.ajax({
-						datatype: "json",
-						url: url + 'project/' + $('#search-project').val(),
-						success: function(response) {
-								resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(1 results) </span></small></h1><p> ";
-								displayAllData(response.name, response.url, response.versionCount);
+				if($('#search-project').val()!=""){	
+					if ($('#search-project').val().toLowerCase().indexOf(".git") >= 0) // if is a git url
+					   url+='project/?purl=';
+					else
+						url+='project/';		
+						$.ajax({
+							datatype: "json",
+							url: url + $('#search-project').val(),
+							success: function(response) {
+									resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(1 results) </span></small></h1><p> ";
+									displayAllData(response.name, response.url, response.versionCount);
+									$('div#search-res').html(resultHTML);
+							},
+							error:function (er_response) {
+								resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(0 results) </span></small></h1><p> ";
+								displayError(er_response.status, er_response.message );
 								$('div#search-res').html(resultHTML);
-						},
-						error:function (er_response) {
-							resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(0 results) </span></small></h1><p> ";
-							displayError(er_response.status, er_response.message );
-							$('div#search-res').html(resultHTML);
-						}	
-					});
+							}	
+						});
 				}
 			}	
 		});
