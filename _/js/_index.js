@@ -36,6 +36,7 @@ function getAllProjects(flag){
 
 
 function displayAllData(pname, purl, pversions){
+	
 	 resultHTML += 	"<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<u><a href='_/php/_startProjectSession.php?pid=10' onclick='storeResults(\"" + pname + "\",\"" + purl + "\");'>" + pname + "</a></u>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>" +
 					"<div class='url text-success'>" +
 					"<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='" + purl + "' target='_blank'>" + purl + "&nbsp;&nbsp;</a>" +
@@ -49,7 +50,7 @@ function displayAllData(pname, purl, pversions){
 }
 	
 function displayTimeLine (pdate, pname, purl, pversions){
-
+		console.log(pdate + " " + pname);
 	resultHTML += "<li>"+
 		"<div class='smart-timeline-icon bg-color-greenDark'>" +
 			"<i class='fa fa-bar-chart-o'></i>" +
@@ -58,7 +59,7 @@ function displayTimeLine (pdate, pname, purl, pversions){
 			"<small>"+ pdate +"</small>" +
 		"</div>" +
 		"<div class='smart-timeline-content'>" +
-			"<p>"
+			"<p>" +
 				"<strong class='txt-color-greenDark'>" + pname +"</strong>" +
 			"</p>" +
 			"<p>" +
