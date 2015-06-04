@@ -1,5 +1,5 @@
 <?php
-
+/*
 $pid=$_SESSION["pid"];
 
 $sql = "SELECT * FROM project,version, graph WHERE project.pid='$pid' AND project.pid=version.pid AND version.vid = graph.vid ORDER BY version.date ASC";
@@ -42,5 +42,6 @@ echo "<table id='datatable_tabletools' class='table table-striped table-hover' >
 		  }
 echo "</tbody>
 	  </table>";
-	
+
+*/	  
 ?>

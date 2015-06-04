@@ -114,8 +114,8 @@ include("inc/nav.php");
 								</div>
 								<div class="widget-body" style="margin-left:0px;">
 									<?php
-											include("_/php/_connections.php");
-											include ("_/php/dataclasses/_graphBasedMetrics.php"); 
+										//	include("_/php/_connections.php");
+										//	include ("_/php/dataclasses/_graphBasedMetrics.php"); 
 									?>
 								</div>
 							</div>
@@ -197,7 +197,7 @@ include("inc/nav.php");
 								</div>
 								<div class="widget-body" style="margin-left:30px;">
 								<?php
-										include("_/php/_connections.php");
+									//	include("_/php/_connections.php");
 										include ("_/php/dataclasses/_commitersData.php");  
 									?>
 								</div>
@@ -273,8 +273,8 @@ include("inc/nav.php");
 										</div>
 										<div class="widget-body" style="margin-left:30px;">
 										<?php
-												include("_/php/_connections.php");
-												include ("_/php/dataclasses/_softwareMetrics.php"); 
+											//	include("_/php/_connections.php");
+											//	include ("_/php/dataclasses/_softwareMetrics.php"); 
 											?>
 										</div>
 									</div>
@@ -293,7 +293,7 @@ include("inc/nav.php");
 					<div class='smart-timeline'>
 						<ul class='smart-timeline-list'>
 			<?php		
-				include("_/php/_connections.php");
+			/*	include("_/php/_connections.php");
 						$sql = "SELECT * FROM timeline, project WHERE project.pid=timeline.pid ORDER BY date DESC LIMIT 0 , 5";
 
 						$rs=$conn->query($sql);
@@ -322,7 +322,8 @@ include("inc/nav.php");
 									</p>
 								</div>
 							</li>";
-						}					
+						}
+						*/
 			?>
 						</ul>
 					</div>

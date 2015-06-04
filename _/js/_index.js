@@ -59,7 +59,7 @@ var resultHTML = "";
 	})
 	
 	
-function searchQuery(){
+function searchQuery(){ // query based searching by url or project name
 	var url = "http://195.251.210.137:8080/seagle2/rs/";
 	$('#search-res').show();
 	if($('#search-project').val()!=""){	
@@ -72,7 +72,7 @@ function searchQuery(){
 							url: url + $('#search-project').val(),
 							success: function(response) {
 									resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(1 results) </span></small></h1><p> ";
-									displayAllData(response.name, response.url, response.versionCount);
+									displaySearchResults(response.name, response.url, response.versionCount);
 									$('div#search-res').html(resultHTML);
 							},
 							error:function (er_response) {
@@ -84,7 +84,7 @@ function searchQuery(){
 				}
 }	
 	
-function getAllProjects(flag){
+function getAllProjects(flag){ 
 
 	$.ajax({
 			dataType:"json",
@@ -94,7 +94,7 @@ function getAllProjects(flag){
 		for (var i = 0; i < response.projects.length; i++) {
 			var project = response.projects[i];
 			if(flag==0)  // 0 means show all projects pressed
-				displayAllData(project.name, project.url, project.versionCount);
+				displaySearchResults(project.name, project.url, project.versionCount);
 			else
 				displayTimeLine (project.analyzed, project.name, project.url, project.versionCount);
 		}
@@ -110,8 +110,8 @@ function getAllProjects(flag){
 }	
 
 
-function displayAllData(pname, purl, pversions){
-	 resultHTML += 	"<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<u><a href='_/php/_startProjectSession.php?pid=10' onclick='storeResults(\"" + pname + "\",\"" + purl + "\");'>" + pname + "</a></u>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>" +
+function displaySearchResults(pname, purl, pversions){
+	 resultHTML += 	"<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<u><a href='_/php/_startProjectSessionn.php?pname=" + pname + "&githubpath=" + purl + "&versions=" + pversions + "' onclick='storeResults(\"" + pname + "\",\"" + purl + "\");'>" + pname + "</a></u>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>" +
 					"<div class='url text-success'>" +
 					"<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='" + purl + "' target='_blank'>" + purl + "&nbsp;&nbsp;</a>" +
 					"</div>" + 		
@@ -136,7 +136,7 @@ function displayTimeLine (pdate, pname, purl, pversions){
 				"<strong class='txt-color-greenDark'>" + pname +"</strong>" +
 			"</p>" +
 			"<p>" +
-				"<a href='_/php/_startProjectSession.php?pid=10' onclick='storeResults(\"" + pname +"\",\"" + purl + "\");'  class='btn btn-xs btn-primary'><i class='fa fa-file'></i>&nbsp;&nbsp" + pname + "</a>" +
+				"<a href='_/php/_startProjectSessionn.php?pname=" + pname + "&githubpath=" + purl + "&versions=" + pversions + "' onclick='storeResults(\"" + pname +"\",\"" + purl + "\");'  class='btn btn-xs btn-primary'><i class='fa fa-file'></i>&nbsp;&nbsp" + pname + "</a>" +
 				"<br>" + pversions + " Versions" +
 			"</p>" +
 		"</div>" +
