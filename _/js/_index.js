@@ -1,4 +1,6 @@
-var url = "http://195.251.210.137:8080/seagle2/rs/";	
+// var url = "http://195.251.210.137:8080/seagle2/rs/";	
+
+var url = "http://java.uom.gr:8080/seagle2/rs/";
 
 var resultHTML = "";
 	
@@ -60,7 +62,10 @@ var resultHTML = "";
 	
 	
 function searchQuery(){ // query based searching by url or project name
-	var url = "http://195.251.210.137:8080/seagle2/rs/";
+	// var url = "http://195.251.210.137:8080/seagle2/rs/";
+	
+	 var url = "http://java.uom.gr:8080/seagle2/rs/";
+	
 	$('#search-res').show();
 	if($('#search-project').val()!=""){	
 					if ($('#search-project').val().toLowerCase().indexOf(".git") >= 0) // if is a git url
@@ -71,9 +76,13 @@ function searchQuery(){ // query based searching by url or project name
 							datatype: "json",
 							url: url + $('#search-project').val(),
 							success: function(response) {
-									resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(1 results) </span></small></h1><p> ";
-									displaySearchResults(response.name, response.url, response.versionCount);
-									$('div#search-res').html(resultHTML);
+									for (var i=0; i<response.projects.length; i++) {
+										resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(" + response.projects.length +" results) </span></small></h1><p> ";
+										if(response.projects.length > 0){
+											displaySearchResults(response.projects[i].name, response.projects[i].url, response.projects[i].versionCount);
+											$('div#search-res').html(resultHTML);
+										}											
+									}	
 							},
 							error:function (er_response) {
 								resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(0 results) </span></small></h1><p> ";
