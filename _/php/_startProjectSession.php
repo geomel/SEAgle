@@ -12,7 +12,7 @@ session_start();
 			$_SESSION["versions"] = $versions;
 		
 		
-		$json_rest = file_get_contents('http://java.uom.gr:8080/seagle2/rs/metric/values/project/'. $pname); //gets project mertrics	
+		$json_rest = file_get_contents('http://java.uom.gr:8080/seagle2/rs/metric/values/project/'. $pname); //gets project metrics	
 		$rest = json_decode($json_rest);
 		$metrics = $rest->versions;
 		
@@ -25,10 +25,10 @@ session_start();
 				foreach($versions as $vname){
 					
 					switch($vname->mnemonic){
-						case "GRAPH_NODES":
+						case "NODES":
 							$nodes_array[] = $vname->value;
 							break;
-						case "GRAPH_EDGES":
+						case "EDGES":
 							$edges_array[] = $vname->value;
 							break;
 						case "GRAPH_DIAMETER":
