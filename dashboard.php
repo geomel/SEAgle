@@ -1,4 +1,7 @@
-<?php
+  
+  
+  
+  <?php
 session_start();
 if(!isset($_SESSION['pname']))
 	header('Location: index.php');

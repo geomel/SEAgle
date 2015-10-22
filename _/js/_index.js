@@ -120,7 +120,7 @@ function getAllProjects(flag){
 
 
 function displaySearchResults(pname, purl, pversions){
-	 resultHTML += 	"<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<u><a href='_/php/_startProjectSessionn.php?pname=" + pname + "&githubpath=" + purl + "&versions=" + pversions + "' onclick='storeResults(\"" + pname + "\",\"" + purl + "\");'>" + pname + "</a></u>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>" +
+	 resultHTML += 	"<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<u><a href='_/php/_startProjectSession.php?pname=" + pname + "&githubpath=" + purl + "&versions=" + pversions + "' onclick='storeResults(\"" + pname + "\",\"" + purl + "\");'>" + pname + "</a></u>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>" +
 					"<div class='url text-success'>" +
 					"<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='" + purl + "' target='_blank'>" + purl + "&nbsp;&nbsp;</a>" +
 					"</div>" + 		
@@ -145,7 +145,7 @@ function displayTimeLine (pdate, pname, purl, pversions){
 				"<strong class='txt-color-greenDark'>" + pname +"</strong>" +
 			"</p>" +
 			"<p>" +
-				"<a href='_/php/_startProjectSessionn.php?pname=" + pname + "&githubpath=" + purl + "&versions=" + pversions + "' onclick='storeResults(\"" + pname +"\",\"" + purl + "\");'  class='btn btn-xs btn-primary'><i class='fa fa-file'></i>&nbsp;&nbsp" + pname + "</a>" +
+				"<a href='_/php/_startProjectSession.php?pname=" + pname + "&githubpath=" + purl + "&versions=" + pversions + "' onclick='storeResults(\"" + pname +"\",\"" + purl + "\");'  class='btn btn-xs btn-primary'><i class='fa fa-file'></i>&nbsp;&nbsp" + pname + "</a>" +
 				"<br>" + pversions + " Versions" +
 			"</p>" +
 		"</div>" +
