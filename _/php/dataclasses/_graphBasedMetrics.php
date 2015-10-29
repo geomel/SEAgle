@@ -12,7 +12,7 @@ if($rs === false) {
   $rows_returned = $rs->num_rows;
 }
 $rs->data_seek(0);
-
+*/
 echo "<table id='datatable_tabletools' class='table table-striped table-hover' >
 			<thead>
 				<tr>
@@ -21,27 +21,21 @@ echo "<table id='datatable_tabletools' class='table table-striped table-hover' >
 					<th>Edges</th>
 					<th>Diameter</th>
 					<th>Density</th>
-                    <th>Alpha</th>
-                    <th>Average Degree</th>
 					<th>Clustering Coeficient</th>
 				</tr>
 			</thead>
-		<tbody>";
-	while($row = $rs->fetch_assoc())	
-		  {
+		<tbody>";	  
+	 foreach($_SESSION["nodes"] as $key => $value) {
 		  echo "<tr>";
-		  echo "<td>" . $row['name'] . "</td>";
-		  echo "<td>" . $row['nodes'] . "</td>";
-		  echo "<td>" . $row['edges'] . "</td>";
-		  echo "<td>" . $row['diameter'] . "</td>";
-		  echo "<td>" . round($row['density'],3) . "</td>";
-          echo "<td>" . round($row['alpha'],3) . "</td>";
-          echo "<td>" . round($row['averageDegree'],3) . "</td>";
-		  echo "<td>" . round($row['cc'],3) . "</td>";
+		  echo "<td>" . $_SESSION["versions_array"][$key] . "</td>";
+		  echo "<td>" . $_SESSION["nodes"][$key] . "</td>";
+		  echo "<td>" . $_SESSION["edges"][$key] . "</td>";
+		  echo "<td>" . round($_SESSION["diameter"][$key],3) . "</td>";
+		  echo "<td>" . round($_SESSION["density"][$key], 3) . "</td>";
+		  echo "<td>" . round($_SESSION["cc"][$key],3) . "</td>";
 		  echo "</tr>";
-		  }
+		}  	  
 echo "</tbody>
 	  </table>";
-
-*/	  
+ 
 ?>

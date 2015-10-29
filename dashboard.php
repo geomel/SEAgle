@@ -1,7 +1,4 @@
-  
-  
-  
-  <?php
+<?php
 session_start();
 if(!isset($_SESSION['pname']))
 	header('Location: index.php');
@@ -118,7 +115,7 @@ include("inc/nav.php");
 								<div class="widget-body" style="margin-left:0px;">
 									<?php
 										//	include("_/php/_connections.php");
-										//	include ("_/php/dataclasses/_graphBasedMetrics.php"); 
+											include ("_/php/dataclasses/_graphBasedMetrics.php"); 
 									?>
 								</div>
 							</div>

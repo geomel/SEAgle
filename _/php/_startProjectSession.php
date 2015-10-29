@@ -36,7 +36,10 @@ session_start();
 							break;	
 						case "CLUSTERING_COEFFICIENT":
 							$cc_array[] = $vname->value;
-							break;		
+							break;
+						case "DENSITY":
+							$density_array[] = $vname->value;
+							break;			
 					}
 					
 				}
@@ -49,6 +52,7 @@ session_start();
 		$_SESSION["edges"] = $edges_array;
 		$_SESSION["diameter"] = $diameter_array;
 		$_SESSION["cc"] = $cc_array;
+		$_SESSION["density"] = $density_array;
 	
 	/*
 		$_SESSION["edgesToNew"] = $edgesToNew_array;
