@@ -34,7 +34,7 @@ session_start();
 						case "GRAPH_DIAMETER":
 							$diameter_array[] = $vname->value;
 							break;	
-						case "GRAPH_CC":
+						case "CLUSTERING_COEFFICIENT":
 							$cc_array[] = $vname->value;
 							break;		
 					}
@@ -43,6 +43,7 @@ session_start();
 		}	
 		
 
+		$_SESSION["versions_array"] = $versions_array;
 	
 		$_SESSION["nodes"] = $nodes_array;
 		$_SESSION["edges"] = $edges_array;
@@ -112,7 +113,7 @@ session_start();
 			$testFilesModified_array[]=$row['testFilesModified'];
 			
 			*/
-		$_SESSION["versions_array"] = $versions_array;
+		
 		$_SESSION["authors"] = $authors_array;
 		$_SESSION["commits"] = $commits_array;
 		$_SESSION["filesAdded"] = $filesAdded_array;
