@@ -102,7 +102,7 @@ include("inc/nav.php");
 								</div>
 								<div class="widget-body" style="margin-left:30px;">
 									<?php
-										include("_/php/_connections.php");
+										// include("_/php/_connections.php");
 										include ("_/php/dataclasses/_graphBasedMetrics.php"); 
 									?>
 								</div>
@@ -210,6 +210,7 @@ include("inc/nav.php");
 			foreach($_SESSION['cc'] as $key=>$value){
 				echo "ccArray[".$key."]=".$value.";";
 			}
+		/*	
 			foreach($_SESSION['edgesToNew'] as $key=>$value){
 				echo "edgesToNew[".$key."]=".$value.";";
 			}
@@ -225,8 +226,10 @@ include("inc/nav.php");
 			foreach($_SESSION['edgesToExisting'] as $key=>$value){
 				echo "edgesToExisting[".$key."]=".$value.";";
 			}
+		*/	
 			$js_array = json_encode($_SESSION['versions_array']);
 			echo "versions_array = ". $js_array . ";\n";
+			
 	?>
  }
   function createJSTableDataForGraphs(networkData){
@@ -359,6 +362,7 @@ $(document).ready(function() {
 		createJSTableDataForGraphs(ccArray);
 		addCharts("004","Clustering Coefficient Over TIme", "ccchart");
 		drawLinePlot("4", "cc");
+	/*	
 		createJSTableDataForGraphs(edgesToNew);
 		addCharts("005", "Edges To New Nodes", "edgesToNewchart");
 		drawLinePlot("5", "edges");
@@ -374,7 +378,7 @@ $(document).ready(function() {
 		createJSTableDataForGraphs(deletedEdges);
 		addCharts("009","Deleted Edges", "deletedEdgeschart");
 		drawLinePlot("9", "edges");
-		
+	*/	
 		
 		/* sales chart */
 
