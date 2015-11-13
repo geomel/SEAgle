@@ -1,5 +1,5 @@
 <?php
-
+/*
 $pid=$_SESSION["pid"];
 
 $sql = "SELECT * FROM project, version INNER JOIN sourcemetric WHERE project.pid='$pid' AND project.pid=version.pid AND version.vid = sourcemetric.vid ORDER BY version.date ASC";
@@ -12,7 +12,7 @@ if($rs === false) {
   $rows_returned = $rs->num_rows;
 }
 $rs->data_seek(0);
-
+*/
 echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 			<thead>
 				<tr>
@@ -26,19 +26,21 @@ echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 				</tr>
 			</thead>
 		<tbody>";
-	while($row = $rs->fetch_assoc())	
+	foreach($_SESSION["versions_array"] as $key => $value) {	
 		  {
 		  echo "<tr>";
-		  echo "<td>" . $row['name'] . "</td>";
-		  echo "<td>" . $row['loc'] . "</td>";
-		  echo "<td>" . $row['nom'] . "</td>";
-		  echo "<td>" . $row['nof'] . "</td>";
-		  echo "<td>" . round($row['cbo'],3) . "</td>";
-		  echo "<td>" . round($row['lcom'],3) . "</td>";
-		  echo "<td>" . round($row['wmc'],3) . "</td>";
+		  echo "<td>" . $_SESSION["versions_array"][$key] . "</td>";
+		  echo "<td>" . $_SESSION["loc"][$key] . "</td>";
+		  echo "<td>" . $_SESSION["nom"][$key] . "</td>";
+		  echo "<td>" . $_SESSION["nof"][$key] . "</td>";
+		  echo "<td>" . round($_SESSION["cbo"][$key],3) . "</td>";
+		  echo "<td>" . round($_SESSION["lcom"][$key],3) . "</td>";
+		  echo "<td>" . round($_SESSION["wmc"][$key],3) . "</td>";
 		  echo "</tr>";
 		  }
+	}	  
 echo "</tbody>
 	  </table>";
 	
 ?>
+

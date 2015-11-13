@@ -94,6 +94,9 @@
 						<div id="fullscreen" class="btn-header transparent pull-right">
 							<span> <a href="javascript:void(0);" onclick="launchFullscreen(document.documentElement);" title="Full Screen"><i class="fa fa-fullscreen"></i></a> </span>
 						</div>
+						<div id="" class="pull-right" style="margin-top:20px">
+							<span > <a href="documentation/index.html" target="blank"> Documentation</a> </span>
+						</div>
 					</div>
 				</header>
 		<?php

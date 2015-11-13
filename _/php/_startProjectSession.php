@@ -12,7 +12,8 @@ session_start();
 			$_SESSION["versions"] = $versions;
 		
 		
-		$json_rest = file_get_contents('http://java.uom.gr:8080/seagle2/rs/metric/values/project/'. $pname); //gets project metrics	
+		// $json_rest = file_get_contents('http://java.uom.gr:8080/seagle2/rs/metric/values/project/'. $pname); //gets project metrics	
+		$json_rest = file_get_contents('http://195.251.210.146:8080/seagle2/rs/metric/values/project/'. $pname); //gets project metrics	
 		$rest = json_decode($json_rest);
 		$metrics = $rest->versions;
 		
@@ -54,22 +55,8 @@ session_start();
 		$_SESSION["cc"] = $cc_array;
 		$_SESSION["density"] = $density_array;
 	
-	/*
-		$_SESSION["edgesToNew"] = $edgesToNew_array;
-		$_SESSION["edgesBtwnExisting"] = $edgesBtwnExisting_array;
-		$_SESSION["edgesBtwnNew"] = $edgesBtwnNew_array;
-		$_SESSION["deletedEdges"] = $deletedEdges_array;
-		$_SESSION["edgesToExisting"] = $edgesToExisting_array;
-		
-		*/
-		
-	//	$json_rest = file_get_contents('http://195.251.210.137:8080/seagle2/rs/metric/values/project/'. $pname); //gets project mertrics
-	
-		
 
-		
-
-		
+	// Parse Repository Metrics		
 		foreach($metrics as $metric){
 			$versions = $metric->metrics;
 				foreach($versions as $vname){
@@ -103,20 +90,7 @@ session_start();
 
 		}	
 
-	
-	/*
-		
-			$authors_array[]=$row['authors'];
-			$commits_array[]=$row['commits'];
-			$filesAdded_array[]=$row['filesAdded'];
-			$filesDeleted_array[]=$row['filesDeleted'];
-			$filesModified_array[]=$row['filesModified'];
-			$linesAdded_array[]=$row['linesAdded'];
-			$linesDeleted_array[]=$row['linesDeleted'];
-			$testFilesAdded_array[]=$row['testFilesAdded'];
-			$testFilesModified_array[]=$row['testFilesModified'];
-			
-			*/
+
 		
 		$_SESSION["authors"] = $authors_array;
 		$_SESSION["commits"] = $commits_array;
@@ -130,6 +104,37 @@ session_start();
 	
 		$_SESSION["diameter"] = $diameter_array;
 		
+	// Parse source code metrics
+	
+		foreach($metrics as $metric){
+			$versions = $metric->metrics;
+				foreach($versions as $vname){
+					// echo $vname->mnemonic;
+					// echo " - ";
+					// echo $vname->value . "<p>";
+					switch($vname->mnemonic){
+						case "CBO":
+							$cbo_array[] = $vname->value;
+							break;
+						case "LCOM2":
+							$lcom_array[] = $vname->value;
+							break;
+						case "NOM":
+							$nom_array[] = $vname->value;
+							break;
+						case "NOF":
+							$nof_array[] = $vname->value;
+							break;
+						case "LOC":
+							$loc_array[] = $vname->value;
+							break;	
+						case "WMC":
+							$wmc_array[] = $vname->value;
+							break;		
+					}
+				}
+		}	
+		
 		/*
 		$rs5->data_seek(0);
 		while($row = $rs5->fetch_assoc()){
@@ -139,13 +144,15 @@ session_start();
 			$nof_array[]=$row['nof'];
 			$wmc_array[]=$row['wmc'];
 		}
+		*/
 		$_SESSION["cbo"] = $cbo_array;
 		$_SESSION["lcom"] = $lcom_array;
 		$_SESSION["nom"] = $nom_array;
 		$_SESSION["nof"] = $nof_array;
 		$_SESSION["wmc"] = $wmc_array;
+		$_SESSION["loc"] = $loc_array;
 		
-		*/
+		
 	
 	}
 	

@@ -1,6 +1,7 @@
 // var url = "http://195.251.210.137:8080/seagle2/rs/";	
 
-var url = "http://java.uom.gr:8080/seagle2/rs/";
+// var url = "http://java.uom.gr:8080/seagle2/rs/";
+var url = "http://195.251.210.146:8080/seagle2/rs/";
 
 var resultHTML = "";
 	
@@ -64,7 +65,8 @@ var resultHTML = "";
 function searchQuery(){ // query based searching by url or project name
 	// var url = "http://195.251.210.137:8080/seagle2/rs/";
 	
-	 var url = "http://java.uom.gr:8080/seagle2/rs/";
+	 // var url = "http://java.uom.gr:8080/seagle2/rs/";
+	 var url = "http://195.251.210.146:8080/seagle2/rs/";
 	
 	$('#search-res').show();
 	if($('#search-project').val()!=""){	

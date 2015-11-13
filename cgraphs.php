@@ -35,6 +35,7 @@ include("inc/nav.php");
 <?php
 
 if(isset($_GET)){
+	
 	$f = $_GET['plotoptions'];
 	$rs = $_GET['rs'];
 	$field1 = $_GET['field1'];
@@ -42,6 +43,7 @@ if(isset($_GET)){
 	$cmd = "Rscript -e 'x <- \"".join(', ', $_SESSION[$f[0]])."\"; y <- \"".join(', ', $_SESSION[$f[1]])."\"; source(\"pearson_cor.r\")'";
 	$pvalue = shell_exec($cmd);
 	$pvalue = substr($pvalue, 3, strlen($pvalue));
+	
 }
 
 ?>
