@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Seagle - API Documentation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- styles -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="css/bootstrap-doc.css" rel="stylesheet">
+        <link href="css/google-code-prettify/prettify.css" rel="stylesheet">
+
+
+        <!-- favicon -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+        <link rel="shortcut icon" href="ico/favicon.png">
+
+
+        <!--[if lt IE 9]>
+          <script src="js/html5shiv.js"></script>
+        <![endif]-->
+        
+    </head>
+
+    <body>
+        <header>
+            <!--navbar -->
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="index.html">Seagle Documentation</a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right">
+							<!--
+                                <li><a href="index.html">Index</a></li>		
+							   <li><a href="tree.html">Tree</a></li>
+                                <li><a href="help.html">Help</a></li>
+							-->	
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div><!--/.navbar -->
+        </header>
+        
+        
+        <article class="container">
+			<div class="row-fluid">
+				<div class="span3">
+                      <ul class="nav nav-tabs nav-stacked">
+                        <li><a href="index.html"><i class="icon-chevron-right pull-right"></i> How to use</a></li>
+                        <li><a href="rest_calls.html"><i class="icon-chevron-right pull-right"></i> REST services</a></li>
+                        <li><a href="graph_metrics.html"><i class="icon-chevron-right pull-right"></i> Graph Based Metrics</a></li>
+                        <li style="background-color: #E4E4E4"><a href="repo_metrics.html"><i class="icon-chevron-right pull-right"></i> Repository Metrics</a></li>
+                        <li><a href="source_metrics.html"><i class="icon-chevron-right pull-right"></i> Source Code Metrics</a></li>
+                    </ul>
+				</div>
+			
+                <div class="span9">
+                    <div class="doc-content-box">
+                        <!-- Class Overview -->
+                        <div class="page-header">
+                            <h2>Repository Metrics</h2>
+                        </div>
+                        
+                        <p>
+						All SEAgle metrics related to Repository and development processes(Repository Based Metrics)  
+                        </p><!-- /Class Overview -->
+
+                        <!-- table Class Summary -->
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Category: REPO_METRICS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: <br>COM_PROJ</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Number of Commits of a Project</a> 
+                                        <p class="class-desc">Metrics related to repository (such as commit count).</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: COM_COUNT_VER</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Number of Commits per Version</a> 
+                                        <p class="class-desc">Count the number of commits from a previous version. This will walk back the current version until it encounter\nthe previous version. Therefore for a given project it is important which versions are required for analysis. If intermediate versions are skipped this metric will result in a greater number of commits per version.</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: AUTHOR_COUNT_VER</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Number of Authors per Version</a> 
+                                        <p class="class-desc">Count the number of authors from a previous version.This will walk back the current version until it encounter the previous version. Therefore for a given project it is important which versions are required for analysis. If intermediate versions are skipped this metric will result in a greater number of authors per version.</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: COMMITER_COUNT_VER</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Number of Committers per Version</a> 
+                                        <p class="class-desc">Count the number of committers from a previous version. This will walk back the current version until it encounter the previous version. Therefore for a given project it is important which versions are required for analysis. If intermediate versions are skipped this metric will result in a greater number of committers per version.</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: ADD_FILE_COUNT_VER</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Added Files per Version</a> 
+                                        <p class="class-desc">Resolve the added files from a previous version.This will walk back the current version until it encounter the previous version. Therefore for a given project it is important which versions are required for analysis. If intermediate versions are skipped this metric will result in a different number of added files per version.</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: DEL_FILE_COUNT_VER</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Deleted Files per Version</a> 
+                                        <p class="class-desc">Resolve the deleted files from a previous version.This will walk back the current version until it encounter the previous version. Therefore for a given project it is important which versions are required for analysis. If intermediate versions are skipped this metric will result in a different number of deleted files per version.</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: MOD_FILE_COUNT_VER</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Modified Files per Version</a> 
+                                        <p class="class-desc">Resolve the modified files from a previous version.This will walk back the current version until it encounter the previous version. Therefore for a given project it is important which versions are required for analysis. If intermediate versions are skipped this metric will result in a different number of modified files per version.</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: ADD_LINE_COUNT_VER</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Added Lines per Version</a> 
+                                        <p class="class-desc">Resolve the number of added lines from a previous version.This will walk back the current version until it encounter the previous version. Therefore for a given project it is important which versions are required for analysis. If intermediate versions are skipped this metric will result in a different numbers of added lines per version.</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: DEL_LINE_COUNT_VER</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Deleted Lines per Version</a> 
+                                        <p class="class-desc">Resolve the number of deleted lines from a previous version.This will walk back the current version until it encounter the previous version. Therefore for a given project it is important which versions are required for analysis. If intermediate versions are skipped this metric will result in a different numbers of deleted lines per version.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><!-- /table Class Summary -->
+                                              
+                        
+                        <!-- pagination -->
+                        <div class="page-nav">
+                            <ul class="pager">
+                                <li class="previous">
+                                    <a href="graph_metrics.html">&larr; Prev </a>
+                                </li>
+                                <li class="next">
+                                    <a href="source_metrics.html">Next &rarr;</a>
+                                </li>
+                            </ul>
+                        </div><!-- /pagination -->
+                        
+                        
+                        <div class="shadow-right"> </div><!-- shadow doc-content-box -->
+                    </div><!--/.doc-content-box -->
+                </div><!--/.span9 -->
+            </div><!--/.row-fluid -->
+        </article>
+        
+        
+        <!-- footer -->
+        <footer style="text-align: center">
+                <div class="container">		
+					<a href="http://goo.gl/forms/PjcENA2B6s" target="_blank">.: User Feedback :.</a><p>
+					&copy; <a href="http://se.uom.gr"> Software Engineering Group 2015 - </a> - <a href="http://www.uom.gr" target="_blank">University Of Macedonia</a> 
+					<span
+					xmlns:dct="http://purl.org/dc/terms/"
+					href="http://purl.org/dc/dcmitype/Dataset" target="_blank" property="dct:title"
+					rel="dct:type"><br>SEAgle: Easy Software Evolution Analysis</span> by <a
+					xmlns:cc="http://creativecommons.org/ns#" href="http://SEAgle.org"
+					property="cc:attributionName" rel="cc:attributionURL">Theodore Chaikalis, Elvis Ligu, 
+					George Melas and Alexander Chatzigeorgiou</a>
+					<br> 
+					is licensed under a &nbsp
+					<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">Creative
+					Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>
+					<p>
+					<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">
+					<img alt="Creative Commons License" style="border-width:0"
+					src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+           
+            </div>
+        </footer><!--/.footer -->
+        
+        
+        <!-- javascript
+        ================================================== -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/google-code-prettify/prettify.js"></script>
+        
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+                
+                // make code pretty demo
+                window.prettyPrint && prettyPrint();
+
+                
+                $(".scroll").click(function(event){
+                    event.preventDefault();
+                    $("html,body").animate({scrollTop: $(this.hash).offset().top-50}, 'slow');
+                });
+                
+            });
+
+        </script>
+    </body>
+</html>

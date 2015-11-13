@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Help - API Documentation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- styles -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="css/bootstrap-doc.css" rel="stylesheet">
+
+
+        <!-- favicon -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+        <link rel="shortcut icon" href="ico/favicon.png">
+
+
+        <!--[if lt IE 9]>
+          <script src="js/html5shiv.js"></script>
+        <![endif]-->
+        
+    </head>
+
+    <body>
+        <header>
+            <!--navbar -->
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="index.html"> SEAgle Documentation</a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right">
+							<!--
+                                <li><a href="index.html">Index</a></li>
+                                <li><a href="tree.html">Tree</a></li>
+                                <li class="active"><a href="help.html">Help</a></li>
+							-->	
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div><!--/.navbar -->
+        </header>
+        
+        <article class="container">
+            <div class="row-fluid">
+                <div class="span3">
+                    <!--sidebar -->
+                    <ul class="nav nav-tabs nav-stacked">
+                        <li style="background-color: #E4E4E4"><a href="index.html"><i class="icon-chevron-right pull-right success"></i> How to use</a></li>
+                        <li><a href="rest_calls.html"><i class="icon-chevron-right pull-right"></i> REST services</a></li>
+                        <li><a href="graph_metrics.html"><i class="icon-chevron-right pull-right"></i> Graph Based Metrics</a></li>
+                        <li><a href="repo_metrics.html"><i class="icon-chevron-right pull-right"></i> Repository Metrics</a></li>
+                        <li><a href="source_metrics.html"><i class="icon-chevron-right pull-right"></i> Source Code Metrics</a></li>
+                    </ul>
+                </div><!--/.span3 -->
+                
+                
+                <div class="span9">
+                    <div class="doc-content-box">
+                        <h1 class="heading">SEAgle: Effortless Software Evolution Analysis</h1>
+                        <p>Seagle is an online platform for Software Repository Mining, and evolution analysis of java projects. It facilitates the collection of project related data, organizes relevant information in comprehensible reports and provides a useful tool for empirical research.</p>
+
+
+                        <h2>Overview</h2>
+                        <blockquote><p>
+						
+						The development of the platform was driven by the following key issues: <p>
+				<ul>		
+					<li>the platform should be easy to use. To this end we opted for a Web based platform enabling users to analyze a repository by a single click (either selection of an already analyzed project or by providing the git repository URI).</li>
+					<li>software repositories encompass a project’s history. As a result, all reported information spans across all available versions, i.e. constitutes a form of software evolution analysis.</li>
+					<li>Any software system has several facets. Therefore, we offer multiple views concerning commit-related metrics, source code metrics and graph based metrics.</li>
+					<li>Empirical studies very often focus on the investigation of relations among variables. To satisfy this need we offer direct correlation analysis between any two monitored variables.  (for this reason the x-axis is common on all diagrams and represents software versions)</li>
+					<li>Contemporary software repositories are extremely large in size. To confront this challenge, we optimized the process of extracting commit-related metrics, which are demanding since they involved the analysis of thousands of commits.</li> 
+				</ul>
+												
+						</p></blockquote>
+
+                        <h2>Homepage</h2>
+                        <blockquote><p>
+							The homepage of SEAgle awaits a single user input, which may be either:
+							<ul>						
+									<li>a project name </li>
+									<li>a git URI</li>
+							</ul>
+						<img src="img/main_search_page.png" style="margin: 20px; margin-bottom:20px" />
+							In case a project name is entered, it will be looked for in the already analyzed projects for which results are available. If the user types in a git URI, it is also being checked whether the corresponding repository has been analyzed. If not, the user request triggers the analysis. 
+							Since the analysis of large repositories can be time and resource consuming, the user is notified on the progress of processing. Moreover, the system can notify the user by email when the analysis has been completed. 
+						<br><br>	The home page offers (on the right hand side) a timeline overview of the recently analyzed projects.
+						<img src="img/timeline.png" style="margin: 20px; margin-bottom:20px"/>	
+						</p></blockquote>
+
+                        <h2>Dashboard</h2>
+                        <blockquote><p>
+						
+							For each analyzed project a dashboard containing a metrics overview is displayed. 
+						<img src="img/dashboard.png" style="margin: 20px; margin-bottom:20px" />																					
+						</p></blockquote>
+
+                        <h2>Metrics</h2>
+                        <blockquote><p>
+							Detailed information concering the evolution of metrics for the three examined views (commit, source code and network metrics) can be displayed by selecting “Metrics” on the left menu. <p>
+							<img src="img/menu.png" style="margin: 20px; margin-bottom:20px"/>	
+						<p>	As an example, the evolution of commit-related metrics over the examined versions of a project are shown in some graphs above. The results are also shown as Tables with columns corresponding to metrics, and rows to examined versions. 
+							By clicking the “Save” button on every tabular representation, the corresponding data can be exported in CSV, Excel or PDF format to allow further experimentation. The available metrics of SEAgle are summarized in Table 
+							<img src="img/c01.png" style="margin: 20px; margin-bottom:20px"/>
+							<img src="img/c02.png" style="margin: 20px; margin-bottom:20px"/>
+							<img src="img/c03.png" style="margin: 20px; margin-bottom:20px"/>
+							<img src="img/c04.png" style="margin: 20px; margin-bottom:20px"/>
+							<img src="img/c05.png" style="margin: 20px; margin-bottom:20px"/>
+						</p></blockquote>
+						 <!-- pagination -->
+                        <div class="page-nav">
+                            <ul class="pager">
+                                    <li class="next">
+                                    <a href="rest_calls.html">Next &rarr;</a>
+                                </li>
+                            </ul>
+                        </div><!-- /pagination -->
+						<div class="shadow-right"> </div><!-- shadow doc-content-box -->
+                    </div><!--/.doc-content-box -->
+                </div><!--/.span9 -->
+            </div><!--/.row-fluid -->
+        </article>
+        
+        
+       <!-- footer -->
+        <footer style="text-align: center">
+                <div class="container">		
+					<a href="http://goo.gl/forms/PjcENA2B6s" target="_blank">.: User Feedback :.</a><p>
+					&copy; <a href="http://se.uom.gr"> Software Engineering Group 2015 - </a> - <a href="http://www.uom.gr" target="_blank">University Of Macedonia</a> 
+					<span
+					xmlns:dct="http://purl.org/dc/terms/"
+					href="http://purl.org/dc/dcmitype/Dataset" target="_blank" property="dct:title"
+					rel="dct:type"><br>SEAgle: Easy Software Evolution Analysis</span> by <a
+					xmlns:cc="http://creativecommons.org/ns#" href="http://SEAgle.org"
+					property="cc:attributionName" rel="cc:attributionURL">Theodore Chaikalis, Elvis Ligu, 
+					George Melas and Alexander Chatzigeorgiou</a>
+					<br> 
+					is licensed under a &nbsp
+					<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">Creative
+					Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>
+					<p>
+					<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">
+					<img alt="Creative Commons License" style="border-width:0"
+					src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+           
+            </div>
+        </footer><!--/.footer -->
+        
+        <!-- javascript
+        ================================================== -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>

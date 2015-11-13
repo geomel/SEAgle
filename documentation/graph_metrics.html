@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Seagle - API Documentation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- styles -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="css/bootstrap-doc.css" rel="stylesheet">
+        <link href="css/google-code-prettify/prettify.css" rel="stylesheet">
+
+
+        <!-- favicon -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+        <link rel="shortcut icon" href="ico/favicon.png">
+
+
+        <!--[if lt IE 9]>
+          <script src="js/html5shiv.js"></script>
+        <![endif]-->
+        
+    </head>
+
+    <body>
+        <header>
+            <!--navbar -->
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="index.html">Seagle Documentation</a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right">
+							<!--	
+                                <li><a href="index.html">Index</a></li>	
+							   <li><a href="tree.html">Tree</a></li>
+                                <li><a href="help.html">Help</a></li>
+							-->	
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div><!--/.navbar -->
+        </header>
+        
+        
+         <article class="container">
+			<div class="row-fluid">
+				<div class="span3">
+                     <ul class="nav nav-tabs nav-stacked">
+                        <li><a href="index.html"><i class="icon-chevron-right pull-right"></i> How to use</a></li>
+                        <li><a href="rest_calls.html"><i class="icon-chevron-right pull-right"></i> REST services</a></li>
+                        <li style="background-color: #E4E4E4"><a href="graph_metrics.html"><i class="icon-chevron-right pull-right"></i> Graph Based Metrics</a></li>
+                        <li><a href="repo_metrics.html"><i class="icon-chevron-right pull-right"></i> Repository Metrics</a></li>
+                        <li><a href="source_metrics.html"><i class="icon-chevron-right pull-right"></i> Source Code Metrics</a></li>
+                    </ul>
+						
+				</div>
+			
+                <div class="span9">
+                    <div class="doc-content-box">
+                        <!-- Class Overview -->
+                        <div class="page-header">
+                            <h2>Graph Based Metrics</h2>
+                        </div>
+                        
+                        <p>
+						SEAgle metrics related to Graphs(Graph Based Metrics) like nodes, edges, diameter and clustering coeficient.
+                        </p><!-- /Class Overview -->
+
+                        <!-- table Class Summary -->
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Category: </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: <br>NODES</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Number of Nodes</a> 
+                                        <p class="class-desc">	Count of nodes</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: EDGES</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Number of Edges</a> 
+                                        <p class="class-desc">Count of edges</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: GRAPH_DIAMETER</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Graph Diameter</a> 
+                                        <p class="class-desc">Calculation of the Graph Diameter by using the average path distance. This is a better method than getting the max geodesic distance since it is less prone to outliers.</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: Clustering Coefficient</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Clustering Coefficient</a> 
+                                        <p class="class-desc">Clustering coefficient of a node indicates how well is the neighborhood of this node connected. More formally, the local clustering coefficient of a vertex (node) in a graph quantifies how close its neighbors are to being a clique. https://en.wikipedia.org/wiki/Clustering_coefficient. The global Clust. Coeff. is the average CC for the whole graph.</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: IN_DEGREE</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">In Degree</a> 
+                                        <p class="class-desc">In degree for each node</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: OUT_DEGREE</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Out Degree</a> 
+                                        <p class="class-desc">Out Degree of each node</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: PAGE_RANK</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Page Rank</a> 
+                                        <p class="class-desc">PageRank works by counting the number and quality of links to a vertex to determine a rough estimate of how important the vertex is. The underlying assumption is that more important vertices are likely to receive more links from other vertices. More Info: <a href="https://en.wikipedia.org/wiki/PageRank" target="blank">https://en.wikipedia.org/wiki/PageRank</a></p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: EXISTING_NODES_PER_VERSION</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Existing nodes per version</a> 
+                                        <p class="class-desc">Existing nodes per version</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: DELETED_NODES_PER_VERSION</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Deleted Nodes per Version</a> 
+                                        <p class="class-desc">Nodes that have been deleted during the current version</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: NEW_NODES_PER_VERSION</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">New Nodes per Version</a> 
+                                        <p class="class-desc">Nodes that have been introduced during the current version</p>
+                                    </td>
+                                </tr>
+								<tr id="class-summary">
+                                    <td>
+                                        <p class="class-scope">Mnemonic: NODE_AGE</p>
+                                    </td>
+                                    <td>
+                                        <a href="#class-desc" class="scroll class-name">Node Age</a> 
+                                        <p class="class-desc">Age of each node</p>
+                                    </td>
+                                </tr>	
+                            </tbody>
+                        </table><!-- /table Class Summary -->
+                                              
+                        
+                        <!-- pagination -->
+                        <div class="page-nav">
+                            <ul class="pager">
+                                <li class="previous">
+                                    <a href="rest_calls.html">&larr; Prev </a>
+                                </li>
+                                <li class="next">
+                                    <a href="repo_metrics.html">Next &rarr;</a>
+                                </li>
+                            </ul>
+                        </div><!-- /pagination -->
+                        
+                        
+                        <div class="shadow-right"> </div><!-- shadow doc-content-box -->
+                    </div><!--/.doc-content-box -->
+                </div><!--/.span9 -->
+            </div><!--/.row-fluid -->
+        </article>
+        
+        
+        <!-- footer -->
+        <footer style="text-align: center">
+                <div class="container">		
+					<a href="http://goo.gl/forms/PjcENA2B6s" target="_blank">.: User Feedback :.</a><p>
+					&copy; <a href="http://se.uom.gr"> Software Engineering Group 2015 - </a> - <a href="http://www.uom.gr" target="_blank">University Of Macedonia</a> 
+					<span
+					xmlns:dct="http://purl.org/dc/terms/"
+					href="http://purl.org/dc/dcmitype/Dataset" target="_blank" property="dct:title"
+					rel="dct:type"><br>SEAgle: Easy Software Evolution Analysis</span> by <a
+					xmlns:cc="http://creativecommons.org/ns#" href="http://SEAgle.org"
+					property="cc:attributionName" rel="cc:attributionURL">Theodore Chaikalis, Elvis Ligu, 
+					George Melas and Alexander Chatzigeorgiou</a>
+					<br> 
+					is licensed under a &nbsp
+					<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">Creative
+					Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>
+					<p>
+					<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">
+					<img alt="Creative Commons License" style="border-width:0"
+					src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+           
+            </div>
+        </footer><!--/.footer -->
+        
+        
+        <!-- javascript
+        ================================================== -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/google-code-prettify/prettify.js"></script>
+        
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+                
+                // make code pretty demo
+                window.prettyPrint && prettyPrint();
+
+                
+                $(".scroll").click(function(event){
+                    event.preventDefault();
+                    $("html,body").animate({scrollTop: $(this.hash).offset().top-50}, 'slow');
+                });
+                
+            });
+
+        </script>
+    </body>
+</html>

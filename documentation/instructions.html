@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>SEAgle - API Documentation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- styles -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="css/bootstrap-doc.css" rel="stylesheet">
+
+
+        <!-- favicon -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+        <link rel="shortcut icon" href="ico/favicon.png">
+	
+
+        <!--[if lt IE 9]>
+          <script src="js/html5shiv.js"></script>
+        <![endif]-->
+        
+    </head>
+
+    <body>
+        <header>
+            <!--navbar -->
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="index.html">SEAgle Documentation</a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav pull-right">
+								<!--
+                                <li class="active"><a href="index.html">Index</a></li>	
+							    <li><a href="tree.html">Tree</a></li>
+                                <li><a href="help.html">Help</a></li>
+								-->
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div><!--/.navbar -->
+        </header>
+        
+        
+         <article class="container">
+			<div class="row-fluid">
+				<div class="span3">
+                     <ul class="nav nav-tabs nav-stacked">
+                        <li><a href="index.html"><i class="icon-chevron-right pull-right"></i> How to use</a></li>
+                        <li style="background-color: #E4E4E4"><a href="instructions.html"><i class="icon-chevron-right pull-right"></i> REST services</a></li>
+                        <li><a href="graph_metrics.html"><i class="icon-chevron-right pull-right"></i> Graph Based Metrics</a></li>
+                        <li><a href="repo_metrics.html"><i class="icon-chevron-right pull-right"></i> Repository Metrics</a></li>
+                        <li><a href="source_metrics.html"><i class="icon-chevron-right pull-right"></i> Source Code Metrics</a></li>
+                    </ul>
+						
+				</div>
+
+                <div class="span9">
+                    <div class="doc-content-box">
+						
+						Seagle REST services are available through: 
+					  <h3 class="tree-header class-name"><a href="#">http://java.uom.gr:8080/seagle2/rs/{service_path}</a></h3>	 
+						
+                        <div class="doc-index">
+                            <a class="scroll" href="#get"><span class="label label-success">GET</span></a>
+                            <a class="scroll" href="#post"><span class="label label-warning">POST</span></a>
+							<a class="scroll" href="#put"><span class="label label-info">PUT</span></a>
+						<!--	
+						   <a href="#D"><span class="label label-info">D</span></a>
+                            <a href="#E"><span class="label label-info">E</span></a>
+                            <a href="#F"><span class="label label-info">F</span></a>
+                            <a href="#G"><span class="label label-info">G</span></a>
+                            <a href="#H"><span class="label label-info">H</span></a>
+                            <a href="#I"><span class="label label-info">I</span></a>
+                            <a href="#J"><span class="label label-info">J</span></a>
+                            <a href="#K"><span class="label label-info">K</span></a>
+                            <a href="#L"><span class="label label-info">L</span></a>
+                            <a href="#M"><span class="label label-info">M</span></a>
+                            <a href="#N"><span class="label label-info">N</span></a>
+                            <a href="#O"><span class="label label-info">O</span></a>
+                            <a href="#P"><span class="label label-info">P</span></a>
+                            <a href="#Q"><span class="label label-info">Q</span></a>
+                            <a href="#R"><span class="label label-info">R</span></a>
+                            <a href="#S"><span class="label label-info">S</span></a>
+                            <a href="#T"><span class="label label-info">T</span></a>
+                            <a href="#U"><span class="label label-info">U</span></a>
+                            <a href="#V"><span class="label label-info">V</span></a>
+                            <a href="#W"><span class="label label-info">W</span></a>
+                            <a href="#X"><span class="label label-info">X</span></a>
+                            <a href="#Y"><span class="label label-info">Y</span></a>
+                            <a href="#Z"><span class="label label-info">Z</span></a>
+                            <a href="#_"><span class="label label-info">_</span></a>
+							
+						-->	
+                        </div>
+                        
+                        <!-- doc-index-block -->
+                        <div class="doc-index-block">
+                            <h2 id="get" class="label label-success">GET</h2>
+                            
+                             <!-- table Property Summary -->
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Get Project Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">URI</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">/project/name?purl=projectUrl</a></p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Parameters</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">projectUrl:</a>https git path url</p>
+                                    </td>								
+                                </tr>
+                                <tr id="property-summary">
+                                    <td><p class="class-scope">Description</p></td>
+                                    <td>
+                                        <p class="class-desc">Returns the name of the project with the given url </p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Response</p></td>
+                                    <td>
+                                        <p class="class-desc">200 OK <br>
+																202 Accepted – If the required process has been scheduled successfully  <br>
+																404 Not Found <br> 
+																500 Internal Server Error  </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><!-- /table Property Summary -->
+						
+						 <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Get Project Version</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">URI</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">/project/versions?purl=projectUrl</a></p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Parameters</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">projectUrl:</a>https git path url</p>
+                                    </td>								
+                                </tr>
+                                <tr id="property-summary">
+                                    <td><p class="class-scope">Description</p></td>
+                                    <td>
+                                        <p class="class-desc">Returns a list with version IDs, version names and version dates of the project with the given path in json format  </p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Response</p></td>
+                                    <td>
+                                        <p class="class-desc">200 OK <br>
+																202 Accepted – If the required process has been scheduled successfully  <br>
+																404 Not Found <br> 
+																500 Internal Server Error  </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><!-- /table Property Summary -->
+						
+						<table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Get Project Registered Metrics</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">URI</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">/metric/project-url?purl=projectUrl</a></p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Parameters</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">projectUrl:</a>https git path url</p>
+                                    </td>								
+                                </tr>
+                                <tr id="property-summary">
+                                    <td><p class="class-scope">Description</p></td>
+                                    <td>
+                                        <p class="class-desc">Returns a list with the metrics registered to this project</p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Response</p></td>
+                                    <td>
+                                        <p class="class-desc">200 OK <br>
+																202 Accepted – If the required process has been scheduled successfully  <br>
+																404 Not Found <br> 
+																500 Internal Server Error  </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><!-- /table Property Summary -->
+						
+						
+						<table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Get Metric values for the whole history of a project </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">URI</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">/metric/single/values/project/?purl=projectUrl&metricMnemonic=MNEM </a></p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Parameters</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">projectUrl:</a>https git path url</p>
+										<p class="class-desc"><a href="#" class="scroll class-name">metricMnemonic:</a>The mnemonic of the desired metric </p>
+                                    </td>								
+                                </tr>
+                                <tr id="property-summary">
+                                    <td><p class="class-scope">Description</p></td>
+                                    <td>
+                                        <p class="class-desc">Returns a list with the value of the specified metric for this project for all analyzed versions. </p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Response</p></td>
+                                    <td>
+                                        <p class="class-desc">200 OK <br>
+																202 Accepted – If the required process has been scheduled successfully  <br>
+																404 Not Found <br> 
+																500 Internal Server Error  </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><!-- /table Property Summary -->
+						
+						
+						<table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Get Metric values specific version of a project</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">URI</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">/metric/single/values/project/forVersion?purl=projectUrl&metricMnemonic=MNEM&versionID=commitVersionHashID</a></p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Parameters</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">projectUrl:</a>https git path url</p>
+										<p class="class-desc"><a href="#" class="scroll class-name">metricMnemonic:</a>The mnemonic of the desired metric </p>
+										<p class="class-desc"><a href="#" class="scroll class-name">versionID:</a>The hash id from the commit of the desired version</p>
+                                    </td>								
+                                </tr>
+                                <tr id="property-summary">
+                                    <td><p class="class-scope">Description</p></td>
+                                    <td>
+                                        <p class="class-desc">Returns a list with the value of the specified metric for this project for the specified version. </p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Response</p></td>
+                                    <td>
+                                        <p class="class-desc">200 OK <br>
+																202 Accepted – If the required process has been scheduled successfully  <br>
+																404 Not Found <br> 
+																500 Internal Server Error  </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><!-- /table Property Summary -->
+										
+						<table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Get the evolution of a Metric</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">URI</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">/metric/evolution?purl=projectUrl&metricMnemonic=MNEM</a></p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Parameters</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">projectUrl:</a>https git path url</p>
+										<p class="class-desc"><a href="#" class="scroll class-name">metricMnemonic:</a>The mnemonic of the desired metric </p>
+                                    </td>								
+                                </tr>
+                                <tr id="property-summary">
+                                    <td><p class="class-scope">Description</p></td>
+                                    <td>
+                                        <p class="class-desc">Returns values of the specified metric for all available versions. </p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Response</p></td>
+                                    <td>
+                                        <p class="class-desc">200 OK <br>
+																202 Accepted – If the required process has been scheduled successfully  <br>
+																404 Not Found <br> 
+																500 Internal Server Error  </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><!-- /table Property Summary -->				
+						
+						
+						<table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Get Project smell summary</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">URI</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">/smells/summary</a></p>
+										 <p class="class-desc"><a href="#" class="scroll class-name">/smells/summary/{projectName}</a></p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Parameters</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">Path parameter {projectName}</a></p>								
+                                    </td>								
+                                </tr>
+                                <tr id="property-summary">
+                                    <td><p class="class-scope">Description</p></td>
+                                    <td>
+                                            <pre class="prettyprint linenums">
+												Returns a summary with the smells of all projects of the given project. Example: 
+{ 
+      "metrics": [], 
+      "name": "v0.4.12", 
+      "smells": [ 
+        { 
+          "className": "project version", 
+          "quantity": 5, 
+          "smellName": "God Class" 
+        }, 
+        { 
+          "className": "project version", 
+          "quantity": 11, 
+          "smellName": "Data Class" 
+        }, 
+        { 
+          "className": "project version", 
+          "quantity": 0, 
+          "smellName": "Feature Envy" 
+        } 
+      ] 
+    }, 
+    { 
+      "metrics": [], 
+      "name": "v0.4.13", 
+      "smells": [ 
+        { 
+          "className": "project version", 
+          "quantity": 5, 
+          "smellName": "God Class" 
+        }, 
+        { 
+          "className": "project version", 
+          "quantity": 0, 
+          "smellName": "Feature Envy" 
+        }, 
+        { 
+          "className": "project version", 
+          "quantity": 11, 
+          "smellName": "Data Class" 
+        } 
+      ] 
+    } 
+											</pre>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Response</p></td>
+                                    <td>
+                                        <p class="class-desc">200 OK <br>
+																202 Accepted – If the required process has been scheduled successfully  <br>
+																404 Not Found <br> 
+																500 Internal Server Error  </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><!-- /table Property Summary -->		
+					
+							
+							
+							
+                        
+                        <!-- doc-index-block -->
+                        <div class="doc-index-block">
+                            <h2 id="post" class="label label-warning">POST</h2>
+                            
+						<table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2"Trigger Project Analysis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">URI</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">project/analysis?purl=projectUrl&requestorEmail=foo@bla.com</a></p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Parameters</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">purl:</a>https git path url</p>
+										<p class="class-desc"><a href="#" class="scroll class-name">requestorEmail:</a>The email to which the completion notification will be sent  </p>
+                                    </td>								
+                                </tr>
+                                <tr id="property-summary">
+                                    <td><p class="class-scope">Description</p></td>
+                                    <td>
+                                        <p class="class-desc">Triggers analysis for the specified project and notifies the user in the specified email address upon the completion. </p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Response</p></td>
+                                    <td>
+                                        <p class="class-desc">200 OK <br>
+																202 Accepted – If the required process has been scheduled successfully  <br>
+																404 Not Found <br> 
+																500 Internal Server Error  </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><!-- /table Property Summary -->				
+						
+                    
+                        </div><!-- /doc-index-block -->
+                        
+                        
+						  <!-- doc-index-block -->
+                        <div class="doc-index-block">
+                            <h2 id="put" class="label label-info">PUT</h2>
+								
+						<table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Update project by project URL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">URI</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">/project/?purl=projectUrl</a></p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Parameters</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">purl:</a>https git path url</p>
+                                    </td>								
+                                </tr>
+                                <tr id="property-summary">
+                                    <td><p class="class-scope">Description</p></td>
+                                    <td>
+                                        <p class="class-desc">Triggers update of the specified project </p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Response</p></td>
+                                    <td>
+                                        <p class="class-desc">200 OK <br>
+																202 Accepted – If the required process has been scheduled successfully  <br>
+																404 Not Found <br> 
+																500 Internal Server Error  </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><!-- /table Property Summary -->	
+						
+						
+						<table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Update project by name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">URI</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">/project/projectName</a></p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Parameters</p></td>
+                                    <td>
+                                        <p class="class-desc"><a href="#" class="scroll class-name">projectName:</a>the name of the project </p>
+                                    </td>								
+                                </tr>
+                                <tr id="property-summary">
+                                    <td><p class="class-scope">Description</p></td>
+                                    <td>
+                                        <p class="class-desc">Triggers update of the specified project </p>
+                                    </td>	
+                                </tr>
+								<tr id="property-summary">
+                                    <td><p class="class-scope">Response</p></td>
+                                    <td>
+                                        <p class="class-desc">200 OK <br>
+																202 Accepted – If the required process has been scheduled successfully  <br>
+																404 Not Found <br> 
+																500 Internal Server Error  </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table><!-- /table Property Summary -->	
+                 
+                        </div><!-- /doc-index-block -->
+						 <!-- pagination -->
+                        <div class="page-nav">
+                            <ul class="pager">
+                                <li class="previous">
+                                    <a href="index.html">&larr; Prev </a>
+                                </li>
+                                <li class="next">
+                                    <a href="graph_metrics.html">Next &rarr;</a>
+                                </li>
+                            </ul>
+                        </div><!-- /pagination -->
+                        <div class="shadow-right"> </div><!-- shadow doc-content-box -->
+                    </div><!--/.doc-content-box -->
+                </div><!--/.span9 -->
+            </div><!--/.row-fluid -->
+        </article><!-- /container -->
+        
+
+        <!-- footer -->
+        <footer style="text-align: center">
+                <div class="container">		
+					<a href="http://goo.gl/forms/PjcENA2B6s" target="_blank">.: User Feedback :.</a><p>
+					&copy; <a href="http://se.uom.gr"> Software Engineering Group 2015 - </a> - <a href="http://www.uom.gr" target="_blank">University Of Macedonia</a> 
+					<span
+					xmlns:dct="http://purl.org/dc/terms/"
+					href="http://purl.org/dc/dcmitype/Dataset" target="_blank" property="dct:title"
+					rel="dct:type"><br>SEAgle: Easy Software Evolution Analysis</span> by <a
+					xmlns:cc="http://creativecommons.org/ns#" href="http://SEAgle.org"
+					property="cc:attributionName" rel="cc:attributionURL">Theodore Chaikalis, Elvis Ligu, 
+					George Melas and Alexander Chatzigeorgiou</a>
+					<br> 
+					is licensed under a &nbsp
+					<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">Creative
+					Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>
+					<p>
+					<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">
+					<img alt="Creative Commons License" style="border-width:0"
+					src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
+           
+            </div>
+        </footer><!--/.footer -->
+
+        
+        <!-- javascript
+        ================================================== -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+        
+                $(".scroll").click(function(event){
+                    event.preventDefault();
+                    $("html,body").animate({scrollTop: $(this.hash).offset().top-50}, 'slow');
+                });
+
+            });
+
+        </script>
+    </body>
+</html>
