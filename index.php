@@ -21,7 +21,9 @@ include("inc/header.php");
 			<i class="fa-history"></i>
 			User Feedback			
 		</button>	
-
+	<div id="" class="pull-right" style="margin-top:0px">
+		<span > <a href="documentation/index.html" target="blank"> Documentation</a> </span>
+	</div>
 	</div>	
 	
 	<div class="col-lg-6 col-lg-offset-3">
@@ -59,7 +61,8 @@ include("inc/header.php");
 											<label class="radio">
 												<input type="radio" name="results-filter" value="2">
 												<i></i>Show TimeLine</label>	
-										</div>		
+										</div>
+												
 								</section>
 							
 							</div>
