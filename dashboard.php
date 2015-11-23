@@ -96,10 +96,10 @@ include("inc/nav.php");
 														</div>
 													</li>
 												</ul>
-											</div>
+											</div>									
 								</div>								
 							</div>
-						</article>	
+					</article>	
 
 			<div class="row">
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
@@ -206,8 +206,8 @@ include("inc/nav.php");
 				</article>
 					<h2 style="color:green; margin-left:20px;"><span class="widget-icon"> <i class="fa fa-code"></i> </span>Source Code Metrics:</h2>
 							<section id="widget-grid" class="">
-								<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
-									<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3999" data-widget-editbutton="false">
+				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3999" data-widget-editbutton="false">
 										<header style="margin-bottom:0px; margin-right:0px">
 											<span class="widget-icon"> <i class="fa fa-table"></i> </span>
 											<h2>Metrics</h2>
@@ -285,6 +285,75 @@ include("inc/nav.php");
 			</div>
 	</div>
 			<!-- end row -->
+			
+			
+			
+				<section id="widget-grid" class="">
+					<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
+						<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2999" data-widget-editbutton="false">
+							<header style="margin-bottom:0px; margin-right:0px">
+							<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+							<h2>Code Smells</h2>
+						</header>
+							<div class="show-stat-microcharts" style="margin-bottom:0px">
+											<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+												<ul id="sparks" class="">
+													<li class="sparks-info">
+														<h5> God Class </h5>
+														<div class="sparkline txt-color-green" data-sparkline-type="line" data-sparkline-width="180px" data-fill-color="" data-sparkline-spotradius="3" data-sparkline-height="40px">
+															<?php echo join(', ', $_SESSION["godClass"]);?>
+														</div>
+													</li>
+												</ul>	
+											</div>
+											<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+												<ul id="sparks" class="">
+													<li class="sparks-info">
+														<h5> Data Class </h5>
+														<div class="sparkline txt-color-green" data-sparkline-type="line" data-sparkline-width="180px" data-fill-color="" data-sparkline-spotradius="3" data-sparkline-height="40px">
+															<?php echo join(', ', $_SESSION["dataClass"]);?>
+														</div>
+													</li>
+												</ul>
+											</div>
+											<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+												<ul id="sparks" class="">
+													<li class="sparks-info">
+														<h5> Feature Envy </h5>
+														<div class="sparkline txt-color-green" data-sparkline-type="line" data-sparkline-width="180px" data-fill-color="" data-sparkline-spotradius="3" data-sparkline-height="40px">
+															<?php echo join(', ', $_SESSION["featureEnvy"]);?>
+														</div>
+													</li>
+												</ul>
+											</div>							
+								</div>								
+							</div>
+					</article>	
+
+			<div class="row">
+				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
+					
+					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3000" data-widget-editbutton="false" style="margin-left:20px;">
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->		
+							</div>
+							<div class="widget-body no-padding">
+								<div class="widget-body-toolbar">
+		
+								</div>
+								<div class="widget-body" style="margin-left:0px;">
+									<?php
+										//	include("_/php/_connections.php");
+											include ("_/php/dataclasses/_codeSmells.php"); 
+									?>
+								</div>
+							</div>
+						</div>	
+				</article>
+					
+				</section>
+			
+			
 	
 	<div class='row'>
 			<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>

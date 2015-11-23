@@ -44,6 +44,11 @@ $page_nav = array(
 			)
 		)
 	),
+	"codeSMells" => array(
+                "title" => "Code Smells",
+                "url" => APP_URL."/codeSmells.php",
+				"icon" => "fa-tasks"
+	),
 	   "composite" => array(
                 "title" => "Correlation Analysis",
                 "url" => APP_URL."/cgraphs.php",
