@@ -1,7 +1,7 @@
 // var url = "http://195.251.210.137:8080/seagle2/rs/";	
 
-// var url = "http://java.uom.gr:8080/seagle2/rs/";
-var url = "http://195.251.210.146:8080/seagle2/rs/";
+var url = "http://java.uom.gr:8080/seagle2/rs/";
+// var url = "http://195.251.210.146:8080/seagle2/rs/";
 
 var resultHTML = "";
 	
@@ -65,8 +65,8 @@ var resultHTML = "";
 function searchQuery(){ // query based searching by url or project name
 	// var url = "http://195.251.210.137:8080/seagle2/rs/";
 	
-	 // var url = "http://java.uom.gr:8080/seagle2/rs/";
-	 var url = "http://195.251.210.146:8080/seagle2/rs/";
+	  var url = "http://java.uom.gr:8080/seagle2/rs/";
+	  // var url = "http://195.251.210.146:8080/seagle2/rs/";
 	
 	$('#search-res').show();
 	if($('#search-project').val()!=""){	
@@ -87,7 +87,7 @@ function searchQuery(){ // query based searching by url or project name
 									}	
 							},
 							error:function (er_response) {
-								resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(0 results) </span></small></h1><p> ";
+								resultHTML = "<h1 class='font-md'> Server Responded as: <span class='semi-bold'></span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(0 results) </span></small></h1><p> ";
 								displayError(er_response.status, er_response.message );
 								$('div#search-res').html(resultHTML);
 							}	
@@ -105,7 +105,7 @@ function getAllProjects(flag){
 		for (var i = 0; i < response.projects.length; i++) {
 			var project = response.projects[i];
 			if(flag==0)  // 0 means show all projects pressed
-				displaySearchResults(project.name, project.url, project.versionCount);
+					displaySearchResults(project.name, project.url, project.versionCount);
 			else
 				displayTimeLine (project.analyzed, project.name, project.url, project.versionCount);
 		}

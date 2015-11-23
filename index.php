@@ -22,7 +22,7 @@ include("inc/header.php");
 			User Feedback			
 		</button>	
 	<div id="" class="pull-right" style="margin-top:0px">
-		<span > <a href="documentation/index.html" target="blank"> Documentation</a> </span>
+		<span > <a href="documentation/index.html" target="_blank"> Documentation</a> </span>
 	</div>
 	</div>	
 	
@@ -53,14 +53,14 @@ include("inc/header.php");
 										<div class="inline-group" style="margin-left:5px;">
 											<label class="radio">
 												<input type="radio" name="results-filter"  value="0">
-												<i></i>Show All Projects</label>
+												<i></i>All Projects</label>
 											<!-- <label class="radio">
 												<input type="radio" name="results-filter" value="1">
 												<i></i>Minimum Number of Versions</label>
 												-->
 											<label class="radio">
 												<input type="radio" name="results-filter" value="2">
-												<i></i>Show TimeLine</label>	
+												<i></i>TimeLine</label>	
 										</div>
 												
 								</section>
@@ -207,7 +207,7 @@ include("inc/header.php");
                     address = {Victoria, British Columbia, Canada},<br>
                     series = {Tool Demonstration Track},<br>
                     title = {Seagle: Effortless Software Evolution Analysis},<br>
-                    author = {Chaikalis, Theodore and Melas, George and Ligu, Elivs and Chatzigeorgiou, Alexander},<br>
+                    author = {Chaikalis, Theodore and Melas, George and Ligu, Elvis and Chatzigeorgiou, Alexander},<br>
                     month = sept-oct,<br>
                     year = {2014}, <br>
                     pages = {581--584}

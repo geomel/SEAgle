@@ -12,8 +12,8 @@ session_start();
 			$_SESSION["versions"] = $versions;
 		
 		
-		// $json_rest = file_get_contents('http://java.uom.gr:8080/seagle2/rs/metric/values/project/'. $pname); //gets project metrics	
-		$json_rest = file_get_contents('http://195.251.210.146:8080/seagle2/rs/metric/values/project/'. $pname); //gets project metrics	
+		$json_rest = file_get_contents('http://java.uom.gr:8080/seagle2/rs/metric/values/project/'. $pname); //gets project metrics	
+	//	$json_rest = file_get_contents('http://195.251.210.146:8080/seagle2/rs/metric/values/project/'. $pname); //gets project metrics	
 		$rest = json_decode($json_rest);
 		$metrics = $rest->versions;
 		
