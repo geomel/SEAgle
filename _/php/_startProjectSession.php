@@ -142,7 +142,10 @@ session_start();
 							break;	
 						case "NOPA":
 							$nopa_array[] = $vname->value;
-							break;	
+							break;
+						case "NOAM":
+							$noam_array[] = $vname->value;
+							break;		
 					}
 				}
 		}	
@@ -166,6 +169,7 @@ session_start();
 		$_SESSION["woc"] = $woc_array;
 		$_SESSION["tcc"] = $tcc_array;
 		$_SESSION["nopa"] = $nopa_array;
+		$_SESSION["noam"] = $noam_array;
 		
 		
 	

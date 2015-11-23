@@ -193,6 +193,7 @@ include("inc/nav.php");
 		var	woc = new Array();
 		var	tcc = new Array();
 		var nopa = new Array();
+		var noam = new Array();
 		
 		
 		
@@ -225,6 +226,9 @@ include("inc/nav.php");
 			}
 			foreach($_SESSION['nopa'] as $key=>$value){
 				echo "nopa[".$key."]=".$value.";";
+			}
+			foreach($_SESSION['noam'] as $key=>$value){
+				echo "noam[".$key."]=".$value.";";
 			}
 			$js_array = json_encode($_SESSION['versions_array']);
 			echo "versions_array = ". $js_array . ";\n";
@@ -343,7 +347,10 @@ include("inc/nav.php");
 							break;	
 						case "8":
 							var nopa_plot = $.plot($("#nopachart"), [tableData], options);
-							break;		
+							break;
+						case "9":
+							var noam_plot = $.plot($("#noamchart"), [tableData], options);
+							break;	
 						
 				}
 			
@@ -375,13 +382,16 @@ $(document).ready(function() {
 		drawLinePlot("5", "wmc");
 		createJSTableDataForGraphs(woc);
 		addCharts("006", "Weight Of Class / Version", "wocchart");
-		drawLinePlot("6", "w0c");
+		drawLinePlot("6", "woc");
 		createJSTableDataForGraphs(tcc);
 		addCharts("007", "Tight Class Cohesion / Version", "tccchart");
 		drawLinePlot("7", "tcc");
 		createJSTableDataForGraphs(nopa);
 		addCharts("008", "Number Of Public Attributes / Version", "nopachart");
 		drawLinePlot("8", "nopa");
+		createJSTableDataForGraphs(noam);
+		addCharts("009", "Number Of Accessor Methods / Version", "noamchart");
+		drawLinePlot("9", "noam");
 		
 		
 		/* sales chart */
