@@ -352,7 +352,7 @@ include("inc/nav.php");
 				</article>
 					
 				</section>
-			
+			</div>
 			
 	
 	<div class='row'>

@@ -23,6 +23,9 @@ echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 					<th>Coupling Between Objects</th>
 					<th>Lack Of Cohesion Of Methods</th>
 					<th>Weighted Method Complexity</th>
+					<th>Weight Of Class</th>
+					<th>Tight Class Cohesion</th>
+					<th>Number Of Public Attributes</th>
 				</tr>
 			</thead>
 		<tbody>";
@@ -36,6 +39,9 @@ echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 		  echo "<td>" . round($_SESSION["cbo"][$key],3) . "</td>";
 		  echo "<td>" . round($_SESSION["lcom"][$key],3) . "</td>";
 		  echo "<td>" . round($_SESSION["wmc"][$key],3) . "</td>";
+		  echo "<td>" . round($_SESSION["woc"][$key],3) . "</td>"; 
+		  echo "<td>" . round($_SESSION["tcc"][$key],3) . "</td>";
+		  echo "<td>" . $_SESSION["nopa"][$key] . "</td>";
 		  echo "</tr>";
 		  }
 	}	  

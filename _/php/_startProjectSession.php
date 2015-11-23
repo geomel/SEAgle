@@ -134,6 +134,15 @@ session_start();
 						case "WMC":
 							$wmc_array[] = $vname->value;
 							break;		
+						case "WOC":
+							$woc_array[] = $vname->value;
+							break;
+						case "TCC":
+							$tcc_array[] = $vname->value;
+							break;	
+						case "NOPA":
+							$nopa_array[] = $vname->value;
+							break;	
 					}
 				}
 		}	
@@ -154,6 +163,9 @@ session_start();
 		$_SESSION["nof"] = $nof_array;
 		$_SESSION["wmc"] = $wmc_array;
 		$_SESSION["loc"] = $loc_array;
+		$_SESSION["woc"] = $woc_array;
+		$_SESSION["tcc"] = $tcc_array;
+		$_SESSION["nopa"] = $nopa_array;
 		
 		
 	

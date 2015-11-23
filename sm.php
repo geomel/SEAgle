@@ -184,17 +184,24 @@ include("inc/nav.php");
 	
 	
 	//php to Javascript array Variables
+		var loc = new Array();
 		var cbo = new Array();
 		var	lcom = new Array();
 		var	nom = new Array();
 		var	nof = new Array();
 		var	wmc = new Array();
+		var	woc = new Array();
+		var	tcc = new Array();
+		var nopa = new Array();
 		
 		
 		
 
  function php2Js(){
 	<?php
+			foreach($_SESSION['loc'] as $key=>$value){
+				echo "loc[".$key."]=".$value.";";
+			}
 			foreach($_SESSION['cbo'] as $key=>$value){
 				echo "cbo[".$key."]=".$value.";";
 			}
@@ -210,8 +217,18 @@ include("inc/nav.php");
 			foreach($_SESSION['wmc'] as $key=>$value){
 				echo "wmc[".$key."]=".$value.";";
 			}
+			foreach($_SESSION['woc'] as $key=>$value){
+				echo "woc[".$key."]=".$value.";";
+			}
+			foreach($_SESSION['tcc'] as $key=>$value){
+				echo "tcc[".$key."]=".$value.";";
+			}
+			foreach($_SESSION['nopa'] as $key=>$value){
+				echo "nopa[".$key."]=".$value.";";
+			}
 			$js_array = json_encode($_SESSION['versions_array']);
 			echo "versions_array = ". $js_array . ";\n";
+			
 			
 	?>
  }
@@ -300,6 +317,9 @@ include("inc/nav.php");
 
 			};
 				switch(flag) {
+						case "0":
+							var lines_plot = $.plot($("#locchart"), [tableData], options);
+							break;
 						case "1":
 							var nodes_plot = $.plot($("#cbochart"), [tableData], options);
 							break;
@@ -315,6 +335,15 @@ include("inc/nav.php");
 						case "5":
 							var e2n_plot = $.plot($("#wmcchart"), [tableData], options);
 							break;
+						case "6":
+							var woc_plot = $.plot($("#wocchart"), [tableData], options);
+							break;	
+						case "7":
+							var tcc_plot = $.plot($("#tccchart"), [tableData], options);
+							break;	
+						case "8":
+							var nopa_plot = $.plot($("#nopachart"), [tableData], options);
+							break;		
 						
 				}
 			
@@ -327,21 +356,32 @@ $(document).ready(function() {
 		pageSetUp();
 		php2Js();
 		
-		createJSTableDataForGraphs(cbo);
-		addCharts("001","Coupling Between Objects / Version", "cbochart");
-		drawLinePlot("1", "cbo");
-		createJSTableDataForGraphs(lcom);
-		addCharts("002","Lack of Cohesion of Methods / Version", "lcomchart");
-		drawLinePlot("2", "lcom");
+		createJSTableDataForGraphs(loc);
+		addCharts("001","Lines Of Code / Version", "locchart");
+		drawLinePlot("0", "loc");
 		createJSTableDataForGraphs(nom);
 		addCharts("003","Number Of methods / Version", "nomchart");
 		drawLinePlot("3", "methods");
 		createJSTableDataForGraphs(nof);
 		addCharts("004","Number Of Fields / Version", "nofchart");
 		drawLinePlot("4", "fields");
+		addCharts("001","Coupling Between Objects / Version", "cbochart");
+		drawLinePlot("1", "cbo");
+		createJSTableDataForGraphs(lcom);
+		addCharts("002","Lack of Cohesion of Methods 2/ Version", "lcomchart");
+		drawLinePlot("2", "lcom");
 		createJSTableDataForGraphs(wmc);
 		addCharts("005", "Weighted Method Complexity / Version", "wmcchart");
 		drawLinePlot("5", "wmc");
+		createJSTableDataForGraphs(woc);
+		addCharts("006", "Weight Of Class / Version", "wocchart");
+		drawLinePlot("6", "w0c");
+		createJSTableDataForGraphs(tcc);
+		addCharts("007", "Tight Class Cohesion / Version", "tccchart");
+		drawLinePlot("7", "tcc");
+		createJSTableDataForGraphs(nopa);
+		addCharts("008", "Number Of Public Attributes / Version", "nopachart");
+		drawLinePlot("8", "nopa");
 		
 		
 		/* sales chart */
