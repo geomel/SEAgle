@@ -8,7 +8,9 @@ var resultHTML = "";
 	$(document).ready(function() {
 		projectUrl = "https://github.com/ReactiveX/RxJava.git"
 	
-/*	
+	$( "#completion_message" ).html("<h4>The analysis of the project has started and will complete shortly.</h4>");
+	
+	/*	
 		$("#postbtn").click(function(){
 		//	$.post("http://java.uom.gr:8080/seagle2/rs/project/analysis?purl=https://github.com/msgpack/msgpack-java.git&requestorEmail=geomel@gmail.com", function(data, status){
 			$.post("http://java.uom.gr:8080/seagle2/rs/project/analysis?purl=https://github.com/teohaik/evolutionDemo.git&requestorEmail=geomel@gmail.com", function(data, status){
@@ -17,6 +19,7 @@ var resultHTML = "";
 		});
 	*/
 		$('#wiz').hide();
+		$('#project_analysis').hide();
 		$('#ajax-timeline').hide();
 		$('#loading').hide();
 		$("input:radio[name=results-filter]").click(function() {
@@ -83,17 +86,18 @@ function searchQuery(){ // query based searching by url or project name
 					if ($('#search-project').val().toLowerCase().indexOf(".git") >= 0) // if is a git url
 					   url+='project?purl='; 
 					else
-						url+='project/';		
-						
+						url+='project/';								
 						$.ajax({
 							datatype: "json",
 							url: url + $('#search-project').val(),
-							success: function(response) {
-									for (var i=0; i<response.projects.length; i++) {
+							success: function(response) {								
+									for (var i=0; i<=response.projects.length; i++) {
 										resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(" + response.projects.length +" results) </span></small></h1><p> ";
 										if(response.projects.length > 0){
 											displaySearchResults(response.projects[i].name, response.projects[i].url, response.projects[i].versionCount);
 											$('div#search-res').html(resultHTML);
+										} else{
+												runWizard();
 										}										
 									}	
 							},
@@ -133,6 +137,8 @@ function getAllProjects(flag){
 
 
 function displaySearchResults(pname, purl, pversions){
+	$('#project_analysis').hide();
+	$('#completion_message').hide();
 	 resultHTML += 	"<h3><i class='fa fa-barcode'></i>&nbsp;&nbsp;<u><a href='_/php/_startProjectSession.php?pname=" + pname + "&githubpath=" + purl + "&versions=" + pversions + "' onclick='storeResults(\"" + pname + "\",\"" + purl + "\");'>" + pname + "</a></u>&nbsp;&nbsp;<a href='javascript:void(0);'></a></h3>" +
 					"<div class='url text-success'>" +
 					"<i class='fa fa-code'></i> <b>Git URL:&nbsp </b> <a href='" + purl + "' target='_blank'>" + purl + "&nbsp;&nbsp;</a>" +
@@ -180,12 +186,30 @@ function refreshTimeLine(){
 
 	
 	function runWizard(){
-		$('#wiz').show();
-		$('#searchControls').hide();
-		$('#loading').show();
-		getVersions();
+		$('#search-res').hide();
+		$('#mailnotification').show();
+		$('#project_analysis').show();
+	//	$('#searchControls').hide();
+		//$('#loading').show();
+		//getVersions();
+		
 	}
-
+	
+	
+	$("#triggerProjectAnalysis").click(function(){
+			purl = $('#search-project').val();
+			reciever_email = $('#email').val();
+			if(reciever_email == "")
+				reciever_email="geomel@gmail.com";
+				$('#triggerProjectAnalysis').hide();
+				$('#loading').show();
+				$('#project_analysis').hide();
+			$.post("http://java.uom.gr:8080/seagle2/rs/project/analysis?purl=" + purl + "&requestorEmail=" + reciever_email, function(data, status){
+					$('#loading').hide();
+					$( "completion_message" ).html("<h4>The analysis of the project has started and will complete shortly.</h4>");
+			});
+		});
+	
 	function getVersions(){
        // openSocket();
 	//	$('#mailnotification').show();
