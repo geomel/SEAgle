@@ -54,37 +54,49 @@ var resultHTML = "";
 function searchQuery(){ // query based searching by url or project name
 
 	var url = "http://java.uom.gr:8080/seagle2/rs/";
-
+	//('#project_analysis').hide();
 	var isgit=0;
 	$('#search-res').show();
 	if($('#search-project').val()!=""){	
-					if ($('#search-project').val().toLowerCase().indexOf(".git") >= 0){ // if is a git url
-					   url+='project?purl='; 
-					   isgit=1;;
+				if ($('#search-project').val().toLowerCase().indexOf(".git") >= 0){ // if is a git url
+					   url+='project?purl=' + $('#search-project').val(); 
+					   isgit=1;
+					   console.log("aaa: "+url)
 					} 
-					else
-						url+='project/';								
+				else
+					url+='project/'+ $('#search-project').val();
+				
 						$.ajax({
 							datatype: "json",
-							url: url + $('#search-project').val(),
-							success: function(response) {								
-									for (var i=0; i<=response.projects.length; i++) {
+							url: url,
+							success: function(response) {	
 										resultHTML = "<h1 class='font-md'> Search Results for <span class='semi-bold'>Projects</span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(" + response.projects.length +" results) </span></small></h1><p> ";
+								if(isgit){	
+									console.log("bbbb: "+response.projects.length)
+										if(response.projects.length>0){
+											displaySearchResults(response.projects[0].name, response.projects[0].url, response.projects[0].versionCount);										
+										} else 
+											runWizard();					
+								}else{			
+									for (var i=0; i<response.projects.length; i++) {		
 										if(response.projects.length > 0){
-											displaySearchResults(response.projects[i].name, response.projects[i].url, response.projects[i].versionCount);
-											$('div#search-res').html(resultHTML);
-										} else if(isgit){
-												runWizard();
-										}										
-									}	
+											displaySearchResults(response.projects[i].name, response.projects[i].url, response.projects[i].versionCount);										
+										} 		
+									}
+								}	
+									$('div#search-res').html(resultHTML);		
 							},
 							error:function (er_response) {
 								resultHTML = "<h1 class='font-md'> Server Responded as: <span class='semi-bold'></span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >(0 results) </span></small></h1><p> ";
-								displayError(er_response.status, er_response.message );
+							//	displayError(er_response.status, er_response.message );
 								$('div#search-res').html(resultHTML);
 							}	
 						});
+				} else{
+					resultHTML = "<h1 class='font-md'> Server Responded as: <span class='semi-bold'></span><small class='text-danger'> &nbsp;&nbsp;<span id='numresults' >Enter a valid project name or git repository. </span></small></h1><p> ";
+					$('div#search-res').html(resultHTML);
 				}
+				
 }	
 	
 function getAllProjects(flag){ 
@@ -99,7 +111,7 @@ function getAllProjects(flag){
 			if(flag==0)  // 0 means show all projects pressed
 					displaySearchResults(project.name, project.url, project.versionCount);
 			else
-				displayTimeLine (project.analyzed, project.name, project.url, project.versionCount);
+					displayTimeLine (project.analyzed, project.name, project.url, project.versionCount);
 		}
 		 $('div#search-res').html(resultHTML);
 		 $('div#ajax-timeline').html(resultHTML);
