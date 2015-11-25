@@ -8,7 +8,7 @@ var resultHTML = "";
 	$(document).ready(function() {
 		projectUrl = "https://github.com/ReactiveX/RxJava.git"
 	
-	$( "#completion_message" ).html("<h4>The analysis of the project has started and will complete shortly.</h4>");
+	
 	
 	/*	
 		$("#postbtn").click(function(){
@@ -206,7 +206,7 @@ function refreshTimeLine(){
 				$('#project_analysis').hide();
 			$.post("http://java.uom.gr:8080/seagle2/rs/project/analysis?purl=" + purl + "&requestorEmail=" + reciever_email, function(data, status){
 					$('#loading').hide();
-					$( "completion_message" ).html("<h4>The analysis of the project has started and will complete shortly.</h4>");
+					$( "#completion_message" ).html("<p><h4>The analysis of the project has started and will complete shortly.</h4>");
 			});
 		});
 	
