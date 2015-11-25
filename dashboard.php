@@ -114,7 +114,6 @@ include("inc/nav.php");
 								</div>
 								<div class="widget-body" style="margin-left:0px;">
 									<?php
-										//	include("_/php/_connections.php");
 											include ("_/php/dataclasses/_graphBasedMetrics.php"); 
 									?>
 								</div>
@@ -197,7 +196,6 @@ include("inc/nav.php");
 								</div>
 								<div class="widget-body" style="margin-left:30px;">
 								<?php
-									//	include("_/php/_connections.php");
 										include ("_/php/dataclasses/_commitersData.php");  
 									?>
 								</div>
@@ -273,7 +271,6 @@ include("inc/nav.php");
 										</div>
 										<div class="widget-body" style="margin-left:30px;">
 										<?php
-											//	include("_/php/_connections.php");
 												include ("_/php/dataclasses/_softwareMetrics.php"); 
 											?>
 										</div>
@@ -290,7 +287,7 @@ include("inc/nav.php");
 			
 				<section id="widget-grid" class="">
 					<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
-						<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2999" data-widget-editbutton="false">
+						<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3999" data-widget-editbutton="false">
 							<header style="margin-bottom:0px; margin-right:0px">
 							<span class="widget-icon"> <i class="fa fa-table"></i> </span>
 							<h2>Code Smells</h2>
@@ -330,10 +327,8 @@ include("inc/nav.php");
 							</div>
 					</article>	
 
-			<div class="row">
-				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
-					
-					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3000" data-widget-editbutton="false" style="margin-left:20px;">
+				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">			
+					<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-4000" data-widget-editbutton="false" style="margin-left:20px;">
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->		
 							</div>
@@ -343,17 +338,13 @@ include("inc/nav.php");
 								</div>
 								<div class="widget-body" style="margin-left:0px;">
 									<?php
-										//	include("_/php/_connections.php");
 											include ("_/php/dataclasses/_codeSmells.php"); 
 									?>
 								</div>
 							</div>
 						</div>	
 				</article>
-					
-				</section>
-			</div>
-			
+		</section>	
 	
 	<div class='row'>
 			<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
@@ -362,37 +353,6 @@ include("inc/nav.php");
 					<div class='smart-timeline'>
 						<ul class='smart-timeline-list'>
 			<?php		
-			/*	include("_/php/_connections.php");
-						$sql = "SELECT * FROM timeline, project WHERE project.pid=timeline.pid ORDER BY date DESC LIMIT 0 , 5";
-
-						$rs=$conn->query($sql);
-						if($rs === false) {
-						  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-						} else {
-						  $rows_returned = $rs->num_rows;
-						}
-						$rs->data_seek(0);
-
-						while($row = $rs->fetch_assoc()){	
-
-						echo "<li>
-								<div class='smart-timeline-icon bg-color-greenDark'>
-									<i class='fa fa-bar-chart-o'></i>
-								</div>
-								<div class='smart-timeline-time'>
-									<small>".$row['date']."</small>
-								</div>
-								<div class='smart-timeline-content'>
-									<p>
-										<strong class='txt-color-greenDark'>".$row['title']."</strong>
-									</p>
-									<p>
-										<a href='_/php/_startProjectSession.php?pid=".$row['pid']."' onclick='storeResults(\"".$row['name']."\",\"".$row['pid']."\");'  class='btn btn-xs btn-primary'><i class='fa fa-file'></i>&nbsp;&nbsp". $row['name'] ."</a>
-									</p>
-								</div>
-							</li>";
-						}
-						*/
 			?>
 						</ul>
 					</div>

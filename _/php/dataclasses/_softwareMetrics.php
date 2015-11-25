@@ -1,18 +1,4 @@
 <?php
-/*
-$pid=$_SESSION["pid"];
-
-$sql = "SELECT * FROM project, version INNER JOIN sourcemetric WHERE project.pid='$pid' AND project.pid=version.pid AND version.vid = sourcemetric.vid ORDER BY version.date ASC";
-
-$rs=$conn->query($sql);
- 
-if($rs === false) {
-  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-} else {
-  $rows_returned = $rs->num_rows;
-}
-$rs->data_seek(0);
-*/
 echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 			<thead>
 				<tr>
@@ -26,7 +12,6 @@ echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 					<th>Weight Of Class</th>
 					<th>Tight Class Cohesion</th>
 					<th>Number Of Public Attributes</th>
-					<th>Number Of Accessor Methods</th>
 				</tr>
 			</thead>
 		<tbody>";
@@ -43,7 +28,6 @@ echo "<table id='softMetricsTable' class='table table-striped table-hover' >
 		  echo "<td>" . round($_SESSION["woc"][$key],3) . "</td>"; 
 		  echo "<td>" . round($_SESSION["tcc"][$key],3) . "</td>";
 		  echo "<td>" . $_SESSION["nopa"][$key] . "</td>";
-		   echo "<td>" . $_SESSION["noam"][$key] . "</td>";
 		  echo "</tr>";
 		  }
 	}	  

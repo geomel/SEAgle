@@ -8,18 +8,9 @@ require_once("inc/init.php");
 //require UI configuration (nav, ribbon, etc.)
 require_once("inc/config.ui.php");
 
-/*---------------- PHP Custom Scripts ---------
-
-YOU CAN SET CONFIGURATION VARIABLES HERE BEFORE IT GOES TO NAV, RIBBON, ETC.
-E.G. $page_title = "Custom Title" */
 
 $page_title = "Code Smells";
 
-/* ---------------- END PHP Custom Scripts ------------- */
-
-//include header
-//you can add your custom css in $page_css array.
-//Note: all css files are inside css/ folder
 $page_css[] = "your_style.css";
 include("inc/header.php");
 
@@ -45,7 +36,7 @@ include("inc/nav.php");
 
 		<div class="row">
 			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-				<h1 class="page-title txt-color-blueDark"><img src="img/network.png" width="40" height="30">&nbsp;&nbsp;Code Smells</h1>
+				<h1 class="page-title txt-color-blueDark"><img src="img/smells.png" width="40" height="30">&nbsp;&nbsp;Code Smells</h1>
 			</div>
 			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
 				<ul id="sparks" class="">
@@ -70,19 +61,7 @@ include("inc/nav.php");
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<!-- Widget ID (each widget will need unique ID)-->
 				<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3000" data-widget-editbutton="false">
-						<!-- widget options:
-						usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-		
-						data-widget-colorbutton="false"
-						data-widget-editbutton="false"
-						data-widget-togglebutton="false"
-						data-widget-deletebutton="false"
-						data-widget-fullscreenbutton="false"
-						data-widget-custombutton="false"
-						data-widget-collapsed="true"
-						data-widget-sortable="false"
-		
-						-->
+						
 						<header style="margin-bottom:13px; margin-right:18px">
 							<span class="widget-icon"> <i class="fa fa-table"></i> </span>
 							<h2>Source Code Smells</h2>

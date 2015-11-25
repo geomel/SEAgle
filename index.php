@@ -83,7 +83,7 @@ include("inc/header.php");
 								<h4>The repository you requested is not in our database. 
 									You are one step away from instant project analysis.</h4><p><p>
 									<p><label class='input'> <i class='icon-append fa fa-envelope-o'></i>
-										<input type='email' name='email' placeholder='E-mail' id='email'> Enter your email if you like to be notified when the analysis will complete.
+										<input type='email' name='email' placeholder='E-mail' id='email'> For notification on completion.
 									</label>
 								</section>
 							</div>

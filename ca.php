@@ -23,10 +23,8 @@ $page_title = "Repository Metrics";
 $page_css[] = "your_style.css";
 include("inc/header.php");
 
-//include left panel (navigation)
-//follow the tree in inc/config.ui.php
+
 $page_nav["graphs"]["sub"]["ca"]["active"] = true;
-//$page_nav["graphs"]["flot"]["active"] = true;
 include("inc/nav.php");
 
 ?>
@@ -34,8 +32,7 @@ include("inc/nav.php");
 <!-- MAIN PANEL -->
 <div id="main" role="main">
 	<?php
-		//configure ribbon (breadcrumbs) array("name"=>"url"), leave url empty if no url
-		//$breadcrumbs["New Crumb"] => "http://url.com"
+
 		$breadcrumbs["Metrics"] = "";
 		include("inc/ribbon.php");
 	?>
@@ -45,7 +42,7 @@ include("inc/nav.php");
 
 		<div class="row">
 			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-				<h1 class="page-title txt-color-blueDark"><img src="img/network.png" width="40" height="30">&nbsp;&nbsp;Repository Metrics</h1>
+				<h1 class="page-title txt-color-blueDark"><img src="img/repo.png" width="40" height="30">&nbsp;&nbsp;Repository Metrics</h1>
 			</div>
 			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
 				<ul id="sparks" class="">
@@ -70,19 +67,7 @@ include("inc/nav.php");
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<!-- Widget ID (each widget will need unique ID)-->
 				<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3000" data-widget-editbutton="false">
-						<!-- widget options:
-						usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-		
-						data-widget-colorbutton="false"
-						data-widget-editbutton="false"
-						data-widget-togglebutton="false"
-						data-widget-deletebutton="false"
-						data-widget-fullscreenbutton="false"
-						data-widget-custombutton="false"
-						data-widget-collapsed="true"
-						data-widget-sortable="false"
-		
-						-->
+			
 						<header style="margin-bottom:13px; margin-right:18px">
 							<span class="widget-icon"> <i class="fa fa-table"></i> </span>
 							<h2>Development Activity</h2>
@@ -102,7 +87,6 @@ include("inc/nav.php");
 								</div>
 								<div class="widget-body" style="margin-left:30px;">
 									<?php
-										// include("_/php/_connections.php");
 										include ("_/php/dataclasses/_commitersData.php"); 
 									?>
 								</div>
@@ -120,9 +104,7 @@ include("inc/nav.php");
 			</div>			
 		</div>
 
-			<!-- end row -->
-
-			<!-- row -->
+	
 		
 
 	</div>	

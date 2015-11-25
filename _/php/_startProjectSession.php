@@ -2,7 +2,6 @@
 session_start();
 
 	if(isset($_GET['pname'])){
-	//	include("_connections.php");
 		$pname=$_GET['pname'];
 		$githubpath=$_GET['githubpath'];
 		$versions=$_GET['versions'];
@@ -14,7 +13,6 @@ session_start();
 		
 		$json_rest_metrics = file_get_contents('http://java.uom.gr:8080/seagle2/rs/metric/values/project/'. $pname); //gets project metrics	
 		$json_rest_smells = file_get_contents('http://java.uom.gr:8080/seagle2/rs/project/smells/summary/'. $pname); //gets project metrics	
-	//	$json_rest = file_get_contents('http://195.251.210.146:8080/seagle2/rs/metric/values/project/'. $pname); //gets project metrics	
 		$rest_metrics = json_decode($json_rest_metrics);
 		$rest_smells = json_decode($json_rest_smells);
 		
@@ -63,9 +61,6 @@ session_start();
 		foreach($metrics as $metric){
 			$versions = $metric->metrics;
 				foreach($versions as $vname){
-					// echo $vname->mnemonic;
-					// echo " - ";
-					// echo $vname->value . "<p>";
 					switch($vname->mnemonic){
 						case "AUTHOR_COUNT_VER":
 							$authors_array[] = $vname->value;
@@ -102,19 +97,13 @@ session_start();
 		$_SESSION["filesModified"] = $filesModified_array;
 		$_SESSION["linesAdded"] = $linesAdded_array;
 		$_SESSION["linesDeleted"] = $linesDeleted_array;
-	//	$_SESSION["testFilesAdded"] = $testFilesAdded_array;
-	//	$_SESSION["testFilesModified"] = $testFilesModified_array;
 	
 		$_SESSION["diameter"] = $diameter_array;
-		
-	// Parse source code metrics
+
 	
 		foreach($metrics as $metric){
 			$versions = $metric->metrics;
 				foreach($versions as $vname){
-					// echo $vname->mnemonic;
-					// echo " - ";
-					// echo $vname->value . "<p>";
 					switch($vname->mnemonic){
 						case "CBO":
 							$cbo_array[] = $vname->value;
@@ -150,16 +139,6 @@ session_start();
 				}
 		}	
 		
-		/*
-		$rs5->data_seek(0);
-		while($row = $rs5->fetch_assoc()){
-			$cbo_array[]=$row['cbo'];
-			$lcom_array[]=$row['lcom'];
-			$nom_array[]=$row['nom'];
-			$nof_array[]=$row['nof'];
-			$wmc_array[]=$row['wmc'];
-		}
-		*/
 		$_SESSION["cbo"] = $cbo_array;
 		$_SESSION["lcom"] = $lcom_array;
 		$_SESSION["nom"] = $nom_array;
