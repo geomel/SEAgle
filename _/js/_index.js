@@ -1,11 +1,19 @@
-// var url = "http://195.251.210.137:8080/seagle2/rs/";	
+	
 
 var url = "http://java.uom.gr:8080/seagle2/rs/";
-// var url = "http://195.251.210.146:8080/seagle2/rs/";
+
 
 var resultHTML = "";
 	
 	$(document).ready(function() {
+		projectUrl = "https://github.com/ReactiveX/RxJava.git"
+		$("#postbtn").click(function(){
+		//	$.post("http://java.uom.gr:8080/seagle2/rs/project/analysis?purl=https://github.com/msgpack/msgpack-java.git&requestorEmail=geomel@gmail.com", function(data, status){
+			$.post("http://java.uom.gr:8080/seagle2/rs/project/analysis?purl=https://github.com/teohaik/evolutionDemo.git&requestorEmail=geomel@gmail.com", function(data, status){
+				alert("Data: " + data + "\nStatus: " + status);
+			});
+		});
+	
 		$('#wiz').hide();
 		$('#ajax-timeline').hide();
 		$('#loading').hide();
@@ -20,7 +28,7 @@ var resultHTML = "";
 						$("#search-project").focus();	
 						// $("#search-res").load("_/php/_search.php");
 						getAllProjects(0); // 0 means show all projects pressed
-						$("#execsqltime").load("_/php/_search.php #sqltime");	
+					//	$("#execsqltime").load("_/php/_search.php #sqltime");	
 						console.log("case 0 triggered");
 						break;
 					case("1"):
@@ -71,9 +79,10 @@ function searchQuery(){ // query based searching by url or project name
 	$('#search-res').show();
 	if($('#search-project').val()!=""){	
 					if ($('#search-project').val().toLowerCase().indexOf(".git") >= 0) // if is a git url
-					   url+='project/?purl=';
+					   url+='project?purl='; 
 					else
 						url+='project/';		
+						
 						$.ajax({
 							datatype: "json",
 							url: url + $('#search-project').val(),
@@ -83,7 +92,7 @@ function searchQuery(){ // query based searching by url or project name
 										if(response.projects.length > 0){
 											displaySearchResults(response.projects[i].name, response.projects[i].url, response.projects[i].versionCount);
 											$('div#search-res').html(resultHTML);
-										}											
+										}										
 									}	
 							},
 							error:function (er_response) {
