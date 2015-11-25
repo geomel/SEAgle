@@ -13,10 +13,7 @@ include("inc/header.php");
 			<i class="fa fa-video-camera"></i>
 				Instructional Video
 		</button>	
-		<button type="button" id="postbtn" class="btn btn-labeled btn-success btn-lg" data-toggle="modal">
-			<i class="fa fa-video-camera"></i>
-				Post
-		</button>
+		
 		<button type="button" class="btn btn-labeled btn-success btn-lg" data-toggle="modal" data-target="#ModalRelatedPaper">
 			<i class="fa fa-book"></i>
 			Related Papers			

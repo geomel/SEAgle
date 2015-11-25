@@ -7,13 +7,15 @@ var resultHTML = "";
 	
 	$(document).ready(function() {
 		projectUrl = "https://github.com/ReactiveX/RxJava.git"
+	
+/*	
 		$("#postbtn").click(function(){
 		//	$.post("http://java.uom.gr:8080/seagle2/rs/project/analysis?purl=https://github.com/msgpack/msgpack-java.git&requestorEmail=geomel@gmail.com", function(data, status){
 			$.post("http://java.uom.gr:8080/seagle2/rs/project/analysis?purl=https://github.com/teohaik/evolutionDemo.git&requestorEmail=geomel@gmail.com", function(data, status){
 				alert("Data: " + data + "\nStatus: " + status);
 			});
 		});
-	
+	*/
 		$('#wiz').hide();
 		$('#ajax-timeline').hide();
 		$('#loading').hide();
